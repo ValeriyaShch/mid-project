@@ -50,13 +50,54 @@ sales.addEventListener('change', (event) => {
   catalogProducts.rerenderProducts({filterSales: event.target.checked})
 })
 
+// Filter Buttons
+document.querySelector('.btn-clear').addEventListener('click', () => {
+  document.querySelectorAll('.select-display').forEach(display => {
+    display.textContent = 'Choose option';
+  });
+  // Reset hidden select elements
+  document.querySelectorAll('.filter-select').forEach(select => {
+    select.value = '';
+  });
+  // Reset checkboxes
+  document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+    checkbox.checked = false;
+  });
+
+  catalogProducts.resetProducts();
+}) 
+
+document.getElementById('sort').addEventListener('change', (event) => {
+  catalogProducts.rerenderProducts({sortOrder: event.target.value})
+})
+
+// document.querySelector('.search-form').addEventListener('submit', (event) => {
+//   event.preventDefault();
+//   const searchInput = document.getElementById('search-input');
+//   catalogProducts.rerenderProducts({searchTerm: searchInput.value})
+// })
+
 document.addEventListener('DOMContentLoaded', () => {
   const pageButtons = document.querySelectorAll('.page-button');
 
   pageButtons.forEach((button, index) => {
       button.addEventListener('click', () => {
-          console.log(`Button with index ${index} was clicked`);
+          catalogProducts.currentPage = index; // Set the current page
           catalogProducts.rerenderProducts({currentPage: index});
       });
   });
+});
+
+document.querySelector('.btn-prev').addEventListener('click', () => {
+    if (catalogProducts.currentPage > 0) {
+        catalogProducts.currentPage -= 1; // Move to the previous page
+        catalogProducts.rerenderProducts({currentPage: catalogProducts.currentPage});
+    }
+});
+
+document.querySelector('.btn-next').addEventListener('click', () => {
+    if (catalogProducts.currentPage < catalogProducts.pageCount - 1) {
+        catalogProducts.currentPage += 1; // Move to the next page
+        catalogProducts.rerenderProducts({currentPage: catalogProducts.currentPage});
+    }
 });
