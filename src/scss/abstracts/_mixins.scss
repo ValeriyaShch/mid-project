@@ -1,0 +1,63 @@
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1440px;
+$breakpoint-xxl: 1920px;
+
+@mixin vieport-md {
+  @media (min-width: $breakpoint-md) {
+    @content;
+  }
+}
+@mixin vieport-lg {
+  @media (min-width: $breakpoint-lg) {
+    @content;
+  }
+}
+@mixin vieport-xl {
+  @media (min-width: $breakpoint-xl) {
+    @content;
+  }
+}
+@mixin vieport-xxl {
+  @media (min-width: $breakpoint-xxl) {
+    @content;
+  }
+}
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin title ($color: black, $size: 40px) {
+  font-family: 'Montserrat-ExtraBold';
+  font-weight: 900;
+  font-size: $size;
+  color: $color;
+}
+
+@mixin info ($color: $grey-color, $size: 17px) {
+  font-family: "Montserrat-Regular";
+    font-weight: 400;
+    font-size: $size;
+    color: $color;
+    line-height: 1.5;
+}
+
+@mixin mont-bold ($color: black, $size: 18px) {
+  font-family: "Montserrat";
+    font-weight: 700;
+    font-size: $size;
+    color: $color;
+    line-height: 1.5;
+}
+
+@mixin button-padding($vertical: 20px, $horisontal: 20px) {
+  padding: $vertical $horisontal;
+}

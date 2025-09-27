@@ -1,0 +1,80 @@
+.product-details-card {
+    display: flex;
+    gap: 40px;
+
+    .product-gallery {
+        flex: 1 1 45%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        .product-details-image {
+            width: 100%;
+            object-fit: contain;
+        }
+
+        .product-thumbnails {
+            @include flex-center;
+            gap: 15px;
+
+            .thumb {
+                 object-fit: cover;
+            }
+        } 
+    }
+}
+
+.product-details-info {
+    flex: 1 1 45%;
+    display: flex;
+    flex-direction: column;
+    
+    .product-details-title {
+        @include mont-bold($size: 30px);
+        margin-bottom: 16px;
+    }
+
+    .card-details-rating {
+        margin-bottom: 15px;
+    }
+
+    .clients-review-counter {
+        @include info($size: 13px);
+    }
+
+    .product-details-price {
+        @include mont-bold($size: 20px);
+        margin-bottom: 40px;
+    }
+
+    .product-details-desc {
+        @include info;
+    }
+
+    .product-details-desc + .product-details-desc {
+        margin-top: 40px;
+        margin-bottom: 70px;
+    }
+
+    .filter-group {
+                  display: flex;
+                  flex-direction: column;
+                  gap: 13px;
+                  margin-bottom: 30px;
+          
+                  label {
+                    @include mont-bold($grey-color, 17px);
+                  }
+          
+                  select {
+                    @include info($size: 16px);
+                    border: 2px solid $light-grey;
+                    padding: 10px 15px;
+          
+                    &:focus {
+                      outline: none;
+                      border-color: $main-color;
+                    }
+                  } 
+                 }
+}

@@ -1,0 +1,240 @@
+.promo {
+    background: #E7E8E9;
+    padding: 120px 0;
+}
+
+.promo-container {
+    @include flex-between;
+}
+
+.promo-image {
+    height: 625px;
+    width: 100%;
+}
+
+.promo-title {
+    font-family: "Montserrat-ExtraBold";
+    font-weight: 900;
+    font-size: 50px;
+    line-height: 1.2;
+    margin-bottom: 30px;
+}
+
+.promo-desc {
+    @include info;
+    margin-bottom: 30px;
+}
+
+.promo-button {
+    font-size: 18px;
+    @include button-padding;
+}
+
+.discount-section {
+    display: flex;
+    margin-top: -120px;
+    box-shadow: 0 0 40px 10px rgba( 0, 0, 0, 0.2);
+    margin-bottom: 120px;
+}
+
+.persona {
+    padding: 70px;
+    flex: 1 1 50%;
+    background: $white-color;
+}
+
+.employee {
+ @include flex-center;
+ justify-content: start;
+ gap: 22px;
+ margin-bottom: 30px;
+}
+
+.employee-photo {
+    width: 85px;
+    height: 100%;
+}
+
+.employee-name {
+    font-family: "Montserrat";
+    font-weight: 700;
+    font-size: 20px;
+    margin-bottom: 7px;
+}
+
+.employee-position {
+    @include info;
+}
+
+.persona-title {
+    @include title;
+    line-height: 100%;
+    letter-spacing: 0%;
+    margin-bottom: 30px
+}
+
+.persona-title + .persona-info {
+    margin-bottom: 30px;
+}
+
+.persona-info {
+    @include info;
+}
+
+.discount {
+    background: linear-gradient( rgba( 0, 0, 0, 0.4)), url(../assets/images/discount.png);
+    flex: 1 1 50%;
+    padding: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap: 30px;
+}
+
+.discount-caption {
+    @include title($white-color);
+}
+
+.discount-info {
+    @include info($white-color);
+}
+
+.discount-button {
+    font-size: 18px;
+    @include button-padding(20px, 25px);
+}
+
+.travel-container {
+    margin-bottom: 120px;
+}
+
+.travel-title {
+    @include title;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.travel-desc {
+    @include info;
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.travel-cards {
+    display: flex;
+    gap: 39px;
+}
+
+.travel-cards div {
+    height: 600px;
+    padding: 45px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    gap: 20px;
+}
+
+.travel-card-first {
+    background: linear-gradient(rgba( 0, 0, 0, 0.4)), url(../assets/images/travel_1.png);
+}
+
+.travel-card-second {
+    background: linear-gradient(rgba( 0, 0, 0, 0.4)), url(../assets/images/travel_2.png);
+}
+
+.travel-card-third {
+    background: linear-gradient(rgba( 0, 0, 0, 0.4)), url(../assets/images/travel_3.png);
+}
+
+.travel-card-fourth {
+    background: linear-gradient(rgba( 0, 0, 0, 0.4)), url(../assets/images/travel_4.png);
+}
+
+.travel-card-title {
+    @include mont-bold($white-color, 19px);
+}
+
+.travel-card-desc {
+    @include info($white-color, 19px);
+}
+
+.selected-products-title, .new-products-title, .customers-title {
+  @include title;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.selected-products-desc, .new-products-desc, .customers-desc {
+    @include info;
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.product-list {
+    margin-bottom: 120px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 39px;
+    align-items: stretch;
+}
+
+
+  .banner{
+    // background: url(../assets/images/banner.png) center/cover no-repeat;
+    background: linear-gradient(rgba( 0, 0, 0, 0.4)), url(../assets/images/banner.png) center/cover no-repeat;
+    padding: 80px 100px;
+    @include flex-center;
+    gap: 175px;
+    margin-bottom: 120px;
+  }
+
+  .sale-amount {
+    @include title($white-color, 223px);
+    margin-bottom: 15px;
+  }
+
+  .sale-desc {
+    @include info($white-color, 20px);
+    text-align: center;
+  }
+
+  .offer-title {
+    @include title($white-color);
+    margin-bottom: 30px;
+  }
+
+  .offer-desc {
+     @include info($white-color);
+     margin-bottom: 30px;
+  }
+
+  .offer-button {
+    @include button-padding(20px, 25px);
+    font-size: 18px;
+  }
+
+  .customers-cards {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 120px;
+  }
+
+  .customers-card-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    padding: 45px 40px;
+    box-shadow: 0 0 40px 10px rgba( 0, 0, 0, 0.2);
+  }
+
+  .customers-card-desc {
+    @include info(black);
+    text-align: center;
+  }
+
+  .customers-info {
+    @include mont-bold($main-color, 17px);
+  }

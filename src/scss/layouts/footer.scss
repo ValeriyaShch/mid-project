@@ -1,0 +1,94 @@
+.benefits-section {
+    background-color: $grey-color;
+    background-image: url(../assets/images/wave.svg);
+    background-blend-mode: soft-light;
+    padding: 40px 0;
+    margin-bottom: 120px;
+}
+
+.benefits-title {
+    color: $white-color;
+    font-family: 'Inter';
+    font-weight: 700;
+    font-size: 23px;
+    margin-bottom: 32px;
+}
+
+.benefits-list {
+    @include flex-between;
+    gap: 90px;
+}
+
+.benefits-item {
+    @include flex-center;
+    gap: 20px;
+}
+
+.benefits-icon {
+    width: 60px;
+    height: 60px;
+}
+
+.benefits-desc {
+    color: $white-color;
+    font-weight: 500;
+}
+
+.footer-container {
+    @include flex-between;
+    align-items: start;
+}
+
+.footer-info {
+    max-width: 640px;
+}
+
+.footer-links {
+    @include flex-between;
+}
+.footer-contacts {
+    max-width: 375px;
+}
+
+.footer-title {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+.footer-links {
+    margin-bottom: 50px;
+}
+
+.footer-link {
+    font-size: 15px;
+    font-weight: 400;
+    margin-bottom: 12px;
+}
+
+.footer-link a {
+    text-decoration: none;
+    color: black;
+}
+
+.footer-desc {
+   font-size: 15px;
+   line-height: 1.5;
+   margin-bottom: 70px;
+}
+
+.footer-contacts-list {
+    @include flex-center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer-contacts-list li {
+    @include flex-center;
+    flex: 1 1 40%;
+}
+
+.contacts-icon {
+    width: 24px;
+    height: 24px;
+}

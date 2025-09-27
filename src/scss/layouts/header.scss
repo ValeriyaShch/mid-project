@@ -1,0 +1,100 @@
+.header-container{
+    padding-top: 50px;
+    padding-bottom: 25px;
+}
+  .header-cap {
+    @include flex-between;
+    padding-bottom: 50px;
+    border-bottom: 1px solid $border-color;
+  }
+  .header-social {
+    @include flex-center;
+    gap: 20px;
+  }
+
+  .header-social-item {
+    width: 20px;
+    height: 20px;
+  }
+
+  .header-social-twitter {
+    width: 25px;
+    height: 20px;
+  }
+
+  .header-user {
+    width: 30px;
+    height: 33px;
+  }
+
+  .header-logo {
+    @include flex-center;
+    gap: 13px;
+    text-decoration: none;
+  }
+ .header-logo-item {
+    background: $main-color;
+    border-radius: 8px;
+    width: 32px;
+    height: 32px;
+ }
+
+ .header-icon {
+    width: 30px;
+    height: 30px;
+ }
+
+ .header-title {
+    color: $main-color;
+    font-size: 30px;
+    font-family: 'Montserrat';
+    font-weight: 700;
+ }
+
+ .main-nav {
+   padding-top: 30px;
+ }
+
+ .user-nav-icons {
+    @include flex-center;
+    gap: 15px;
+ }
+
+ .user-nav-item {
+    width: 34px;
+    height: 33px;
+ }
+
+ .main-nav_list {
+    @include flex-center;
+    gap: 30px;
+ }
+
+ .main-nav_item {
+    color: black;
+    font-size: 18px;
+    text-decoration: none;
+    font-family: 'Montserrat';
+    font-weight: 700;
+ }
+
+ .main-nav_item:hover {
+    color: $main-color;
+ }
+
+ .main-nav_catalog-item {
+    position: relative;
+    padding-right: 11px;
+ }
+
+ .main-nav_catalog-item::after {
+    content: "";
+    position: absolute;
+    top: 6px;
+    right: 0;
+    width: 7px;
+    height: 7px;
+    border-bottom: 2px solid black;
+    border-right: 2px solid black;
+    transform: rotate(50deg);
+ }
