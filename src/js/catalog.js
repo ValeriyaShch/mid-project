@@ -64,18 +64,25 @@ document.querySelector('.btn-clear').addEventListener('click', () => {
     checkbox.checked = false;
   });
 
+  // Reset products and update pagination
   catalogProducts.resetProducts();
-}) 
+  catalogProducts.createPageButtons(); // Regenerate pagination buttons
+  catalogProducts.updatePaginationChange(catalogProducts.currentPage); // Update pagination state
+});
 
 document.getElementById('sort').addEventListener('change', (event) => {
   catalogProducts.rerenderProducts({sortOrder: event.target.value})
 })
 
-// document.querySelector('.search-form').addEventListener('submit', (event) => {
-//   event.preventDefault();
-//   const searchInput = document.getElementById('search-input');
-//   catalogProducts.rerenderProducts({searchTerm: searchInput.value})
-// })
+document.querySelector('.search-form').addEventListener('submit', (event) => {
+    event.preventDefault();
+    const searchInput = event.target.querySelector('input[type="search"]');
+    const searchTerm = searchInput.value.trim();
+
+    if (searchTerm) {
+        catalogProducts.rerenderProducts({ searchTerm });
+    }
+});
 
 document.addEventListener('DOMContentLoaded', () => {
   const pageButtons = document.querySelectorAll('.page-button');

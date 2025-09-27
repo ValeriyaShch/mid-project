@@ -15,22 +15,13 @@ export function SetOfProducts(data) {
     // Todo: implement localstorage
     //const LocalStorageKey = 'tasks';
 
-    this.init = async function () {        
-        const fragment = await this.loadProducts({productBlock});
+    this.init = async function () {
+        const fragment = await this.loadProducts({ productBlock });
         productsContainer.replaceChildren(fragment);
 
-
-        // addToCartBtn.addEventListener('submit', (event) => {
-        //     event.preventDefault();
-        //     this.addTask({
-        //         id: Math.floor(Math.random() * 100),
-        //         // text: form.elements['value'].value,
-        //         isDone: false
-        //     })
-        // })
-
-    }
-
+        // Create initial page buttons
+        this.createPageButtons();
+    };
 
     this.addTask = function (task) {
         const tasks = JSON.parse(localStorage.getItem(LocalStorageKey));
@@ -44,20 +35,26 @@ export function SetOfProducts(data) {
     }
 
     this.resetProducts = async function () {
-        this.filterSize='';
-        this.filterColor=''; 
-        this.filterCategory=''; 
-        this.filterSales=false;
-        this.currentPage=0;
-        const fragment = await this.loadProducts({productBlock});
+        this.filterSize = '';
+        this.filterColor = ''; 
+        this.filterCategory = ''; 
+        this.filterSales = false;
+        this.currentPage = 0;
+
+        const fragment = await this.loadProducts({ productBlock });
         productsContainer.replaceChildren(fragment);
+
+        // Regenerate pagination buttons and update pagination state
+        this.createPageButtons(); // Ensure buttons are recreated
+        this.updatePaginationChange(this.currentPage); // Update pagination state
     }
 
-    this.rerenderProducts = async function ({productBlock = 'all', filterSize = '', filterColor = '', filterCategory = '', filterSales = false, sortOrder = '', searchTerm = '', currentPage = 0} = {}) {
-        const renderFragment = await this.loadProducts({productBlock, filterSize, filterColor, filterCategory, filterSales, sortOrder, searchTerm, currentPage});
+    this.rerenderProducts = async function ({ productBlock = 'all', filterSize = '', filterColor = '', filterCategory = '', filterSales = false, sortOrder = '', searchTerm = '', currentPage = 0 } = {}) {
+        const renderFragment = await this.loadProducts({ productBlock, filterSize, filterColor, filterCategory, filterSales, sortOrder, searchTerm, currentPage });
         productsContainer.replaceChildren(renderFragment);
 
         // Update pagination buttons and active page
+        this.createPageButtons();
         this.updatePaginationChange(this.currentPage);
     };
 
@@ -136,10 +133,28 @@ export function SetOfProducts(data) {
             }   
         }
 
+        if (searchTerm) {
+            filteredProducts = filteredProducts.filter(product =>
+                product.name.toLowerCase().includes(searchTerm.toLowerCase())
+            );
+        }
+
+        // If no products match the search term, show notification
+        if (filteredProducts.length === 0) {
+            this.showNotification('No products found for the entered search term.');
+            return document.createDocumentFragment(); // Return an empty fragment
+        }
+
         // Pagination and product count
         this.productCounter = filteredProducts.length;
+        this.pageCount = Math.ceil(this.productCounter / 12);
+
+        // Reset currentPage if it exceeds the new pageCoun
+        if (this.currentPage >= this.pageCount) {
+            this.currentPage = 0;
+        }
+
         if (productCountHolder) {
-            this.pageCount = Math.ceil(this.productCounter / 12);
             const start = this.currentPage * 12;
             const end = Math.min(this.productCounter, (this.currentPage + 1) * 12);
             productCountHolder.textContent = `Showing ${start}-${end} Of ${this.productCounter} Results`;
@@ -207,6 +222,46 @@ export function SetOfProducts(data) {
                 button.classList.remove('active');
             }
         });
+    };
+
+    this.createPageButtons = function () {
+        const paginationContainer = document.querySelector('.page-buttons');
+        paginationContainer.innerHTML = ''; // Clear existing buttons
+    
+        for (let i = 0; i < this.pageCount; i++) {
+            const button = document.createElement('button');
+            button.classList.add('page-button');
+            if (i === this.currentPage) {
+                button.classList.add('active'); // Add 'active' class to the current page
+            }
+            button.textContent = i + 1; // Page numbers start from 1
+            button.addEventListener('click', () => {
+                this.currentPage = i; // Update the current page
+                this.rerenderProducts({ currentPage: i }); // Rerender products for the selected page
+            });
+            paginationContainer.appendChild(button);
+        }
+    };
+
+    this.showNotification = function (message) {
+        const notification = document.createElement('div');
+        notification.classList.add('notification-modal');
+        notification.innerHTML = `
+            <span class="notification-message">${message}</span>
+            <button class="notification-close">&times;</button>
+        `;
+
+        document.body.appendChild(notification);
+
+        // Close the notification when the close button is clicked
+        notification.querySelector('.notification-close').addEventListener('click', () => {
+            notification.remove();
+        });
+
+        // Auto-remove the notification after 5 seconds
+        setTimeout(() => {
+            notification.remove();
+        }, 5000);
     };
 }
 
