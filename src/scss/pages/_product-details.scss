@@ -1,6 +1,7 @@
 .product-details-card {
     display: flex;
     gap: 40px;
+    margin-bottom: 80px;
 
     .product-gallery {
         flex: 1 1 45%;
@@ -119,5 +120,72 @@
         .add-to-cart {
             flex: 1; 
         }
+    }
+    .payment-options {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+
+        .payment-info {
+            @include mont-bold($grey-color, 23px);
+            
+        }
+    }
+}
+
+.product-tabs {
+    margin-bottom: 100px;
+    .tab-list {
+        @include flex-center;
+        gap: 120px;
+        margin-bottom: 30px;
+
+        .tab {
+            @include mont-bold($size: 17px);
+            cursor: pointer;
+
+            &.active {
+                border-bottom: 2px solid $main-color;
+            }
+        }
+    }
+
+    .tab-content {
+        .tab-panel {
+            display:none;
+
+            .tab-text {
+                @include info;
+
+                & + .tab-text {
+                    margin-top: 30px;
+                }
+            }
+
+            &.active {
+                display: block;
+            }
+        }
+    }
+
+
+.may-like-products {
+    margin-bottom: 100px;
+    .may-like-title {
+        @include mont-bold($size: 30px);
+        border-bottom: 2px solid $main-color;
+        margin-bottom: 60px;
+    }
+}
+}
+
+.may-like-products {
+    margin-bottom: 100px;
+    text-align: center;
+    .may-like-title {
+        @include mont-bold($size: 30px);
+        display: inline-block;
+        border-bottom: 2px solid $main-color;
+        margin-bottom: 60px;
     }
 }

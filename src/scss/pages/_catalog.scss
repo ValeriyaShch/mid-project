@@ -289,7 +289,8 @@
 }
 
 .btn-clear,
-.btn-hide {
+.btn-hide,
+.btn-show {
   @include button-padding(20px, 50px);
 }
   
@@ -322,14 +323,14 @@
 }
 
 .top-set-card {
-  @include flex-center;
+  display: flex;
   gap: 20px;
   margin-bottom: 25px;
 }
 
 .top-set-image {
   height: 87px;
-  width: auto;
+  width: 87px;
   overflow: hidden;
 
   .top-set-photo {

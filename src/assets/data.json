@@ -272,6 +272,45 @@
     "rating": 4.0,
     "popularity": 85,
     "blocks": ["Selected Products"]
+  },
+  {
+    "id": "SET022",
+    "name": "Premium Explorer Luggage Set",
+    "price": 900,
+    "imageUrl": "/src/assets/images/set-of-suitcases-green-small.png",
+    "category": "luggage sets",
+    "color": "green",
+    "size": "S, M, XL",
+    "salesStatus": true,
+    "rating": 4.5,
+    "popularity": 85,
+    "blocks": []
+  },
+  {
+    "id": "SET023",
+    "name": "Deluxe Family Travel Set",
+    "price": 850,
+    "imageUrl": "/src/assets/images/set-of-suitcases-red-small.png",
+    "category": "luggage sets",
+    "color": "red",
+    "size": "S, M, XL",
+    "salesStatus": false,
+    "rating": 5.0,
+    "popularity": 75,
+    "blocks": []
+  },
+  {
+    "id": "SET024",
+    "name": "Premium Explorer Luggage Set",
+    "price": 1000,
+    "imageUrl": "/src/assets/images/set-of-suitcases-yellow-small.png",
+    "category": "luggage sets",
+    "color": "yellow",
+    "size": "S, M, XL",
+    "salesStatus": true,
+    "rating": 5.0,
+    "popularity": 95,
+    "blocks": []
   }
 ]
 }

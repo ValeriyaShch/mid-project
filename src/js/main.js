@@ -175,17 +175,34 @@ export function SetOfProducts(data) {
         const template = await this.loadCardTemplate();
         
         if (filteredProducts) {
-            filteredProducts.forEach(({imageUrl, name, price, salesStatus}) => {
-                const templateClone = template.content.cloneNode(true)
+            filteredProducts.forEach(({ id, imageUrl, name, price, salesStatus, rating }) => {
+                const templateClone = template.content.cloneNode(true);
+                const productCard = templateClone.querySelector('.product-card');
+                productCard.setAttribute('data-id', id); // Set product ID
+    
                 templateClone.querySelector('.product-image').src = imageUrl;
-                if (salesStatus!==true) {
+                if (salesStatus !== true) {
                     templateClone.querySelector('.badge').classList.add('hidden');
                 }
                 templateClone.querySelector('.product-name').textContent = name;
                 templateClone.querySelector('.product-price').textContent = `$${price}`;
-                
+    
+                // Attach click event handler to the product card
+                productCard.addEventListener('click', (event) => {
+                    // Prevent redirection if the "Add to Cart" button is clicked
+                    if (event.target.classList.contains('product-button')) {
+                        addToCart({ id, name, price, imageUrl });
+                        return;
+                    }
+    
+                    // Redirect to product details page
+                    const productData = { id, name, price, imageUrl, salesStatus, rating };
+                    localStorage.setItem('selectedProduct', JSON.stringify(productData));
+                    window.location.href = '/src/pages/product-details-template.html';
+                });
+    
                 fragment.appendChild(templateClone);
-            })
+            });
         }
 
         return fragment;
@@ -286,6 +303,29 @@ export function SetOfProducts(data) {
             this.resetProducts();
         });
     };
+    
+    // Function to add a product to the cart
+    function addToCart(product) {
+        const cart = JSON.parse(localStorage.getItem('cart')) || { cartItems: [] };
+
+        // Check if the product already exists in the cart
+        const existingItem = cart.cartItems.find((item) => item.id === product.id);
+        if (existingItem) {
+            // Update quantity and total price
+            existingItem.quantity += 1;
+            existingItem.totalPrice = existingItem.quantity * existingItem.price;
+        } else {
+            // Add new item to the cart
+            cart.cartItems.push({
+                ...product,
+                quantity: 1,
+                totalPrice: product.price,
+            });
+        }
+
+        // Save the updated cart to localStorage
+        localStorage.setItem('cart', JSON.stringify(cart));
+    }
 }
 
 

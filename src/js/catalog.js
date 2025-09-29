@@ -93,6 +93,8 @@ document.addEventListener('DOMContentLoaded', () => {
           catalogProducts.rerenderProducts({currentPage: index});
       });
   });
+
+  bestSets();
 });
 
 document.querySelector('.btn-prev').addEventListener('click', () => {
@@ -108,3 +110,107 @@ document.querySelector('.btn-next').addEventListener('click', () => {
         catalogProducts.rerenderProducts({currentPage: catalogProducts.currentPage});
     }
 });
+
+document.querySelector('.btn-hide').addEventListener('click', () => {
+    const filtersForm = document.querySelector('.filters');
+    const showFiltersButton = document.createElement('button');
+
+    // Приховати форму фільтрації
+    filtersForm.style.display = 'none';
+
+    // Створити кнопку "Show filters"
+    showFiltersButton.textContent = 'Show filters';
+    showFiltersButton.classList.add('main-button', 'btn-show');
+    filtersForm.parentNode.insertBefore(showFiltersButton, filtersForm);
+
+    // Додати обробник для кнопки "Show filters"
+    showFiltersButton.addEventListener('click', () => {
+        // Показати форму фільтрації
+        filtersForm.style.display = 'block';
+
+        // Видалити кнопку "Show filters"
+        showFiltersButton.remove();
+    });
+});
+
+export function bestSets() {
+  // Fetch products from data.json
+  fetch('/src/assets/data.json')
+      .then(response => response.json())
+      .then(products => {
+          // Filter products with the "luggage sets" category        
+          debugger
+        
+          const luggageSets = products.data.filter(product => product.category === 'luggage sets');
+
+          // Randomly pick up to 5 products
+          const selectedSets = luggageSets.sort(() => 0.5 - Math.random()).slice(0, 5);
+
+          // Generate and insert markup for each product
+          const topSetsSection = document.querySelector('.top-sets');
+          selectedSets.forEach(product => {
+              const productFragment = createProductFragment(product);
+              topSetsSection.appendChild(productFragment);
+          });
+      })
+      .catch(error => console.error('Error fetching products:', error));
+
+  // Inner function to create a product fragment
+  function createProductFragment(product) {
+      const fragment = document.createDocumentFragment();
+
+      // Create the top-set-card container
+      const card = document.createElement('article');
+      card.classList.add('top-set-card');
+
+      // Image block
+      const imageWrapper = document.createElement('div');
+      imageWrapper.classList.add('top-set-image');
+      const image = document.createElement('img');
+      image.src = `${product.imageUrl}`;
+      image.alt = product.name;
+      image.width = 87;
+      image.height = 87;
+      image.classList.add('top-set-photo');
+      imageWrapper.appendChild(image);
+
+      // Info block
+      const infoWrapper = document.createElement('div');
+      infoWrapper.classList.add('top-set-info');
+
+      // Product description
+      const description = document.createElement('p');
+      description.classList.add('top-set-desc');
+      description.textContent = product.name;
+      infoWrapper.appendChild(description);
+
+      // Rating block
+      const ratingWrapper = document.createElement('div');
+      ratingWrapper.classList.add('top-set-rating');
+      const rating = Math.floor(product.rating); // Use the integer part of the rating
+      for (let i = 0; i < rating; i++) {
+          const star = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+          star.classList.add('star-icon');
+          const use = document.createElementNS('http://www.w3.org/2000/svg', 'use');
+          use.setAttribute('href', '#star');
+          star.appendChild(use);
+          ratingWrapper.appendChild(star);
+      }
+      infoWrapper.appendChild(ratingWrapper);
+
+      // Product price
+      const price = document.createElement('p');
+      price.classList.add('top-set-price');
+      price.textContent = `$${product.price}`;
+      infoWrapper.appendChild(price);
+
+      // Append image and info blocks to the card
+      card.appendChild(imageWrapper);
+      card.appendChild(infoWrapper);
+
+      // Append the card to the fragment
+      fragment.appendChild(card);
+
+      return fragment;
+  }
+}

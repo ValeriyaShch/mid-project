@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+    <header>
+        <div class="header-container container">
+            <div class="header-cap">
+                <nav>
+                    <ul class="header-social">
+                        <li>
+                            <a href="#">
+                                <svg class="header-social-item">
+                                    <use href="#facebook"></use>
+                                </svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <svg class="header-social-twitter">
+                                    <use href="#twitter"></use>
+                                </svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <svg class="header-social-item">
+                                    <use href="#instagram"></use>
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <a href="/src/index.html" class="header-logo">
+                    <span class="header-logo-item">
+                        <svg class="header-icon">
+                            <use href="#icon"></use>
+                        </svg>
+                    </span>
+                    <span class="header-title">BEST SHOP</span>
+                </a>
+                <nav class="user-nav">
+                    <ul class="user-nav-icons">
+                        <li>
+                            <a href="#">
+                                <svg class="user-nav-item">
+                                    <use href="#user"></use>
+                                </svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <svg class="user-nav-item">
+                                    <use href="#shopping-cart"></use>
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <nav class="main-nav">
+                <ul class="main-nav_list">
+                    <li><a href="/src/index.html" class="main-nav_item">Home</a></li>
+                    <li><a href="/src/pages/catalog.html" class="main-nav_item main-nav_catalog-item">Catalog</a></li>
+                    <li><a href="/src/pages/product-details-template.html" class="main-nav_item">About Us</a></li>
+                    <li><a href="#" class="main-nav_item">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="shopping-cart container">
+        <h1 class="cart-title">Shopping Cart</h1>
+      
+        <table class="cart-table">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Example Item -->
+                <tr>
+                    <td class="product-info">
+                        <img src="/src/assets/images/suitcase-brown.png" alt="Nomad Haven suitcase">
+                        <span class="product-name">Nomad Haven</span>
+                    </td>
+                    <td>$250</td>
+                    <td>
+                        <div class="quantity-controls">
+                            <button class="qty-btn">−</button>
+                            <input type="number" value="1" min="1">
+                            <button class="qty-btn">+</button>
+                        </div>
+                    </td>
+                    <td>$250</td>
+                    <td>
+                        <button class="delete-btn" aria-label="Remove Nomad Haven">🗑</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+      
+        <!-- Cart actions -->
+        <div class="cart-actions">
+            <button class="secondary-btn">Continue Shopping</button>
+            <button class="danger-btn">Clear Shopping Cart</button>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-container container">
+            <p class="footer-text">© 2025 Best Shop. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <svg xmlns="http://www.w3.org/2000/svg" class="hidden">
+        <symbol id="facebook" fill="none">
+            <path fill="#000" d="..."></path>
+        </symbol>
+        <symbol id="twitter" fill="none">
+            <path fill="#000" d="..."></path>
+        </symbol>
+        <symbol id="instagram" fill="none">
+            <path fill="#000" d="..."></path>
+        </symbol>
+        <symbol id="shopping-cart" fill="none">
+            <path fill="#000" d="..."></path>
+        </symbol>
+    </svg>
+
+    <script src="/src/js/cart.js" type="module"></script>
+</body>
+</html>
