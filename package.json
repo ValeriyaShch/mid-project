@@ -17,5 +17,8 @@
   },
   "devDependencies": {
     "sass": "^1.92.1"
-  }
+  },
+  "files.associations": {
+  "*.svg": "html"
+}
 }

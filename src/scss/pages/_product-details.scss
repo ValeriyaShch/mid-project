@@ -77,4 +77,47 @@
                     }
                   } 
                  }
+    .product-details-quantity {
+        display: flex;
+        gap: 13px;
+        margin-top: 50px;
+        margin-bottom: 60px;
+    
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            border: 2px solid $main-color;
+            
+            .qty-btn {
+                @include mont-bold($grey-color, 25px);
+                border: none;
+                padding: 12px 20px;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: darken($light-grey, 10%);
+                }
+            }
+
+            input[type="number"] {
+                width: 50px;
+                text-align: center;
+                border: none;
+                @include mont-bold($grey-color, 25px);
+
+            
+
+               &::-webkit-outer-spin-button,
+               &::-webkit-inner-spin-button {
+               -webkit-appearance: none;
+                margin: 0;
+               }
+            }
+        }
+
+        .add-to-cart {
+            flex: 1; 
+        }
+    }
 }

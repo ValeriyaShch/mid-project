@@ -142,6 +142,13 @@ export function SetOfProducts(data) {
         // If no products match the search term, show notification
         if (filteredProducts.length === 0) {
             this.showNotification('No products found for the entered search term.');
+
+            // Hide pagination buttons explicitly
+            const btnPrev = document.querySelector('.btn-prev');
+            const btnNext = document.querySelector('.btn-next');
+            if (btnPrev) btnPrev.style.visibility = 'hidden';
+            if (btnNext) btnNext.style.visibility = 'hidden';
+
             return document.createDocumentFragment(); // Return an empty fragment
         }
 
@@ -253,15 +260,31 @@ export function SetOfProducts(data) {
 
         document.body.appendChild(notification);
 
+        // Hide pagination buttons
+        const btnPrev = document.querySelector('.btn-prev');
+        const btnNext = document.querySelector('.btn-next');
+        const pageButtonsContainer = document.querySelector('.page-buttons'); // Select the page buttons container
+
+        if (btnPrev) btnPrev.style.visibility = 'hidden'; // Hide previous button
+        if (btnNext) btnNext.style.visibility = 'hidden'; // Hide next button
+        if (pageButtonsContainer) pageButtonsContainer.style.visibility = 'hidden'; // Hide page buttons container
+
         // Close the notification when the close button is clicked
         notification.querySelector('.notification-close').addEventListener('click', () => {
             notification.remove();
-        });
 
-        // Auto-remove the notification after 5 seconds
-        setTimeout(() => {
-            notification.remove();
-        }, 5000);
+            // Show pagination buttons again
+            if (btnPrev) btnPrev.style.visibility = 'visible';
+            if (btnNext) btnNext.style.visibility = 'visible';
+            if (pageButtonsContainer) pageButtonsContainer.style.visibility = 'visible'; // Show page buttons container
+
+            // Reset search input
+            const searchInput = document.querySelector('.search-form input[type="search"]');
+            if (searchInput) searchInput.value = '';
+
+            // Reset products to the initial state
+            this.resetProducts();
+        });
     };
 }
 

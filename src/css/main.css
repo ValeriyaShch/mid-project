@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @font-face {
   font-family: "Montserrat";
   src: url("../fonts/Montserrat-Bold.woff2") format("woff2");
@@ -777,13 +778,23 @@ html, body {
 
 .pagination {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  position: relative; /* Для абсолютного позиціонування кнопок */
+  margin-top: 20px; /* Відступ зверху */
 }
-
-.page-buttons {
+.pagination .btn-prev {
+  position: absolute;
+  left: 0; /* Розташування кнопки зліва */
+}
+.pagination .btn-next {
+  position: absolute;
+  right: 0; /* Розташування кнопки справа */
+}
+.pagination .page-buttons {
   display: flex;
-  gap: 5px;
+  gap: 5px; /* Відстань між кнопками сторінок */
+  justify-content: center; /* Центрування кнопок сторінок */
+  flex: 1; /* Займає весь доступний простір між кнопками prev і next */
 }
 
 .page-button {
@@ -797,8 +808,13 @@ html, body {
   background: #B92770;
   color: #FFFFFF;
 }
+.page-button:hover {
+  background: rgb(222.9642857143, 103.0357142857, 163);
+  color: #FFFFFF;
+}
 
-.btn-prev, .btn-next {
+.btn-prev,
+.btn-next {
   padding: 13px 20px;
   cursor: pointer;
   border-radius: 8px;
@@ -809,6 +825,11 @@ html, body {
   font-size: 11px;
   color: black;
   line-height: 1.5;
+}
+.btn-prev:hover,
+.btn-next:hover {
+  background: rgb(222.9642857143, 103.0357142857, 163);
+  color: #FFFFFF;
 }
 
 .btn-next::after {
@@ -823,10 +844,11 @@ html, body {
 
 .notification-modal {
   position: fixed;
-  top: 20px;
-  right: 20px;
-  background-color: purple;
-  color: white;
+  top: 10px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  background-color: #B92770;
+  color: #FFFFFF;
   padding: 15px 20px;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -837,12 +859,16 @@ html, body {
 }
 .notification-modal .notification-message {
   flex: 1;
-  font-size: 14px;
+  font-family: "Montserrat";
+  font-weight: 700;
+  font-size: 18px;
+  color: #FFFFFF;
+  line-height: 1.5;
 }
 .notification-modal .notification-close {
   background: none;
   border: none;
-  color: white;
+  color: #FFFFFF;
   font-size: 18px;
   cursor: pointer;
 }
@@ -938,6 +964,47 @@ html, body {
 .product-details-info .filter-group select:focus {
   outline: none;
   border-color: #B92770;
+}
+.product-details-info .product-details-quantity {
+  display: flex;
+  gap: 13px;
+  margin-top: 50px;
+  margin-bottom: 60px;
+}
+.product-details-info .product-details-quantity .quantity-controls {
+  display: flex;
+  align-items: center;
+  border: 2px solid #B92770;
+}
+.product-details-info .product-details-quantity .quantity-controls .qty-btn {
+  font-family: "Montserrat";
+  font-weight: 700;
+  font-size: 25px;
+  color: #504E4A;
+  line-height: 1.5;
+  border: none;
+  padding: 12px 20px;
+  cursor: pointer;
+}
+.product-details-info .product-details-quantity .quantity-controls .qty-btn:hover {
+  background-color: rgb(204.95, 204.95, 214.05);
+}
+.product-details-info .product-details-quantity .quantity-controls input[type=number] {
+  width: 50px;
+  text-align: center;
+  border: none;
+  font-family: "Montserrat";
+  font-weight: 700;
+  font-size: 25px;
+  color: #504E4A;
+  line-height: 1.5;
+}
+.product-details-info .product-details-quantity .quantity-controls input[type=number]::-webkit-outer-spin-button, .product-details-info .product-details-quantity .quantity-controls input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.product-details-info .product-details-quantity .add-to-cart {
+  flex: 1;
 }
 
 .promo {

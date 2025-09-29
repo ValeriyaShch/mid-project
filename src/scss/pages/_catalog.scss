@@ -375,54 +375,80 @@
     @include info(black, 15px)
   }
 
-  .pagination {
-    @include flex-between;
-  }
-
-  .page-buttons {
+.pagination {
     display: flex;
-    gap: 5px;
-  }
+    align-items: center;
+    position: relative; /* Для абсолютного позиціонування кнопок */
+    margin-top: 20px; /* Відступ зверху */
+
+    .btn-prev {
+        position: absolute;
+        left: 0; /* Розташування кнопки зліва */
+    }
+
+    .btn-next {
+        position: absolute;
+        right: 0; /* Розташування кнопки справа */
+    }
+
+    .page-buttons {
+        display: flex;
+        gap: 5px; /* Відстань між кнопками сторінок */
+        justify-content: center; /* Центрування кнопок сторінок */
+        flex: 1; /* Займає весь доступний простір між кнопками prev і next */
+    }
+}
 
 .page-button {
-     @include button-padding(10px, 17px);
-     cursor: pointer;
-     border-radius: 8px;
-     font-size: 15px;
-     background: $white-color;
-  
-     &.active {
-      background: $main-color;
-      color: $white-color;
+    @include button-padding(10px, 17px);
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 15px;
+    background: $white-color;
 
-     }
-  }
+    &.active {
+        background: $main-color;
+        color: $white-color;
+    }
 
-  .btn-prev, .btn-next {
+    &:hover {
+        background: lighten($main-color, 20%);
+        color: $white-color;
+    }
+}
+
+.btn-prev,
+.btn-next {
     @include button-padding(13px, 20px);
     cursor: pointer;
     border-radius: 8px;
     border: 2px solid $main-color;
     background: $white-color;
     @include mont-bold($size: 11px);
-  }
 
-  .btn-next::after {
+    &:hover {
+        background: lighten($main-color, 20%);
+        color: $white-color;
+    }
+}
+
+.btn-next::after {
     content: ">";
     margin-left: 6px;
-  }
+}
 
-  .btn-prev::before {
+.btn-prev::before {
     content: "<";
     margin-right: 6px;
-  }
+}
 
 .notification-modal {
     position: fixed;
-    top: 20px;
-    right: 20px;
-    background-color: purple;
-    color: white;
+    top: 10px;
+    left: 50%; 
+    transform: translate(-50%, 0);
+    background-color: $main-color;
+    color: $white-color;
     padding: 15px 20px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -433,13 +459,13 @@
 
     .notification-message {
         flex: 1;
-        font-size: 14px;
+        @include mont-bold($white-color, 18px);
     }
 
     .notification-close {
         background: none;
         border: none;
-        color: white;
+        color: $white-color;
         font-size: 18px;
         cursor: pointer;
     }
