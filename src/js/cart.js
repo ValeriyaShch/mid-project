@@ -1,38 +1,37 @@
 document.addEventListener('DOMContentLoaded', () => {
     const cart = JSON.parse(localStorage.getItem('cart')) || { cartItems: [] };
-    const cartTableBody = document.querySelector('.cart-table tbody');
+    const cartItemsContainer = document.querySelector('.cart-items');
 
-    // Clear existing rows
-    cartTableBody.innerHTML = '';
+    // Clear existing items
+    cartItemsContainer.innerHTML = '';
 
-    // Populate the table with cart items
+    // Populate the cart with items
     cart.cartItems.forEach((item) => {
-        const row = document.createElement('tr');
+        const cartRow = document.createElement('div');
+        cartRow.classList.add('cart-item', 'row');
 
-        row.innerHTML = `
-            <td class="product-info">
-                <img src="${item.imageUrl}" alt="${item.name}">
+        cartRow.innerHTML = `
+            <div class="cart-cell product-info">
+                <img src="${item.imageUrl}" alt="${item.name}" class="product-image">
                 <span class="product-name">${item.name}</span>
-            </td>
-            <td>$${item.price}</td>
-            <td>
-                <div class="quantity-controls">
-                    <button class="qty-btn decrease" data-id="${item.id}">−</button>
-                    <input type="number" value="${item.quantity}" min="1" data-id="${item.id}">
-                    <button class="qty-btn increase" data-id="${item.id}">+</button>
-                </div>
-            </td>
-            <td>$${item.totalPrice}</td>
-            <td>
+            </div>
+            <div class="cart-cell product-price">$${item.price}</div>
+            <div class="cart-cell quantity-controls">
+                <button class="qty-btn decrease" data-id="${item.id}">−</button>
+                <input type="number" value="${item.quantity}" min="1" class="quantity-input" data-id="${item.id}">
+                <button class="qty-btn increase" data-id="${item.id}">+</button>
+            </div>
+            <div class="cart-cell product-total">$${item.totalPrice}</div>
+            <div class="cart-cell">
                 <button class="delete-btn" data-id="${item.id}" aria-label="Remove ${item.name}">🗑</button>
-            </td>
+            </div>
         `;
 
-        cartTableBody.appendChild(row);
+        cartItemsContainer.appendChild(cartRow);
     });
 
     // Add event listeners for quantity controls and delete buttons
-    cartTableBody.addEventListener('click', (event) => {
+    cartItemsContainer.addEventListener('click', (event) => {
         const target = event.target;
         const productId = target.dataset.id;
 
@@ -45,9 +44,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    cartTableBody.addEventListener('input', (event) => {
+    cartItemsContainer.addEventListener('input', (event) => {
         const target = event.target;
-        if (target.type === 'number') {
+        if (target.classList.contains('quantity-input')) {
             const productId = target.dataset.id;
             const newQuantity = parseInt(target.value, 10);
             updateQuantity(productId, newQuantity - getCartItem(productId).quantity);

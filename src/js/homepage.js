@@ -1,6 +1,5 @@
 import { SetOfProducts } from './main.js';
 
-// Todo: Insert classes for  buttons
 const selectedProducts = new SetOfProducts({
     productsContainer:  document.getElementById('product-cards'),
     productBlock: "Selected Products",
