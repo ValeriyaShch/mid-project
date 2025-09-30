@@ -1,5 +1,6 @@
 import { SetOfProducts } from './main.js';
 
+// todo: Refactor to avoid addtocartbtn being null
 const selectedProducts = new SetOfProducts({
     productsContainer:  document.getElementById('product-cards'),
     productBlock: "Selected Products",

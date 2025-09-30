@@ -74,27 +74,48 @@
     </header>
 
     <main class="shopping-cart">
-        <div class="cart-title-container" style="background-image: url('../assets/images/image1.jpg'); display: flex; justify-content: center; align-items: center; height: 200px;">
-            <h1 class="cart-title">My Cart</h1>
+        <div class="cart-title-container">
+            <h1 class="cart-title container">My Cart</h1>
         </div>
-
-        <section class="cart-items">
-            <ul class="cart-header">
-                <li class="cart-header-item">IMAGE</li>
-                <li class="cart-header-item">PRODUCT NAME</li>
-                <li class="cart-header-item">PRICE</li>
-                <li class="cart-header-item">QUANTITY</li>
-                <li class="cart-header-item">TOTAL</li>
-                <li class="cart-header-item">DELETE</li>
-            </ul>
-
-            <!-- Dynamic cart items will be added here -->
-        </section>
-
-        <div class="cart-actions">
-            <button class="secondary-btn">Continue Shopping</button>
-            <button class="danger-btn">Clear Shopping Cart</button>
-        </div>
+        <div class="cart-content container">
+            <section class="cart-table">
+                <ul class="cart-header">
+                    <li class="cart-header-item">IMAGE</li>
+                    <li class="cart-header-item">PRODUCT NAME</li>
+                    <li class="cart-header-item">PRICE</li>
+                    <li class="cart-header-item">QUANTITY</li>
+                    <li class="cart-header-item">TOTAL</li>
+                    <li class="cart-header-item">DELETE</li>
+                </ul>
+                 <div class="cart-items"></div>
+                  
+                 <div class="cart-actions">
+                    <button class="continue-shopping-btn main-button" onclick="location.href='/src/pages/catalog.html'">CONTINUE SHOPPING</button>
+                    <button class="clear-shopping-btn main-button">CLEAR SHOPPING CART</button>
+                </div>
+            </section>
+            <section class="cart-summary">
+                <div class="cart-summary-row">
+                    <span class="cart-summary-text">Sub Total</span>
+                    <span class="cart-summary-amount" id="subtotal">$2140</span>
+                </div>                
+                <div class="cart-summary-row" id="summary-discount" style="display: none;">
+                    <span class="cart-summary-text">Discount</span>
+                    <span class="cart-summary-amount" id="discount">$2</span>
+                </div>
+                <div class="cart-summary-row">
+                    <span class="cart-summary-text">Shipping</span>
+                    <span class="cart-summary-amount" id="shipping">$2140</span>
+                </div>
+                <div class="cart-summary-row">
+                    <span class="cart-total-text">Total</span>
+                    <span class="cart-total-amount" id="total">$2170</span>
+                </div>
+                <button class="main-button checkout-btn">CHECKOUT</button>
+            </section>
+        </div>  
+        
+       
     </main>
 
     <footer>
@@ -104,20 +125,11 @@
     </footer>
 
     <svg xmlns="http://www.w3.org/2000/svg" class="hidden">
-        <symbol id="facebook" fill="none">
-            <path fill="#000" d="..."></path>
+        <symbol id="bin" fill="none">
+            <path stroke="#B92770" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h18M17 5v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5m3 0V3a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M8 10v6M12 10v6"/>
         </symbol>
-        <symbol id="twitter" fill="none">
-            <path fill="#000" d="..."></path>
-        </symbol>
-        <symbol id="instagram" fill="none">
-            <path fill="#000" d="..."></path>
-        </symbol>
-        <symbol id="shopping-cart" fill="none">
-            <path fill="#000" d="..."></path>
-        </symbol>
+        
     </svg>
-
     <script src="/src/js/cart.js" type="module"></script>
 </body>
 </html>

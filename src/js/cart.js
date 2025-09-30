@@ -12,9 +12,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         cartRow.innerHTML = `
             <div class="cart-cell product-info">
-                <img src="${item.imageUrl}" alt="${item.name}" class="product-image">
-                <span class="product-name">${item.name}</span>
+                <img src="${item.imageUrl}" alt="${item.name}" class="product-image" width="120" height="120">
             </div>
+            <div class="cart-cell product-name">${item.name}</div>
             <div class="cart-cell product-price">$${item.price}</div>
             <div class="cart-cell quantity-controls">
                 <button class="qty-btn decrease" data-id="${item.id}">−</button>
@@ -23,12 +23,39 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
             <div class="cart-cell product-total">$${item.totalPrice}</div>
             <div class="cart-cell">
-                <button class="delete-btn" data-id="${item.id}" aria-label="Remove ${item.name}">🗑</button>
+                <button class="delete-btn" data-id="${item.id}" aria-label="Remove ${item.name}">
+                        <svg class="search-icon" width="18" height="20">
+                            <use href="#bin"></use>
+                        </svg>
+                </button>
             </div>
         `;
 
         cartItemsContainer.appendChild(cartRow);
     });
+
+    // --- Cart Summary Calculation ---
+    function updateCartSummary() {
+        const subtotal = cart.cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+        const itemCount = cart.cartItems.reduce((sum, item) => sum + item.quantity, 0);
+        const shipping = itemCount * 10;
+        const discount = subtotal > 3000 ? subtotal * 0.1 : 0;
+        const total = subtotal + shipping - discount;
+
+        document.getElementById('subtotal').textContent = `$${subtotal.toFixed(2)}`;
+        document.getElementById('shipping').textContent = `$${shipping.toFixed(2)}`;
+        document.getElementById('total').textContent = `$${total.toFixed(2)}`;
+        document.getElementById('discount').textContent = `$${discount.toFixed(2)}`;
+
+        const discountRow = document.getElementById('summary-discount');
+        if (discount > 0) {
+            discountRow.style.display = '';
+        } else {
+            discountRow.style.display = 'none';
+        }
+    }
+
+    updateCartSummary();
 
     // Add event listeners for quantity controls and delete buttons
     cartItemsContainer.addEventListener('click', (event) => {
@@ -80,4 +107,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const cart = JSON.parse(localStorage.getItem('cart')) || { cartItems: [] };
         return cart.cartItems.find((item) => item.id === productId);
     }
+
+    const clearCartBtn = document.querySelector('.clear-shopping-btn');
+    clearCartBtn.addEventListener('click', () => {
+        localStorage.removeItem('cart');
+        document.querySelector('.cart-items').innerHTML = '';
+        location.reload();
+    });
 });
