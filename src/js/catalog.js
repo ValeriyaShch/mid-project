@@ -21,6 +21,7 @@ const catalogProducts = new SetOfProducts({
     productBlock: "all",
     addToCartBtn: document.querySelector('.js--form'),
     productCountHolder: document.getElementById('productCount'),
+    paginationRequired : true
 });
 
 catalogProducts.init();
@@ -138,8 +139,6 @@ export function bestSets() {
   fetch('/src/assets/data.json')
       .then(response => response.json())
       .then(products => {
-          // Filter products with the "luggage sets" category        
-          debugger
         
           const luggageSets = products.data.filter(product => product.category === 'luggage sets');
 

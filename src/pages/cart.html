@@ -77,6 +77,7 @@
         <div class="cart-title-container">
             <h1 class="cart-title container">My Cart</h1>
         </div>
+        
         <div class="cart-content container">
             <section class="cart-table">
                 <ul class="cart-header">
@@ -88,7 +89,9 @@
                     <li class="cart-header-item">DELETE</li>
                 </ul>
                  <div class="cart-items"></div>
-                  
+                 <div class="empty-cart-message" style="display: none;">
+                    <p>Your cart is empty. Use the catalog to add new items.</p>
+                </div> 
                  <div class="cart-actions">
                     <button class="continue-shopping-btn main-button" onclick="location.href='/src/pages/catalog.html'">CONTINUE SHOPPING</button>
                     <button class="clear-shopping-btn main-button">CLEAR SHOPPING CART</button>

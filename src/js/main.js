@@ -1,5 +1,5 @@
 export function SetOfProducts(data) {
-    const {productsContainer, productBlock, addToCartBtn, productCountHolder} = data;
+    const {productsContainer, productBlock, addToCartBtn, productCountHolder, paginationRequired = false} = data;
 
     // this.productBlock=productBlock;
     this.filterSize='';
@@ -20,7 +20,7 @@ export function SetOfProducts(data) {
         productsContainer.replaceChildren(fragment);
 
         // Create initial page buttons
-        this.createPageButtons();
+        if (paginationRequired) this.createPageButtons();
     };
 
     this.addTask = function (task) {

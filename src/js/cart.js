@@ -1,12 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
     const cartItemsContainer = document.querySelector('.cart-items');
-
+    const clearCartBtn = document.querySelector('.clear-shopping-btn');
+    const checkoutBtn = document.querySelector('.checkout-btn');
 
     function renderCart() {
         const cart = JSON.parse(localStorage.getItem('cart')) || { cartItems: [] };
         cartItemsContainer.innerHTML = '';
 
-        // Populate the cart with items
         cart.cartItems.forEach((item) => {
             const cartRow = document.createElement('div');
             cartRow.classList.add('cart-item', 'row');
@@ -25,24 +25,30 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="cart-cell product-total">$${item.totalPrice}</div>
                 <div class="cart-cell">
                     <button class="delete-btn" data-id="${item.id}" aria-label="Remove ${item.name}">
-                            <svg class="search-icon" width="18" height="20">
-                                <use href="#bin"></use>
-                            </svg>
+                        <svg class="search-icon" width="18" height="20">
+                            <use href="#bin"></use>
+                        </svg>
                     </button>
                 </div>
             `;
 
             cartItemsContainer.appendChild(cartRow);
         });
+
+        // Show/hide empty cart message
+        const emptyCartMsg = document.querySelector('.empty-cart-message');
+        if (cart.cartItems.length === 0) {
+            emptyCartMsg.style.display = '';
+            checkoutBtn.disabled = true;
+        } else {
+            emptyCartMsg.style.display = 'none';
+            checkoutBtn.disabled = false;
+        }
+
         updateCartSummary(cart);
     }
 
-    
-
-    // --- Cart Summary Calculation ---
-    function updateCartSummary() {
-        const cart = JSON.parse(localStorage.getItem('cart')) || { cartItems: [] };
-
+    function updateCartSummary(cart) {
         const subtotal = cart.cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
         const itemCount = cart.cartItems.reduce((sum, item) => sum + item.quantity, 0);
         const shipping = itemCount * 10;
@@ -62,7 +68,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Add event listeners for quantity controls and delete buttons
     cartItemsContainer.addEventListener('click', (event) => {
         const target = event.target;
         const deleteBtn = target.closest('.delete-btn');
@@ -113,10 +118,74 @@ document.addEventListener('DOMContentLoaded', () => {
         return cart.cartItems.find((item) => item.id === productId);
     }
 
-    const clearCartBtn = document.querySelector('.clear-shopping-btn');
     clearCartBtn.addEventListener('click', () => {
         localStorage.removeItem('cart');
         renderCart();
+    });
+
+    function showCheckoutPopup() {
+        // Create overlay
+        const overlay = document.createElement('div');
+        overlay.style.position = 'fixed';
+        overlay.style.top = 0;
+        overlay.style.left = 0;
+        overlay.style.width = '100vw';
+        overlay.style.height = '100vh';
+        overlay.style.background = 'rgba(0,0,0,0.4)';
+        overlay.style.display = 'flex';
+        overlay.style.alignItems = 'center';
+        overlay.style.justifyContent = 'center';
+        overlay.style.zIndex = 1000;
+
+        // Create popup
+        const popup = document.createElement('div');
+        popup.className = 'main-color';
+        popup.style.background = 'var(--main-color, #B92770)';
+        popup.style.color = '#fff';
+        popup.style.width = '250px';
+        popup.style.height = '100px';
+        popup.style.borderRadius = '16px';
+        popup.style.position = 'relative';
+        popup.style.display = 'flex';
+        popup.style.flexDirection = 'column';
+        popup.style.justifyContent = 'center';
+        popup.style.alignItems = 'center';
+        popup.style.boxShadow = '0 4px 32px rgba(0,0,0,0.15)';
+        popup.style.textAlign = 'center';
+
+        // Close button
+        const closeBtn = document.createElement('button');
+        closeBtn.innerHTML = '&times;';
+        closeBtn.style.position = 'absolute';
+        closeBtn.style.top = '10px';
+        closeBtn.style.right = '16px';
+        closeBtn.style.background = 'transparent';
+        closeBtn.style.border = 'none';
+        closeBtn.style.color = '#fff';
+        closeBtn.style.fontSize = '2rem';
+        closeBtn.style.cursor = 'pointer';
+
+        closeBtn.addEventListener('click', () => {
+            document.body.removeChild(overlay);
+        });
+
+        // Message
+        const msg = document.createElement('div');
+        msg.textContent = 'Thank you for your purchase.';
+        msg.style.fontSize = '1.1rem';
+        msg.style.fontWeight = 'bold';
+        msg.style.marginTop = '10px';
+
+        popup.appendChild(closeBtn);
+        popup.appendChild(msg);
+        overlay.appendChild(popup);
+        document.body.appendChild(overlay);
+    }
+
+    checkoutBtn.addEventListener('click', () => {
+        localStorage.removeItem('cart');
+        renderCart();
+        showCheckoutPopup();
     });
 
     renderCart();
