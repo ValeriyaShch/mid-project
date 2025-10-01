@@ -32,6 +32,11 @@ export function updateHeaderCartCounter() {
     const count = cart.cartItems.reduce((sum, item) => sum + item.quantity, 0);
     document.querySelectorAll('.header-cart-counter').forEach(el => {
         el.textContent = count;
+        if (count > 0) {
+            el.style.display = '';
+        } else {
+            el.style.display = 'none';
+        }
     });
 }
 

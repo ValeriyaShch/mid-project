@@ -25,4 +25,6 @@ npm i? instead of all packages?
 
 npm run build
 
+also npm run compile
+
 hosted app is from /dist
