@@ -1,3 +1,5 @@
+import { addToCart } from './cartManager.js';
+
 export function SetOfProducts(data) {
     const {productsContainer, productBlock, addToCartBtn, productCountHolder, paginationRequired = false} = data;
 
@@ -12,8 +14,6 @@ export function SetOfProducts(data) {
     this.pageCount=0;
     this.currentPage=0;
 
-    // Todo: implement localstorage
-    //const LocalStorageKey = 'tasks';
 
     this.init = async function () {
         const fragment = await this.loadProducts({ productBlock });
@@ -23,16 +23,6 @@ export function SetOfProducts(data) {
         if (paginationRequired) this.createPageButtons();
     };
 
-    this.addTask = function (task) {
-        const tasks = JSON.parse(localStorage.getItem(LocalStorageKey));
-        this.template(task);
-        // form.reset();
-        localStorage.setItem(LocalStorageKey, JSON.stringify(
-            tasks
-                ? [...tasks, task]
-                : [task]
-        ))
-    }
 
     this.resetProducts = async function () {
         this.filterSize = '';
@@ -59,7 +49,6 @@ export function SetOfProducts(data) {
     };
 
     this.loadProducts = async function ({productBlock='all', filterSize='', filterColor='', filterCategory='', filterSales=false, sortOrder='', searchTerm='', currentPage=0}={}) {
-        //const tasks = JSON.parse(localStorage.getItem(LocalStorageKey));
 
         // Update filters only if they are provided in the input params
         if (filterSize !== '') this.filterSize = filterSize;
@@ -304,28 +293,7 @@ export function SetOfProducts(data) {
         });
     };
     
-    // Function to add a product to the cart
-    function addToCart(product) {
-        const cart = JSON.parse(localStorage.getItem('cart')) || { cartItems: [] };
-
-        // Check if the product already exists in the cart
-        const existingItem = cart.cartItems.find((item) => item.id === product.id);
-        if (existingItem) {
-            // Update quantity and total price
-            existingItem.quantity += 1;
-            existingItem.totalPrice = existingItem.quantity * existingItem.price;
-        } else {
-            // Add new item to the cart
-            cart.cartItems.push({
-                ...product,
-                quantity: 1,
-                totalPrice: product.price,
-            });
-        }
-
-        // Save the updated cart to localStorage
-        localStorage.setItem('cart', JSON.stringify(cart));
-    }
+    
 }
 
 

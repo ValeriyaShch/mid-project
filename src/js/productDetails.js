@@ -1,3 +1,5 @@
+import { addToCart } from './cartManager.js';
+
 document.addEventListener('DOMContentLoaded', () => {
   const productData = JSON.parse(localStorage.getItem('selectedProduct'));
 
@@ -5,6 +7,28 @@ document.addEventListener('DOMContentLoaded', () => {
       console.error('No product data found in localStorage');
       return;
   }
+
+  // Quantity controls logic
+  const quantityInput = document.getElementById('quantity');
+  const qtyBtns = document.querySelectorAll('.quantity-controls .qty-btn');
+
+  qtyBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      let current = parseInt(quantityInput.value, 10) || 1;
+      if (btn.textContent.trim() === '+') {
+        quantityInput.value = current + 1;
+      } else if (btn.textContent.trim() === '−' || btn.textContent.trim() === '-') {
+        if (current > 1) quantityInput.value = current - 1;
+      }
+    });
+  });
+
+  // Add to cart with quantity
+  document.querySelector('.add-to-cart').addEventListener('click', () => {
+    const quantity = parseInt(quantityInput.value, 10) || 1;
+    addToCart({ ...productData, quantity });
+  });
 
   // Populate product details
   document.querySelector('#product-photo').src = productData.imageUrl;
@@ -24,31 +48,20 @@ document.addEventListener('DOMContentLoaded', () => {
       ratingContainer.appendChild(star);
   }
 
-  // Show sales status
-//   const salesBadge = document.createElement('p');
-//   salesBadge.textContent = productData.salesStatus ? 'On Sale!' : 'Regular Price';
-//   salesBadge.classList.add(productData.salesStatus ? 'on-sale' : 'regular-price');
-//   document.querySelector('.product-details-info').appendChild(salesBadge);
-
-  // Add event listener for "Add to Cart" button
-  document.querySelector('.add-to-cart').addEventListener('click', () => {
-      console.log(`Product added to cart: ${productData.id}`);
-  });
-
   const tabs = document.querySelectorAll('.tab');
-    const tabPanels = document.querySelectorAll('.tab-panel');
+  const tabPanels = document.querySelectorAll('.tab-panel');
 
-    tabs.forEach((tab) => {
-        tab.addEventListener('click', () => {
-            tabs.forEach((t) => t.classList.remove('active'));
-            tabPanels.forEach((panel) => panel.classList.remove('active'));
+  tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+          tabs.forEach((t) => t.classList.remove('active'));
+          tabPanels.forEach((panel) => panel.classList.remove('active'));
 
-            tab.classList.add('active');
-            
-            const targetPanel = document.querySelector(`#${tab.textContent.toLowerCase().replace(' ', '-')}`);
-            if (targetPanel) {
-                targetPanel.classList.add('active');
-            }
-        });
-    });
+          tab.classList.add('active');
+          
+          const targetPanel = document.querySelector(`#${tab.textContent.toLowerCase().replace(' ', '-')}`);
+          if (targetPanel) {
+              targetPanel.classList.add('active');
+          }
+      });
+  });
 });
