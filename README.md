@@ -1,4 +1,10 @@
 # Project template
+What shell to use?
+
+CMD/bash/PS
+
+Which Node to use?
+
 1. Install PostHTML and posthtml-include
 In your project root, run:
 
@@ -6,6 +12,8 @@ npm install --save-dev posthtml posthtml-include
 
 npm install --save-dev posthtml-cli
 npm install --save-dev cpy-cli
+
+npm i? instead of all packages?
 
 (since 
 "scripts": {
@@ -16,3 +24,5 @@ npm install --save-dev cpy-cli
 )
 
 npm run build
+
+hosted app is from /dist

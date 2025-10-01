@@ -13,22 +13,9 @@ const newProductsArrival = new SetOfProducts({
     addToCartBtn: document.querySelector('.js--form')
 });
 
-
-function loadHeader() {
-    fetch('/dist/components/header.html')
-    .then(r => r.text())
-    .then(html => {
-        //debugger;
-      document.getElementById('header-include').innerHTML = html;
-      // If you need to run header-related JS, do it here
-    });
-}
-
 document.addEventListener('DOMContentLoaded', () => {
     
 });
 
-
 selectedProducts.init();
 newProductsArrival.init();
-// loadHeader();
