@@ -263,6 +263,12 @@
             }
         }
     }
+
+    .empty-cart-message {
+        display: none;
+        @include info;
+        margin-bottom: 50px;
+    }
         
 
         .cart-summary {

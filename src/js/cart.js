@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Show/hide empty cart message
         const emptyCartMsg = document.querySelector('.empty-cart-message');
         if (cart.cartItems.length === 0) {
-            emptyCartMsg.style.display = '';
+            emptyCartMsg.style.display = 'block';
             checkoutBtn.disabled = true;
         } else {
             emptyCartMsg.style.display = 'none';
