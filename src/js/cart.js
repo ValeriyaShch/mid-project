@@ -60,13 +60,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add event listeners for quantity controls and delete buttons
     cartItemsContainer.addEventListener('click', (event) => {
         const target = event.target;
-        const productId = target.dataset.id;
+        const deleteBtn = target.closest('.delete-btn');
+        const productId = (deleteBtn && deleteBtn.dataset.id) || target.dataset.id;
 
         if (target.classList.contains('decrease')) {
             updateQuantity(productId, -1);
         } else if (target.classList.contains('increase')) {
             updateQuantity(productId, 1);
-        } else if (target.classList.contains('delete-btn')) {
+        } else if (deleteBtn) {
             removeFromCart(productId);
         }
     });

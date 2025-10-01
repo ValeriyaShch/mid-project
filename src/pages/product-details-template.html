@@ -181,7 +181,71 @@
                     <p class="tab-text">Quisque varius eget urna sit amet luctus. Suspendisse potenti. Curabitur ac placerat est, sit amet sodales risus. Pellentesque viverra dui auctor, ullamcorper turpis pharetra, facilisis quam.</p>
                 </div>
                 <div class="tab-panel" id="reviews">
-                    <p class="tab-text">No reviews yet</p>
+                    <section class="reviews-section">
+                        <div class="reviews-container">
+                          <!-- 📝 Existing Reviews -->
+                          <div class="reviews-list">
+                            <article class="review">
+                              <img src="../assets/images/review_photo.png" alt="review author photo" class="review-author-photo" width="46" height="46">
+                              <div class="review-header">
+                                
+                                <h3 class="review-author">Ella Harper</h3>
+                                <time datetime="2015-06-01">/June 11, 2015</time>
+                                <div class="review-stars" aria-label="Rated 4 out of 5">
+                                  <span class="star filled">★</span>
+                                  <span class="star filled">★</span>
+                                  <span class="star filled">★</span>
+                                  <span class="star filled">★</span>
+                                  <span class="star filled">★</span>
+                                </div>
+                              </div>
+                              <p class="review-text">
+                                Proin iaculis nibh vitae lectus mollis bibendum. Quisque varius eget urna sit amet luctus. Suspendisse potenti curabitur ac placerat est, sit amet sodales risus.
+                              </p>
+                            </article>
+                          </div>
+                      
+                          <!-- ✍️ Review Form -->
+                          <form class="review-form" id="reviewForm" novalidate>
+                            <p class="form-note">
+                              Your email address won’t be shared with anybody. Required fields have the symbol<span>*</span>
+                            </p>
+                      
+                            <fieldset class="rating-group">
+                              <legend>Rate Product*</legend>
+                              <div class="star-rating" role="radiogroup" aria-label="Rate product">
+                                <input type="radio" name="rating" id="star5" value="5">
+                                <label for="star5" title="5 stars">★</label>
+                                <input type="radio" name="rating" id="star4" value="4">
+                                <label for="star4" title="4 stars">★</label>
+                                <input type="radio" name="rating" id="star3" value="3">
+                                <label for="star3" title="3 stars">★</label>
+                                <input type="radio" name="rating" id="star2" value="2">
+                                <label for="star2" title="2 stars">★</label>
+                                <input type="radio" name="rating" id="star1" value="1">
+                                <label for="star1" title="1 star">★</label>
+                              </div>
+                            </fieldset>
+                      
+                            <label for="reviewText">Your Review*</label>
+                            <textarea id="reviewText" name="review" required></textarea>
+                      
+                            <label for="reviewName">Your Name*</label>
+                            <input type="text" id="reviewName" name="name" required>
+                      
+                            <label for="reviewEmail">Your Email*</label>
+                            <input type="email" id="reviewEmail" name="email" required>
+                      
+                            <label class="remember-me">
+                              <input type="checkbox" name="remember">
+                              Save my name, email, and website for next time
+                            </label>
+                      
+                            <button type="submit" class="btn-submit">Submit</button>
+                            <p class="form-message" id="formMessage" hidden></p>
+                          </form>
+                        </div>
+                      </section>
                 </div>
                 <div class="tab-panel" id="shipping-policy">
                     <p class="tab-text">Shipping policy content goes here.</p>

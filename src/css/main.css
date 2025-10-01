@@ -1263,6 +1263,111 @@ html, body {
   margin-bottom: 60px;
 }
 
+.reviews-section {
+  padding: 40px 0;
+}
+
+.reviews-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.review {
+  background: #E9E9ED;
+  padding: 20px;
+  border-radius: 8px;
+}
+.review .review-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+.review .review-header .review-author {
+  font-weight: bold;
+}
+.review .review-header time {
+  font-size: 14px;
+  color: #504E4A;
+}
+.review .review-header .review-stars {
+  display: flex;
+  gap: 4px;
+}
+.review .review-header .review-stars .star {
+  font-size: 18px;
+  color: #E9E9ED;
+}
+.review .review-header .review-stars .star.filled {
+  color: gold;
+}
+.review .review-text {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.review-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.review-form label {
+  font-weight: 600;
+}
+.review-form textarea,
+.review-form input[type=text],
+.review-form input[type=email] {
+  padding: 10px;
+  border: 1px solid #E9E9ED;
+  border-radius: 4px;
+  font-size: 16px;
+}
+.review-form .star-rating {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+}
+.review-form .star-rating input[type=radio] {
+  display: none;
+}
+.review-form .star-rating label {
+  font-size: 24px;
+  color: #E9E9ED;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+.review-form .star-rating label:hover, .review-form .star-rating label:hover ~ label,
+.review-form .star-rating label input:checked ~ label {
+  color: gold;
+}
+.review-form .remember-me {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.review-form .btn-submit {
+  background-color: #B92770;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.review-form .btn-submit:hover {
+  background-color: rgb(142.8794642857, 30.1205357143, 86.5);
+}
+.review-form .form-message {
+  font-size: 14px;
+  font-weight: bold;
+  color: green;
+}
+.review-form .form-message.error {
+  color: red;
+}
+
 .promo {
   background: #E7E8E9;
   padding: 120px 0;

@@ -189,3 +189,127 @@
         margin-bottom: 60px;
     }
 }
+
+.reviews-section {
+    padding: 40px 0;
+  }
+  
+  .reviews-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+  
+  .review {
+    background: $light-grey;
+    padding: 20px;
+    border-radius: 8px;
+  
+    .review-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+  
+      .review-author {
+        font-weight: bold;
+      }
+  
+      time {
+        font-size: 14px;
+        color: $grey-color;
+      }
+  
+      .review-stars {
+        display: flex;
+        gap: 4px;
+  
+        .star {
+          font-size: 18px;
+          color: $light-grey;
+  
+          &.filled {
+            color: gold;
+          }
+        }
+      }
+    }
+  
+    .review-text {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+  }
+  
+  .review-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  
+    label {
+      font-weight: 600;
+    }
+  
+    textarea,
+    input[type="text"],
+    input[type="email"] {
+      padding: 10px;
+      border: 1px solid $light-grey;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+  
+    .star-rating {
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: flex-start;
+  
+      input[type="radio"] {
+        display: none;
+      }
+  
+      label {
+        font-size: 24px;
+        color: $light-grey;
+        cursor: pointer;
+        transition: color 0.2s ease;
+  
+        &:hover,
+        &:hover ~ label,
+        input:checked ~ label {
+          color: gold;
+        }
+      }
+    }
+  
+    .remember-me {
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+  
+    .btn-submit {
+      background-color: $main-color;
+      color: #fff;
+      border: none;
+      padding: 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+  
+      &:hover {
+        background-color: darken($main-color, 10%);
+      }
+    }
+  
+    .form-message {
+      font-size: 14px;
+      font-weight: bold;
+      color: green;
+  
+      &.error {
+        color: red;
+      }
+    }
+  }
