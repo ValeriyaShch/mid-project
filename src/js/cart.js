@@ -1,3 +1,5 @@
+import { updateHeaderCartCounter } from './cartManager.js';
+
 document.addEventListener('DOMContentLoaded', () => {
     const cartItemsContainer = document.querySelector('.cart-items');
     const clearCartBtn = document.querySelector('.clear-shopping-btn');
@@ -98,11 +100,13 @@ document.addEventListener('DOMContentLoaded', () => {
             item.quantity += change;
             if (item.quantity <= 0) {
                 removeFromCart(productId);
+                updateHeaderCartCounter();
                 return;
             }
             item.totalPrice = item.quantity * item.price;
             localStorage.setItem('cart', JSON.stringify(cart));
             renderCart();
+            updateHeaderCartCounter();
         }
     }
 
@@ -111,6 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cart.cartItems = cart.cartItems.filter((item) => item.id !== productId);
         localStorage.setItem('cart', JSON.stringify(cart));
         renderCart();
+        updateHeaderCartCounter();
     }
 
     function getCartItem(productId) {
@@ -121,6 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
     clearCartBtn.addEventListener('click', () => {
         localStorage.removeItem('cart');
         renderCart();
+        updateHeaderCartCounter();
     });
 
     function showCheckoutPopup() {
