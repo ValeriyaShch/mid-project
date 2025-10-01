@@ -8,73 +8,9 @@
     
 </head>
 <body>
- 
-    <div id="header"></div>
-    <header>
-        <div class="header-container container">
-            <div class="header-cap">
-                <nav>
-                    <ul class="header-social">
-                        <li>
-                            <a href="#">
-                                <svg class="header-social-item">
-                                    <use href="#facebook"></use>
-                                </svg>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <svg class="header-social-twitter">
-                                    <use href="#twitter"></use>
-                                </svg>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <svg class="header-social-item">
-                                    <use href="#instagram"></use>
-                                </svg>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-                <a href="/src/index.html" class="header-logo">
-                    <span class="header-logo-item">
-                        <svg class="header-icon">
-                            <use href="#icon"></use>
-                        </svg>
-                    </span>
-                    <span class="header-title">BEST SHOP</span>
-                </a>
-                <nav class="user-nav">
-                    <ul class="user-nav-icons">
-                        <li>
-                            <a href="#">
-                                <svg class="user-nav-item">
-                                    <use href="#user"></use>
-                                </svg>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <svg class="user-nav-item">
-                                    <use href="#shopping-cart"></use>
-                                </svg>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-            <nav class="main-nav">
-                <ul class="main-nav_list">
-                    <li><a href="/src/index.html" class="main-nav_item">Home</a></li>
-                    <li><a href="/src/pages/catalog.html" class="main-nav_item main-nav_catalog-item">Catalog</a></li>
-                    <li><a href="#" class="main-nav_item">About Us</a></li>
-                    <li><a href="#" class="main-nav_item">Contact Us</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+
+    <!-- <div id="header-include"></div> -->
+    <include src="./components/header.html"></include>
     <main>
         <section class="promo">
             <div class="promo-container container">
@@ -83,13 +19,13 @@
                     <p class="promo-desc">Phasellus risus turpis, pretium sit amet magna non, molestie ultricies enim. Nullam pulvinar felis at metus.</p>
                     <button class="main-button promo-button">View All Items</button>
                 </div>
-                <img class="promo-image" src="../src/assets/images/suitcase.png" alt="suitcase picture">
+                <img class="promo-image" src="../dist/assets/images/suitcase.png" alt="suitcase picture">
             </div>
         </section>
         <section class="discount-section container">
             <div class="persona">
                 <div class="employee">
-                   <img src="../src/assets/images/worker.png" alt="employee photo" class="employee-photo">
+                   <img src="../dist/assets/images/worker.png" alt="employee photo" class="employee-photo">
                    <div class="employee-info">
                     <p class="employee-name">Lillian Bennett</p>
                     <p class="employee-position">Chief Marketing Officer</p>
@@ -133,7 +69,7 @@
             <div class="product-list" id="product-cards">
                 <!-- <article class="product-card">
                     <div class="image-wrapper">
-                        <img src="../src/assets/images/suitcase_red.png" alt="Red suitcase">
+                        <img src="../dist/assets/images/suitcase_red.png" alt="Red suitcase">
                         <span class="badge main-button">SALE</span>
                     </div>
                     <p class="product-name">Vel vestibulum elit tuvel euqen.</p>
@@ -142,7 +78,7 @@
                 </article>
                 <article class="product-card">
                     <div class="image-wrapper">
-                        <img src="../src/assets/images/suitcase_red.png" alt="Red suitcase">
+                        <img src="../dist/assets/images/suitcase_red.png" alt="Red suitcase">
                         <span class="badge main-button">SALE</span>
                     </div>
                     <p class="product-name">Vel vestibulum elit tuvel euqen.</p>
@@ -151,7 +87,7 @@
                 </article>
                 <article class="product-card">
                     <div class="image-wrapper">
-                        <img src="../src/assets/images/suitcase_red.png" alt="Red suitcase">
+                        <img src="../dist/assets/images/suitcase_red.png" alt="Red suitcase">
                         <span class="badge main-button">SALE</span>
                     </div>
                     <p class="product-name">Vel vestibulum elit tuvel euqen.</p>
@@ -160,7 +96,7 @@
                 </article>
                 <article class="product-card">
                     <div class="image-wrapper">
-                        <img src="../src/assets/images/suitcase_red.png" alt="Red suitcase">
+                        <img src="../dist/assets/images/suitcase_red.png" alt="Red suitcase">
                         <span class="badge main-button">SALE</span>
                     </div>
                     <p class="product-name">Vel vestibulum elit tuvel euqen.</p>
@@ -186,7 +122,7 @@
             <div class="product-list" id="new-product-cards">
                 <!-- <article class="product-card">
                     <div class="image-wrapper">
-                        <img src="../src/assets/images/suitcase_red.png" alt="Red suitcase">
+                        <img src="../dist/assets/images/suitcase_red.png" alt="Red suitcase">
                         <span class="badge main-button">SALE</span>
                     </div>
                     <p class="product-name">Vel vestibulum elit tuvel euqen.</p>
@@ -195,7 +131,7 @@
                 </article>
                 <article class="product-card">
                     <div class="image-wrapper">
-                        <img src="../src/assets/images/suitcase_red.png" alt="Red suitcase">
+                        <img src="../dist//assets/images/suitcase_red.png" alt="Red suitcase">
                         <span class="badge main-button">SALE</span>
                     </div>
                     <p class="product-name">Vel vestibulum elit tuvel euqen.</p>
@@ -204,7 +140,7 @@
                 </article>
                 <article class="product-card">
                     <div class="image-wrapper">
-                        <img src="../src/assets/images/suitcase_red.png" alt="Red suitcase">
+                        <img src="../dist/assets/images/suitcase_red.png" alt="Red suitcase">
                         <span class="badge main-button">SALE</span>
                     </div>
                     <p class="product-name">Vel vestibulum elit tuvel euqen.</p>
@@ -213,7 +149,7 @@
                 </article>
                 <article class="product-card">
                     <div class="image-wrapper">
-                        <img src="../src/assets/images/suitcase_red.png" alt="Red suitcase">
+                        <img src="../dist/assets/images/suitcase_red.png" alt="Red suitcase">
                         <span class="badge main-button">SALE</span>
                     </div>
                     <p class="product-name">Vel vestibulum elit tuvel euqen.</p>
@@ -227,17 +163,17 @@
             <p class="customers-desc">Duis vestibulum elit vel neque pharetra</p>
             <div class="customers-cards">
                 <div class="customers-card-item">
-                    <img src="../src/assets/images/customers1.png" alt="customers photo" width="98px" height="98px">
+                    <img src="../dist/assets/images/customers1.png" alt="customers photo" width="98px" height="98px">
                     <p class="customers-card-desc">Curabitur vulputate arcu odio, ac facilisis diam accumsan ut. Ut mperdiet et leo in vulputate.</p>
                     <p class="customers-info">Ethan Wade, New York</p>
                 </div>
                 <div class="customers-card-item">
-                    <img src="../src/assets/images/customers2.png" alt="customers photo" width="98px" height="98px">
+                    <img src="../dist/assets/images/customers2.png" alt="customers photo" width="98px" height="98px">
                     <p class="customers-card-desc">Curabitur vulputate arcu odio, ac facilisis diam accumsan ut. Ut mperdiet et leo in vulputate.</p>
                     <p class="customers-info">Jane Reyes, California</p>
                 </div>
                 <div class="customers-card-item">
-                    <img src="../src/assets/images/customers3.png" alt="customers photo" width="98px" height="98px">
+                    <img src="../dist/assets/images/customers3.png" alt="customers photo" width="98px" height="98px">
                     <p class="customers-card-desc">Curabitur vulputate arcu odio, ac facilisis diam accumsan ut. Ut mperdiet et leo in vulputate.</p>
                     <p class="customers-info">Erica Banks, Miami</p>
                 </div>
@@ -394,6 +330,6 @@
     </symbol>
 </svg>
 
-    <script type="module" src="/src/js/homepage.js"></script>
+    <script type="module" src="/dist/js/homepage.js"></script>
 </body>
 </html>

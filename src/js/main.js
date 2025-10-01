@@ -61,7 +61,7 @@ export function SetOfProducts(data) {
         let filteredProducts = [];
         const fragment = document.createDocumentFragment();
 
-        const getProductsResponse = await fetch('/src/assets/data.json'); 
+        const getProductsResponse = await fetch('/dist/assets/data.json'); 
         if (!getProductsResponse.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -187,7 +187,7 @@ export function SetOfProducts(data) {
                     // Redirect to product details page
                     const productData = { id, name, price, imageUrl, salesStatus, rating };
                     localStorage.setItem('selectedProduct', JSON.stringify(productData));
-                    window.location.href = '/src/pages/product-details-template.html';
+                    window.location.href = '/dist/pages/product-details-template.html';
                 });
     
                 fragment.appendChild(templateClone);
@@ -200,7 +200,7 @@ export function SetOfProducts(data) {
     }
 
     this.loadCardTemplate = async function () {
-        const templateResponse = await fetch('/src/components/product-card.html');
+        const templateResponse = await fetch('/dist/components/product-card.html');
         const template = await templateResponse.text();
 
         const cardWrapper = document.createElement('div');

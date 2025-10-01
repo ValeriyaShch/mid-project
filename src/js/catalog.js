@@ -136,7 +136,7 @@ document.querySelector('.btn-hide').addEventListener('click', () => {
 
 export function bestSets() {
   // Fetch products from data.json
-  fetch('/src/assets/data.json')
+  fetch('/dist/assets/data.json')
       .then(response => response.json())
       .then(products => {
         

@@ -12,13 +12,20 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "compile": "sass src/scss:src/css",
-    "compile:watch": "sass --watch src/scss:src/css"
+    "compile": "sass src/scss:dist/css",
+    "compile:watch": "sass --watch src/scss:dist/css",
+    "build:html": "posthtml src/*.html -o dist/ && posthtml src/pages/*.html -o dist/pages/ && posthtml src/components/*.html -o dist/components/",
+    "copy:assets": "npx cpy-cli \"src/**/*.{css,js,svg,png,jpg,jpeg,gif,webp,ico,json,woff,woff2,ttf,eot,mp4,webm}\" \"!src/**/*.html\" dist/ --parents",
+    "build": "npm run build:html && npm run copy:assets"
   },
   "devDependencies": {
+    "cpy-cli": "^6.0.0",
+    "posthtml": "^0.16.6",
+    "posthtml-cli": "^0.10.0",
+    "posthtml-include": "^2.0.1",
     "sass": "^1.92.1"
   },
   "files.associations": {
-  "*.svg": "html"
-}
+    "*.svg": "html"
+  }
 }
