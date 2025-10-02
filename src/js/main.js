@@ -1,19 +1,25 @@
 import { addToCart } from './cartManager.js';
 
 export function SetOfProducts(data) {
-    const {productsContainer, productBlock, addToCartBtn, productCountHolder, paginationRequired = false} = data;
+    const {
+        productsContainer,
+        productBlock,
+        addToCartBtn,
+        productCountHolder,
+        paginationRequired = false,
+        randomCount = 0 // NEW: number of random products to pick
+    } = data;
 
-    // this.productBlock=productBlock;
-    this.filterSize='';
-    this.filterColor=''; 
-    this.filterCategory=''; 
-    this.filterSales=false;
-    this.sortOrder='';
-    this.searchTerm='';
-    this.productCounter=0;
-    this.pageCount=0;
-    this.currentPage=0;
-
+    this.filterSize = '';
+    this.filterColor = ''; 
+    this.filterCategory = ''; 
+    this.filterSales = false;
+    this.sortOrder = '';
+    this.searchTerm = '';
+    this.productCounter = 0;
+    this.pageCount = 0;
+    this.currentPage = 0;
+    this.randomCount = randomCount; // NEW
 
     this.init = async function () {
         const fragment = await this.loadProducts({ productBlock });
@@ -22,7 +28,6 @@ export function SetOfProducts(data) {
         // Create initial page buttons
         if (paginationRequired) this.createPageButtons();
     };
-
 
     this.resetProducts = async function () {
         this.filterSize = '';
@@ -126,6 +131,14 @@ export function SetOfProducts(data) {
             filteredProducts = filteredProducts.filter(product =>
                 product.name.toLowerCase().includes(searchTerm.toLowerCase())
             );
+        }
+
+        // NEW: Pick random products if randomCount is set
+        if (this.randomCount > 0 && filteredProducts.length > this.randomCount) {
+            // Shuffle and pick randomCount products
+            filteredProducts = filteredProducts
+                .sort(() => Math.random() - 0.5)
+                .slice(0, this.randomCount);
         }
 
         // If no products match the search term, show notification

@@ -1,4 +1,5 @@
 import { addToCart } from './cartManager.js';
+import { SetOfProducts } from './main.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   const productData = JSON.parse(localStorage.getItem('selectedProduct'));
@@ -64,4 +65,15 @@ document.addEventListener('DOMContentLoaded', () => {
           }
       });
   });
+
+  // --- Render 4 random products in .product-container ---
+  const container = document.querySelector('.may-like-products .product-container');
+  if (container) {
+    const randomProducts = new SetOfProducts({
+      productsContainer: container,
+      productBlock: 'all',
+      randomCount: 4
+    });
+    randomProducts.init();
+  }
 });
