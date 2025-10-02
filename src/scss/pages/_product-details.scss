@@ -191,9 +191,7 @@
     }
 }
 
-.reviews-section {
-  
-  }
+
   
   .reviews-container {
     display: grid;
@@ -288,14 +286,14 @@
       width: 100%;
       font-size: 16px;
       resize: vertical;
-      border: 2px solid $main-color;
+      border: 2px solid rgba($main-color, 0.5);
 
        &::placeholder {
         @include info($size: 13px);
        }
       &:focus {
         outline: none;
-        border: 3px solid darken($main-color, 10%);
+        border: 2px solid $main-color;
       }
     }
 
