@@ -143,7 +143,7 @@ export function SetOfProducts(data) {
 
         // If no products match the search term, show notification
         if (filteredProducts.length === 0) {
-            this.showNotification('No products found for the entered search term.');
+            // this.showNotification('No products found for the entered search term.');
 
             // Hide pagination buttons explicitly
             const btnPrev = document.querySelector('.btn-prev');
@@ -305,8 +305,17 @@ export function SetOfProducts(data) {
             this.resetProducts();
         });
     };
-    
-    
+
+    this.findProductByName = async function (name) {
+        const getProductsResponse = await fetch('/dist/assets/data.json');
+        if (!getProductsResponse.ok) return null;
+        const productsData = await getProductsResponse.json();
+        const products = productsData.data || productsData;
+        const trimmedName = name.trim().toLowerCase();
+        return products.find(
+            p => p.name && p.name.trim().toLowerCase() === trimmedName
+        ) || null;
+    };
 }
 
 

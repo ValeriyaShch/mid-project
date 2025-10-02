@@ -75,13 +75,23 @@ document.getElementById('sort').addEventListener('change', (event) => {
   catalogProducts.rerenderProducts({sortOrder: event.target.value})
 })
 
-document.querySelector('.search-form').addEventListener('submit', (event) => {
+document.querySelector('.search-form').addEventListener('submit', async (event) => {
     event.preventDefault();
     const searchInput = event.target.querySelector('input[type="search"]');
     const searchTerm = searchInput.value.trim();
 
     if (searchTerm) {
-        catalogProducts.rerenderProducts({ searchTerm });
+        // Use SetOfProducts to find product by name
+        const foundProduct = await catalogProducts.findProductByName(searchTerm);
+        if (foundProduct) {
+            localStorage.setItem('selectedProduct', JSON.stringify(foundProduct));
+            window.location.href = '/dist/pages/product-details-template.html';
+            return;
+        }
+        else  {
+            catalogProducts.showNotification('No products found for the entered search term.');
+        }
+              
     }
 });
 
