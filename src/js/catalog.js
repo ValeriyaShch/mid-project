@@ -217,6 +217,20 @@ export function bestSets() {
       card.appendChild(imageWrapper);
       card.appendChild(infoWrapper);
 
+      // Attach click event handler for redirect and localStorage (like product card)
+      card.addEventListener('click', () => {
+          const productData = {
+              id: product.id,
+              name: product.name,
+              price: product.price,
+              imageUrl: product.imageUrl,
+              salesStatus: product.salesStatus,
+              rating: product.rating
+          };
+          localStorage.setItem('selectedProduct', JSON.stringify(productData));
+          window.location.href = '/dist/pages/product-details-template.html';
+      });
+
       // Append the card to the fragment
       fragment.appendChild(card);
 

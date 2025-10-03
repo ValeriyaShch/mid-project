@@ -3,16 +3,16 @@
     padding: 85px 0;
     background-size: cover;
     margin-bottom: 130px;
-    padding: 210px 0;
+    height: 550px;
+    @include flex-center;
+    text-align: center;
     
     .contact-title {
         @include mont-bold($white-color, 50px);
-        text-align: center;
         margin-bottom: 20px;
     }
     .contact-subtitle {
         @include info($color: $white-color);
-        text-align: center;
     }
 }
 

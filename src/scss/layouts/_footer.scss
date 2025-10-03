@@ -78,18 +78,28 @@
 }
 
 .footer-contacts-list {
-    @include flex-center;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 20px;
 }
 
 .footer-contacts-list li {
-    @include flex-center;
-    flex: 1 1 40%;
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    min-width: 0;
+    word-break: break-word;
+    @include info(black, 15px);
+    list-style: none;
+}
+
+.working-hours {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 
 .contacts-icon {
-    width: 24px;
-    height: 24px;
     fill: $main-color;
+    flex-shrink: 0;
 }
