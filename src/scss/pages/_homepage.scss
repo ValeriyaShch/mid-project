@@ -106,7 +106,9 @@
 }
 
 .travel-container {
+    position: relative;
     margin-bottom: 120px;
+    overflow: hidden;
 }
 
 .travel-title {
@@ -124,10 +126,12 @@
 .travel-cards {
     display: flex;
     gap: 39px;
+    // overflow: hidden;
 }
 
 .travel-cards div {
     height: 600px;
+    min-width: 300px;
     padding: 45px 40px;
     display: flex;
     flex-direction: column;
@@ -157,6 +161,26 @@
 
 .travel-card-desc {
     @include info($white-color, 19px);
+}
+
+.carousel-controls {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin: 20px 0 0 0;
+}
+
+.carousel-prev, .carousel-next {
+   cursor: pointer;
+   background: rgba($main-color, 0.5);
+   border-radius: 50%;
+   @include button-padding(15px, 15px);
+   font-size: 24px;
+   color: $white-color;
+
+   &:hover {
+    background: $main-color;
+   }
 }
 
 .selected-products-title, .new-products-title, .customers-title {
