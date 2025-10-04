@@ -7,7 +7,7 @@ export function SetOfProducts(data) {
         addToCartBtn,
         productCountHolder,
         paginationRequired = false,
-        randomCount = 0 // NEW: number of random products to pick
+        randomCount = 0 
     } = data;
 
     this.filterSize = '';
@@ -19,7 +19,10 @@ export function SetOfProducts(data) {
     this.productCounter = 0;
     this.pageCount = 0;
     this.currentPage = 0;
-    this.randomCount = randomCount; // NEW
+    this.randomCount = randomCount; 
+
+    // Add a property to cache the template
+    this._cardTemplate = null;
 
     this.init = async function () {
         const fragment = await this.loadProducts({ productBlock });
@@ -51,6 +54,32 @@ export function SetOfProducts(data) {
         // Update pagination buttons and active page
         this.createPageButtons();
         this.updatePaginationChange(this.currentPage);
+    };
+
+    // New: Product card click handler
+    this.handleProductCardClick = function(event, product) {
+        // Prevent redirection if the "Add to Cart" button is clicked
+        if (event.target.classList.contains('product-button')) {
+            addToCart({
+                id: product.id,
+                name: product.name,
+                price: product.price,
+                imageUrl: product.imageUrl
+            });
+            return;
+        }
+
+        // Redirect to product details page
+        const productData = {
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            imageUrl: product.imageUrl,
+            salesStatus: product.salesStatus,
+            rating: product.rating
+        };
+        localStorage.setItem('selectedProduct', JSON.stringify(productData));
+        window.location.href = '/dist/pages/product-details-template.html';
     };
 
     this.loadProducts = async function ({productBlock='all', filterSize='', filterColor='', filterCategory='', filterSales=false, sortOrder='', searchTerm='', currentPage=0}={}) {
@@ -189,18 +218,9 @@ export function SetOfProducts(data) {
                 templateClone.querySelector('.product-name').textContent = name;
                 templateClone.querySelector('.product-price').textContent = `$${price}`;
     
-                // Attach click event handler to the product card
+                // Use the extracted handler
                 productCard.addEventListener('click', (event) => {
-                    // Prevent redirection if the "Add to Cart" button is clicked
-                    if (event.target.classList.contains('product-button')) {
-                        addToCart({ id, name, price, imageUrl });
-                        return;
-                    }
-    
-                    // Redirect to product details page
-                    const productData = { id, name, price, imageUrl, salesStatus, rating };
-                    localStorage.setItem('selectedProduct', JSON.stringify(productData));
-                    window.location.href = '/dist/pages/product-details-template.html';
+                    this.handleProductCardClick(event, { id, name, price, imageUrl, salesStatus, rating });
                 });
     
                 fragment.appendChild(templateClone);
@@ -213,13 +233,18 @@ export function SetOfProducts(data) {
     }
 
     this.loadCardTemplate = async function () {
+        // If already cached, return the cached template
+        if (this._cardTemplate) {
+            return this._cardTemplate;
+        }
         const templateResponse = await fetch('/dist/components/product-card.html');
         const template = await templateResponse.text();
 
         const cardWrapper = document.createElement('div');
         cardWrapper.innerHTML = template;
-        return cardWrapper.querySelector('template');
-    }
+        this._cardTemplate = cardWrapper.querySelector('template');
+        return this._cardTemplate;
+    };
 
     this.updatePaginationChange = function (currentPage) {
         const btnPrev = document.querySelector('.btn-prev');
