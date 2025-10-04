@@ -1,4 +1,7 @@
+import { updateHeaderCartCounter } from './cartManager.js';
+
 document.addEventListener('DOMContentLoaded', () => {
+    updateHeaderCartCounter();
     const form = document.querySelector('.contact-form-form');
     const thankYouMsg = document.querySelector('.contact-us-message');
 
