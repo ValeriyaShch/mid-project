@@ -192,6 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.removeItem('cart');
         renderCart();
         showCheckoutPopup();
+        updateHeaderCartCounter();
     });
 
     renderCart();

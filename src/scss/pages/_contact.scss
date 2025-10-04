@@ -116,17 +116,31 @@
             }
           }
         }
-      }
-      .contact-form-submit {
-        @include button-padding(13px, 30px);
-        @include mont-bold($white-color, 12px);
-        align-self: flex-start;
+        .contact-form-actions {
+          display: flex;
+          align-items: center;
+          gap: 20px;
 
-        &:hover {
-          background: darken($main-color, 10%);
-         }
+          .contact-form-submit {
+            @include button-padding(13px, 30px);
+            @include mont-bold($white-color, 12px);
+            align-self: flex-start;
+
+            &:hover {
+              background: darken($main-color, 10%);
+            }
+          }
+
+          .contact-us-message {
+            color: rgba($main-color, 0.9); // matches input border color
+            font-size: 16px;
+            margin-left: 10px;
+            transition: opacity 0.9s;
+          }
         }
+      }
+    }
   }
   
-}
+
 
