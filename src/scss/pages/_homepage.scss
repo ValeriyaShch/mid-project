@@ -17,8 +17,12 @@
 
 .promo-image {
     height: 625px;
-    width: 100%;
+    width: auto;
     object-fit: cover;
+
+    @include vieport-lg {
+        height: 400px;
+    }
 
     @include vieport-md {
         height: 300px;
@@ -42,8 +46,11 @@
 }
 
 .promo-button {
+    display: inline-block;
     font-size: 18px;
     @include button-padding;
+    text-decoration: none;
+
 }
 
 .discount-section {
@@ -52,13 +59,23 @@
     margin-top: -120px;
     box-shadow: 0 0 40px 10px rgba( 0, 0, 0, 0.2);
     margin-bottom: 120px;
-    width: 100%
+    width: 100%;
+
+    @include vieport-md {
+        grid-template-columns: 1fr;
+        margin-top: -60px;
+        margin-bottom: 60px;
+    }
 
 }
 
 .persona {
     padding: 70px;
     background: $white-color;
+
+    @include vieport-md {
+        padding: 40px;
+    }
 }
 
 .employee {
@@ -86,7 +103,11 @@
     @include title;
     line-height: 100%;
     letter-spacing: 0%;
-    margin-bottom: 30px
+    margin-bottom: 30px;
+
+    @include vieport-md {
+        font-size: 30px;
+    }
 }
 
 .persona-title + .persona-info {
@@ -101,14 +122,16 @@
     background: linear-gradient( rgba( 0, 0, 0, 0.4)), url(../assets/images/discount.png);
     background-repeat: no-repeat;
     background-size: cover;
-    flex: 1 1 50%;
     padding: 70px;
-    display: flex;
-    flex-direction: column;
-    
+    @include flex-col(30px);
     justify-content: center;
     align-items: start;
-    gap: 30px;
+
+    @include vieport-md {
+        padding: 40px;
+        text-align: center;
+        align-items: center;
+    }
 }
 
 .discount-caption {
@@ -128,34 +151,58 @@
     position: relative;
     margin-bottom: 120px;
     overflow: hidden;
+     
+    @include vieport-md {
+        margin-bottom: 60px;
+    }
 }
 
 .travel-title {
     @include title;
     text-align: center;
     margin-bottom: 10px;
+
+    @include vieport-md {
+        font-size: 30px;
+    }
 }
 
 .travel-desc {
     @include info;
     text-align: center;
     margin-bottom: 60px;
+
+    @include vieport-md {
+        margin-bottom: 30px;
+    }
 }
 
 .travel-cards {
     display: flex;
     gap: 39px;
-    // overflow: hidden;
 }
 
 .travel-cards div {
     height: 600px;
     min-width: 300px;
     padding: 45px 40px;
-    display: flex;
-    flex-direction: column;
+    @include flex-col(20px);
+    background-size: cover;
     justify-content: end;
-    gap: 20px;
+    flex: 0 0 23%;
+    background-repeat: no-repeat;
+
+    @include vieport-lg {
+        flex: 0 0 48%;
+        background-size: cover;
+        background-position: center;
+        
+    }
+
+    @include vieport-md {
+        flex: 0 0 100%;
+        height: 400px;
+    }
 }
 
 .travel-card-first {
@@ -212,20 +259,35 @@
   @include title;
   text-align: center;
   margin-bottom: 10px;
+
+    @include vieport-md {
+        font-size: 30px;
+    }
 }
 
 .selected-products-desc, .new-products-desc, .customers-desc {
     @include info;
     text-align: center;
     margin-bottom: 60px;
+
+    @include vieport-md {
+        margin-bottom: 30px;
+    }
 }
 
 .product-list {
     margin-bottom: 120px;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 39px;
+    @include grid-cols(4, 39px);
     align-items: stretch;
+
+    @include vieport-lg {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include vieport-md {
+        grid-template-columns: 1fr;
+        margin-bottom: 60px;
+    }
 }
 
 
@@ -236,11 +298,33 @@
     @include flex-center;
     gap: 175px;
     margin-bottom: 120px;
+
+    @include vieport-lg {
+        @include flex-col(40px);
+        text-align: center;
+        padding: 60px 40px;
+        gap: 40px;
+    }
+
+    @include vieport-md {
+        padding: 40px 20px;
+        gap: 30px;
+        margin-bottom: 60px;
+    }
   }
 
   .sale-amount {
     @include title($white-color, 223px);
     margin-bottom: 15px;
+
+    @include vieport-lg {
+        font-size: 150px;
+    }
+
+    @include vieport-md {
+        font-size: 100px;
+        margin-bottom: 10px;
+    }
   }
 
   .sale-desc {
@@ -256,6 +340,10 @@
   .offer-desc {
      @include info($white-color);
      margin-bottom: 30px;
+
+        @include vieport-md {
+            margin-bottom: 20px;
+        }
   }
 
   .offer-button {
@@ -267,16 +355,27 @@
     display: flex;
     gap: 20px;
     margin-bottom: 120px;
+    @include vieport-lg {
+        flex-direction: column;
+        gap: 40px;
+    }
+    @include vieport-md {
+        gap: 20px;
+        margin-bottom: 60px;
+    }
   }
 
   .customers-card-item {
-    display: flex;
-    flex-direction: column;
+    @include flex-col(25px);
     justify-content: center;
     align-items: center;
-    gap: 25px;
     padding: 45px 40px;
     box-shadow: 0 0 40px 10px rgba( 0, 0, 0, 0.2);
+
+    @include vieport-md {
+        padding: 30px 20px;
+        gap: 15px;
+    }
   }
 
   .customers-card-desc {
