@@ -1,16 +1,13 @@
 .benefits-section {
-    background-color: $grey-color;
-    background-image: url(../assets/images/wave.svg);
-    background-blend-mode: soft-light;
-    padding: 40px 0;
+    background-image: url(/dist/assets/images/footer-bg.png);
+    background-repeat: repeat-x;
+    padding: 40px 0 50px 0;
     margin-bottom: 120px;
+    background-size: cover;
 }
 
 .benefits-title {
-    color: $white-color;
-    font-family: 'Inter';
-    font-weight: 700;
-    font-size: 23px;
+    @include mont-bold($white-color, 23px);
     margin-bottom: 32px;
 }
 
@@ -30,8 +27,7 @@
 }
 
 .benefits-desc {
-    color: $white-color;
-    font-weight: 500;
+    @include info($white-color, 15px);
 }
 
 .footer-container {
@@ -48,11 +44,12 @@
 }
 .footer-contacts {
     max-width: 375px;
+    @include flex-between;
+    flex-direction: column;
 }
 
 .footer-title {
-    font-size: 15px;
-    font-weight: 700;
+    @include mont-bold($size: 13px);
     margin-bottom: 25px;
 }
 
@@ -61,20 +58,19 @@
 }
 
 .footer-link {
-    font-size: 15px;
-    font-weight: 400;
+    @include info($black, 13px);
     margin-bottom: 12px;
 }
 
 .footer-link a {
     text-decoration: none;
-    color: black;
+    color: $black;
 }
 
 .footer-desc {
-   font-size: 15px;
-   line-height: 1.5;
-   margin-bottom: 70px;
+    @include info($black, 13px);
+   margin-bottom: 100px;
+   line-height: 2.0;
 }
 
 .footer-contacts-list {
@@ -85,21 +81,24 @@
 
 .footer-contacts-list li {
     display: flex;
-    align-items: flex-start;
-    gap: 15px;
-    min-width: 0;
-    word-break: break-word;
-    @include info(black, 15px);
-    list-style: none;
+    align-items: center;
+    @include info($black, 13px);
+    text-decoration: none;
+}
+
+.footer-contacts-list li a {
+    text-decoration: none;
+    color: $black;
 }
 
 .working-hours {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 8px;
 }
 
 .contacts-icon {
     fill: $main-color;
     flex-shrink: 0;
+    margin-right: 8px; 
 }

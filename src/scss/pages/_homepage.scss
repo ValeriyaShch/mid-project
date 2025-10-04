@@ -172,15 +172,21 @@
 
 .carousel-prev, .carousel-next {
    cursor: pointer;
-   background: rgba($main-color, 0.5);
+   background: $main-color;
    border-radius: 50%;
    @include button-padding(15px, 15px);
    font-size: 24px;
    color: $white-color;
+   margin: 12px;
 
    &:hover {
-    background: $main-color;
+    background: darken($main-color, 10%);
+    box-shadow: 0 0 12px rgba($main-color, 0.8);
    }
+}
+
+.carousel-next {
+    margin-left: auto;
 }
 
 .selected-products-title, .new-products-title, .customers-title {

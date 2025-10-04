@@ -206,7 +206,6 @@
           @include mont-bold($grey-color, 17px);
         }
 
-        // кастомний селект
         .custom-select {
           position: relative;
           border: 2px solid $light-grey;
@@ -301,6 +300,7 @@
 
   .products {
     flex: 1;
+    margin-bottom: 120px;
   }
 
   .product-grid {
@@ -379,24 +379,25 @@
 .pagination {
     display: flex;
     align-items: center;
-    position: relative; /* Для абсолютного позиціонування кнопок */
-    margin-top: 20px; /* Відступ зверху */
+    position: relative; 
+    margin-top: 20px; 
+    
 
     .btn-prev {
         position: absolute;
-        left: 0; /* Розташування кнопки зліва */
+        left: 0; 
     }
 
     .btn-next {
         position: absolute;
-        right: 0; /* Розташування кнопки справа */
+        right: 0; 
     }
 
     .page-buttons {
         display: flex;
-        gap: 5px; /* Відстань між кнопками сторінок */
-        justify-content: center; /* Центрування кнопок сторінок */
-        flex: 1; /* Займає весь доступний простір між кнопками prev і next */
+        gap: 5px;
+        justify-content: center; 
+        flex: 1; 
     }
 }
 

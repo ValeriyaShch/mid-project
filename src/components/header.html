@@ -63,4 +63,25 @@
             </ul>
         </nav>
     </div>
+    <div class="popup">
+        <form action="#" class="login-form">
+            <label for="email" class="login-form-label">Email address <span>*</span></label>
+            <input type="email" id="email" name="email" class="login-form-input" required>
+
+            <label for="password" class="login-form-label">Password <span>*</span></label>
+            <input type="password" id="password" name="password" class="login-form-input" required>
+            <button type="button" class="toggle-button">
+                <svg class="toggle-icon">
+                    <use href="#search"></use>
+                </svg>
+            </button>
+
+            <div> class="login-form-remember">
+                <input type="checkbox" id="remember" name="remember">
+                <label for="remember" class="login-form-remember-label">Remember me</label>
+                <a href="#" class="forgot-password-link">Forgot Your Password?</a>
+            </div>
+            <button type="submit" class="main-button login-form-button">LOG IN</button>
+        </form>
+    </div>
 </header>

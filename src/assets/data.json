@@ -63,15 +63,15 @@
     "salesStatus": false,
     "rating": 4.0,
     "popularity": 70,
-    "blocks": []
+    "blocks": ["New Products Arrival"]
   },
   {
     "id": "SU006",
     "name": "Deluxe Weekender Travel Suitcase",
     "price": 295,
-    "imageUrl": "/dist/assets/images/travel_2.png",
+    "imageUrl": "/dist/assets/images/suitcase-yellow.png",
     "category": "suitcases",
-    "color": "blue",
+    "color": "yellow",
     "size": "L",
     "salesStatus": true,
     "rating": 4.8,
