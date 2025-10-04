@@ -16,7 +16,7 @@ document.querySelectorAll('.custom-select').forEach(wrapper => {
 
 });
 
-const catalogProducts = new SetOfProducts({
+const catalogProducts = SetOfProducts({
     productsContainer:  document.getElementById('catalog-products'),
     productBlock: "all",
     addToCartBtn: document.querySelector('.js--form'),
