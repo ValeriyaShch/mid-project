@@ -289,7 +289,79 @@ document.addEventListener('DOMContentLoaded', () => {
       nav.classList.remove('open');
       document.body.style.overflow = '';
     });
-  });
+
+    // --- Show popup login form ---
+    const loginToggle = document.querySelector('.header-login-toggle');
+    const popup = document.querySelector('.popup');
+    if (loginToggle && popup) {
+        loginToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            popup.style.display = 'block';
+            popup.classList.add('active');
+
+            // Add outside click handler
+            setTimeout(() => {
+                document.addEventListener('mousedown', handleOutsideClick);
+            }, 0);
+        });
+
+        function handleOutsideClick(event) {
+            if (!popup.contains(event.target) && event.target !== loginToggle) {
+                popup.style.display = 'none';
+                popup.classList.remove('active');
+                document.removeEventListener('mousedown', handleOutsideClick);
+            }
+        }
+    }
+
+    // --- Email validation for login form ---
+    const loginForm = document.querySelector('.login-form');
+    if (loginForm) {
+        loginForm.addEventListener('submit', function (e) {
+            const emailInput = loginForm.querySelector('input[type="email"]');
+            const email = emailInput.value.trim();
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                e.preventDefault();
+                emailInput.classList.add('input-error');
+                if (!loginForm.querySelector('.email-error')) {
+                    const error = document.createElement('div');
+                    error.className = 'email-error';
+                    error.style.color = 'red';
+                    error.style.fontSize = '0.9em';
+                    error.textContent = 'Please enter a valid email address.';
+                    emailInput.parentNode.appendChild(error);
+                }
+            } else {
+                emailInput.classList.remove('input-error');
+                const error = loginForm.querySelector('.email-error');
+                if (error) error.remove();
+            }
+        });
+
+        const emailInput = loginForm.querySelector('input[type="email"]');
+        emailInput.addEventListener('input', function () {
+            emailInput.classList.remove('input-error');
+            const error = loginForm.querySelector('.email-error');
+            if (error) error.remove();
+        });
+    }
+
+    // --- Password show/hide toggle ---
+    const passwordInput = document.getElementById('password');
+    const toggleBtn = document.querySelector('.toggle-button');
+    if (passwordInput && toggleBtn) {
+        toggleBtn.addEventListener('click', () => {
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleBtn.classList.add('shown');
+            } else {
+                passwordInput.type = 'password';
+                toggleBtn.classList.remove('shown');
+            }
+        });
+    }
+});
 
 
 
