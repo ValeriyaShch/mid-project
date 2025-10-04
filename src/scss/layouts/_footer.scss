@@ -4,26 +4,48 @@
     padding: 40px 0 50px 0;
     margin-bottom: 120px;
     background-size: cover;
+
+    @include vieport-lg {
+        background-position: center;
+        margin-bottom: 60px;
+    }
+
+    @include vieport-md {
+        background: $grey-color;
+    }
 }
 
 .benefits-title {
     @include mont-bold($white-color, 23px);
     margin-bottom: 32px;
+
+    @include vieport-lg {
+        text-align: center;
+    }
 }
 
 .benefits-list {
     @include flex-between;
     gap: 90px;
+
+    @include vieport-lg {
+        gap: 50px;
+    };
+
+    @include vieport-md {
+        flex-direction: column;
+        gap: 30px;
+    }
 }
 
 .benefits-item {
     @include flex-center;
     gap: 20px;
-}
 
-.benefits-icon {
-    width: 60px;
-    height: 60px;
+    @include vieport-lg {
+        flex-direction: column;
+        text-align: center;
+    }
 }
 
 .benefits-desc {
@@ -33,6 +55,13 @@
 .footer-container {
     @include flex-between;
     align-items: start;
+    gap: 20px;
+
+    @include vieport-lg {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
 }
 
 .footer-info {
@@ -51,6 +80,16 @@
 .footer-title {
     @include mont-bold($size: 13px);
     margin-bottom: 25px;
+
+    @include vieport-lg {
+        margin-bottom: 15px;
+    }
+}
+
+.footer-title a{
+    text-decoration: none;
+    color: $black;
+    cursor: pointer;
 }
 
 .footer-links {
@@ -71,12 +110,20 @@
     @include info($black, 13px);
    margin-bottom: 100px;
    line-height: 2.0;
+
+   @include vieport-lg {
+       margin-bottom: 30px;
+   }
 }
 
 .footer-contacts-list {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
+
+    @include vieport-lg {
+        margin-bottom: 50px;
+    }
 }
 
 .footer-contacts-list li {
