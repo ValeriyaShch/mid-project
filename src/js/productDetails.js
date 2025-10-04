@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- Render 4 random products in .product-container ---
   const container = document.querySelector('.may-like-products .product-container');
   if (container) {
-    const randomProducts = new SetOfProducts({
+    const randomProducts = SetOfProducts({
       productsContainer: container,
       productBlock: 'all',
       randomCount: 4
