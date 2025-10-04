@@ -4,4 +4,8 @@
     font-weight: 700;
     background: $main-color;
     cursor: pointer;
+     
+    &:hover {
+        background: darken($main-color, 10%);
+       }
 }
