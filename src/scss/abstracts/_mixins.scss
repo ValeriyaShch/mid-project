@@ -1,15 +1,12 @@
-$breakpoint-md: 768px;
-$breakpoint-lg: 1024px;
-$breakpoint-xl: 1440px;
-$breakpoint-xxl: 1920px;
+
 
 @mixin vieport-md {
-  @media (min-width: $breakpoint-md) {
+  @media (max-width: $breakpoint-md) {
     @content;
   }
 }
 @mixin vieport-lg {
-  @media (min-width: $breakpoint-lg) {
+  @media (max-width: $breakpoint-lg) {
     @content;
   }
 }
@@ -18,11 +15,7 @@ $breakpoint-xxl: 1920px;
     @content;
   }
 }
-@mixin vieport-xxl {
-  @media (min-width: $breakpoint-xxl) {
-    @content;
-  }
-}
+
 @mixin flex-center {
   display: flex;
   justify-content: center;
@@ -33,6 +26,18 @@ $breakpoint-xxl: 1920px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+@mixin flex-col($gap: 0) {
+  display: flex;
+  flex-direction: column;
+  gap: $gap;
+}
+
+@mixin grid-cols($count: 4, $gap: 20px) {
+  display: grid;
+  grid-template-columns: repeat($count, 1fr);
+  gap: $gap;
 }
 
 @mixin title ($color: black, $size: 40px) {

@@ -318,5 +318,21 @@ export function SetOfProducts(data) {
     };
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+    const burger = document.querySelector('.burger');
+    const nav = document.querySelector('.main-nav');
+    const closeBtn = document.querySelector('.close-menu');
+  
+    burger.addEventListener('click', () => {
+      nav.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+  
+    closeBtn.addEventListener('click', () => {
+      nav.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+
 
 

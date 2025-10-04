@@ -7,8 +7,18 @@
   }
 
   .container {
-    max-width: 1300px;
+    padding: 0 30px;
     margin: 0 auto;
+    @include vieport-md {
+      padding: 0 15px;
+      max-width: 738px;
+    }
+    @include vieport-lg {
+      max-width: 964px;
+    }
+    @include vieport-xl {
+      max-width: 1380px;
+    }
   }
 
   

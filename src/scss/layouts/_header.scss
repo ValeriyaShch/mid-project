@@ -1,30 +1,12 @@
-.header-container{
-    padding-top: 50px;
-    padding-bottom: 25px;
-}
+
   .header-cap {
     @include flex-between;
-    padding-bottom: 50px;
+    padding: 50px 0;
     border-bottom: 1px solid $border-color;
   }
   .header-social {
     @include flex-center;
     gap: 20px;
-  }
-
-  .header-social-item {
-    width: 20px;
-    height: 20px;
-  }
-
-  .header-social-twitter {
-    width: 25px;
-    height: 20px;
-  }
-
-  .header-user {
-    width: 30px;
-    height: 33px;
   }
 
   .header-logo {
@@ -39,20 +21,14 @@
     height: 32px;
  }
 
- .header-icon {
-    width: 30px;
-    height: 30px;
- }
 
  .header-title {
-    color: $main-color;
-    font-size: 30px;
-    font-family: 'Montserrat';
-    font-weight: 700;
+   @include mont-bold($main-color, 30px);
  }
 
  .main-nav {
    padding-top: 30px;
+   padding-bottom: 25px;
  }
 
  .user-nav-icons {
@@ -60,10 +36,13 @@
     gap: 15px;
  }
 
- .user-nav-item {
-    width: 34px;
-    height: 33px;
- }
+ 
+   @include vieport-md {
+      .user-nav-item {
+         height: 25px; 
+      }
+   }
+ 
 
  .header-cart-link {
    position: relative;
@@ -130,6 +109,7 @@
    max-width: 480px;
    padding: 70px;
    z-index: 1000;
+   display:none;
 
    .login-form {
       display: flex;
@@ -200,3 +180,68 @@
       }
    }
  }
+
+.burger {
+  display: none;
+  background: none;
+  border: none;
+  flex-direction: column;
+  gap: 4px;
+  width: 32px;
+  height: 32px;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  span {
+    display: block;
+    height: 4px;
+    width: 100%;
+    background: $main-color;
+    border-radius: 2px;
+    transition: 0.3s;
+  }
+}
+
+.close-menu {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 32px;
+  color: $main-color;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+}
+
+@include vieport-md {
+  .main-nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 80vw;
+    max-width: 320px;
+    height: 100vh;
+    background: $white-color;
+    box-shadow: 0 0 40px 10px rgba(0,0,0,0.10);
+    transform: translateX(100%);
+    transition: transform 0.3s;
+    z-index: 2000;
+    padding: 60px 30px 30px 30px;
+    display: block;
+  }
+  .main-nav.open {
+    transform: translateX(0);
+  }
+  .main-nav_list {
+    flex-direction: column;
+    gap: 24px;
+    align-items: flex-start;
+  }
+  .close-menu {
+    display: block;
+  }
+  .burger {
+    display: flex;
+  }
+}

@@ -5,21 +5,21 @@
                 <ul class="header-social">
                     <li>
                         <a href="#">
-                            <svg class="header-social-item">
+                            <svg class="header-social-item" width="20" height="20">
                                 <use href="/dist/assets/sprites/sprite.svg#facebook"></use>
                             </svg>
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            <svg class="header-social-twitter">
+                            <svg class="header-social-twitter" width="25" height="20">
                                 <use href="/dist/assets/sprites/sprite.svg#twitter"></use>
                             </svg>
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            <svg class="header-social-item">
+                            <svg class="header-social-item" width="20" height="20">
                                 <use href="/dist/assets/sprites/sprite.svg#instagram"></use>
                             </svg>
                         </a>
@@ -28,8 +28,14 @@
             </nav>
             <a href="/dist/index.html" class="header-logo">
                 <span class="header-logo-item">
-                    <svg class="header-icon">
-                        <use href="/dist/assets/sprites/sprite.svg#icon"></use>
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <rect width="32" height="32" fill="url(#pattern0_7064_3)"/>
+                        <defs>
+                        <pattern id="pattern0_7064_3" patternContentUnits="objectBoundingBox" width="1" height="1">
+                        <use xlink:href="#image0_7064_3" transform="scale(0.00666667)"/>
+                        </pattern>
+                        <image id="image0_7064_3" width="150" height="150" preserveAspectRatio="none" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAACWCAMAAAAL34HQAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAABmUExURQAAAP///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////5WfaagAAAAidFJOUwAQIECPz+//359gcK+/MFAcGFTjgKNuCERsZWQ51+5o89uQKq+OAAAACXBIWXMAABcRAAAXEQHKJvM/AAACH0lEQVR4Xu3b0VLaUACEYSFIBCtRFNFWrb7/S3ZMOtnkz9bBdnLsxf6XycH9BhjGm5ydpZRSSimllNJ/1GI5acEzhatW5+vadbGqeLZYiw01wzZf9J5VF5SMW2/5ihJdkjHtC1xL/6UatV7yVbP3jQbXFV81d1sKfKU/xpPerOJv1+KEb1Zb2V+JXb97vq0mNVf97R1fOWtVv2t/zRcf356tpt+1n5JYDW/NWlifKazPFNbvrpvtoJv22m546b1Vv3vJW+/pn54Nb3W/rzfDS801CNP2t/1fbOt+Du/GF/+lu/YP6ue47XYPBjqMj5di1fUGkFH3PF2MVd+DMug4/b+gGGt9BEY98GxBVv0AjHrk0ZKsR2CUWS/H6m64zHpYwCizHhYwyqyHBYwy62EBo8x6WMAosx4WMMqshwWMMuthAaPMeljAKLMeFjDKrIcFjDLrYQGjzHpYwCizHhYwyqyHBYwy62EBo8x6WMAosx4WMMqshwWMMuthAaPMeljAKLMeFjDKrIcFjDLrYQGjzHpYwCizHhYwyqyHBYwy62EBo8x6WMAosx4WMMqshwWMMuthAaPMeljAKLMeFjDKrIcFjDLrYQGjzHpYwKjvPFqS9QMY9cSjJVlPwAx65tlyrGdQhu1feLoU6+XDpzF+vuJ4Idbrn79ZbcvD2+h8Edbb4YRnd0dPu3dPSJgH4P+27nGl4/RSSimllFJKKc3VLyXhNx4FpV0aAAAAAElFTkSuQmCC"/>
+                        </defs>
                     </svg>
                 </span>
                 <span class="header-title">BEST SHOP</span>
@@ -38,14 +44,14 @@
                 <ul class="user-nav-icons">
                     <li>
                         <a href="#">
-                            <svg class="user-nav-item">
-                                <use href="/dist/assets/sprites/sprite.svg#user"></use>
+                            <svg class="user-nav-item" width="30" height="33">
+                                <use href="#user"></use>
                             </svg>
                         </a>
                     </li>
                     <li>
                         <a href="/dist/pages/cart.html" class="header-cart-link">
-                            <svg class="user-nav-item">
+                            <svg class="user-nav-item" width="34" height="33">
                                 <use href="#shopping-cart" ></use>
                             </svg>
                             <span class="header-cart-counter"></span>
@@ -53,8 +59,14 @@
                     </li>
                 </ul>
             </nav>
+            <button class="burger" aria-label="Open menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
         <nav class="main-nav">
+            <button class="close-menu" aria-label="Close menu">&times;</button>
             <ul class="main-nav_list">
                 <li><a href="/dist/index.html" class="main-nav_item">Home</a></li>
                 <li><a href="/dist/pages/catalog.html" class="main-nav_item main-nav_catalog-item">Catalog</a></li>
@@ -88,4 +100,5 @@
             <button type="submit" class="main-button login-form-button">LOG IN</button>
         </form>
     </div>
-</header>
+
+</header></header>
