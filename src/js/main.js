@@ -1,4 +1,5 @@
 import { addToCart } from './cartManager.js';
+import { showNotification } from './utilities/notificationManager.js';
 
 // --- Pure helpers ---
 function filterBySize(products, size) {
@@ -130,7 +131,7 @@ export function SetOfProducts(config) {
         filteredProducts = pickRandom(filteredProducts, state.randomCount);
 
         if (filteredProducts.length === 0) {
-            showNotification('No products found for the entered search term.');
+            showNotification('No products found for the entered search term.', resetProducts);
             return document.createDocumentFragment();
         }
 
@@ -222,33 +223,6 @@ export function SetOfProducts(config) {
         }
     }
 
-    function showNotification(message) {
-        const notification = document.createElement('div');
-        notification.classList.add('notification-modal');
-        notification.innerHTML = `
-            <span class="notification-message">${message}</span>
-            <button class="notification-close">&times;</button>
-        `;
-        document.body.appendChild(notification);
-
-        const btnPrev = document.querySelector('.btn-prev');
-        const btnNext = document.querySelector('.btn-next');
-        const pageButtonsContainer = document.querySelector('.page-buttons');
-        if (btnPrev) btnPrev.style.visibility = 'hidden';
-        if (btnNext) btnNext.style.visibility = 'hidden';
-        if (pageButtonsContainer) pageButtonsContainer.style.visibility = 'hidden';
-
-        notification.querySelector('.notification-close').addEventListener('click', () => {
-            notification.remove();
-            if (btnPrev) btnPrev.style.visibility = 'visible';
-            if (btnNext) btnNext.style.visibility = 'visible';
-            if (pageButtonsContainer) pageButtonsContainer.style.visibility = 'visible';
-            const searchInput = document.querySelector('.search-form input[type="search"]');
-            if (searchInput) searchInput.value = '';
-            resetProducts();
-        });
-    }
-
     async function findProductByName(name) {
         const getProductsResponse = await fetch('/dist/assets/data.json');
         if (!getProductsResponse.ok) return null;
@@ -266,7 +240,6 @@ export function SetOfProducts(config) {
         resetProducts,
         rerenderProducts,
         findProductByName,
-        showNotification,
         updateProductCountDisplay,
         get currentPage() { return state.currentPage; },
         set currentPage(val) { state.currentPage = val; },

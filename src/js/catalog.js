@@ -1,4 +1,5 @@
 import { SetOfProducts } from './main.js';
+import { showNotification } from './utilities/notificationManager.js';
 
 document.querySelectorAll('.custom-select').forEach(wrapper => {
   const display = wrapper.querySelector('.select-display');
@@ -87,9 +88,8 @@ document.querySelector('.search-form').addEventListener('submit', async (event) 
             localStorage.setItem('selectedProduct', JSON.stringify(foundProduct));
             window.location.href = '/dist/pages/product-details-template.html';
             return;
-        }
-        else  {
-            catalogProducts.showNotification('No products found for the entered search term.');
+        } else {
+            showNotification('No products found for the entered search term.');
         }
               
     }
