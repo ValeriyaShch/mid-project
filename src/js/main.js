@@ -116,9 +116,17 @@ export function SetOfProducts(config) {
         let filteredProducts = [];
         const fragment = document.createDocumentFragment();
 
-        const getProductsResponse = await fetch('/dist/assets/data.json');
-        if (!getProductsResponse.ok) throw new Error(`HTTP error! status: ${getProductsResponse.status}`);
-        const products = await getProductsResponse.json();
+        let products;
+        try {
+            const getProductsResponse = await fetch('/dist/assets/data.json');
+            if (!getProductsResponse.ok) throw new Error(`HTTP error! status: ${getProductsResponse.status}`);
+            products = await getProductsResponse.json();
+        } catch (error) {
+            showNotification('Failed to load products. Please try again later.');
+            console.error('Product fetch error:', error);
+            return fragment; // Return empty fragment on error
+        }
+
         filteredProducts = (state.productBlock && state.productBlock !== 'all')
             ? products.data.filter(product => product.blocks.includes(state.productBlock))
             : products.data;

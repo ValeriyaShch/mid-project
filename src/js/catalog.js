@@ -145,9 +145,11 @@ document.querySelector('.btn-hide').addEventListener('click', () => {
 });
 
 export function bestSets() {
-  // Fetch products from data.json
   fetch('/dist/assets/data.json')
-      .then(response => response.json())
+      .then(response => {
+          if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+          return response.json();
+      })
       .then(products => {
         
           const luggageSets = products.data.filter(product => product.category === 'luggage sets');
@@ -162,7 +164,10 @@ export function bestSets() {
               topSetsSection.appendChild(productFragment);
           });
       })
-      .catch(error => console.error('Error fetching products:', error));
+      .catch(error => {
+          showNotification('Failed to load top sets. Please try again later.');
+          console.error('Top sets fetch error:', error);
+      });
 
   // Inner function to create a product fragment
   function createProductFragment(product) {
