@@ -1,102 +1,109 @@
 .filter-bar {
-    @include flex-between;
-    margin-top: 60px;
-    margin-bottom: 60px;
+  @include flex-between;
 
-    @include vieport-md {
-      @include flex-col(20px);
-      align-items: stretch;
-    }
+  margin-top: 60px;
+  margin-bottom: 60px;
+
+  @include vieport-md {
+    @include flex-col(20px);
+
+    align-items: stretch;
+  }
 }
 
 .user-panel{
-    display: flex;
-    gap: 50px;
+  display: flex;
+  gap: 50px;
 
-    @include vieport-lg {
-        @include flex-col(20px);
-    }
+  @include vieport-lg {
+    @include flex-col(20px);
+  }
 }
 
 .results-count {
-    @include info($size: 16px);
+  @include info($size: 16px);
 }
 
 .sorting-field {
-    padding: 10px 65px 10px 15px;
-    @include info($size: 16px);
-    border: 2px solid $light-grey;
-    cursor: pointer;
-    appearance: none;
+  padding: 10px 65px 10px 15px;
 
-    &:focus {
-        outline: none;
-        border-color: $main-color;
-      }
+  @include info($size: 16px);
 
-     @include vieport-lg {
-      width: 100%; 
+  border: 2px solid $light-grey;
+  cursor: pointer;
+  appearance: none;
+
+  &:focus {
+    outline: none;
+    border-color: $main-color;
+  }
+
+  @include vieport-lg {
+    width: 100%; 
+  }
 }
-}
+
 .sorting-field option:checked {
   background: lighten($main-color, 40%);
   color: $main-color;
 }
 
 .sorting-container {
-    position: relative;
+  position: relative;
 }
 
 .sorting-container::after {
-    content: "";
-    position: absolute;
-    top: 18px;
-    right: 15px;
-    width: 7px;
-    height: 7px;
-    border-bottom: 1.5px solid $grey-color;
-    border-right: 1.5px solid $grey-color;
-    transform: rotate(50deg);
+  content: "";
+  position: absolute;
+  top: 18px;
+  right: 15px;
+  width: 7px;
+  height: 7px;
+  border-bottom: 1.5px solid $grey-color;
+  border-right: 1.5px solid $grey-color;
+  transform: rotate(50deg);
 }
 
 .search-form {
-    position: relative;
-    display: flex;
+  position: relative;
+  display: flex;
+  width: 100%;
+
+  input {
     width: 100%;
+    border: 2px solid $light-grey;
+    padding: 10px 210px 10px 15px;
 
-    input {
-        width: 100%;
-        border: 2px solid $light-grey;
-        padding: 10px 210px 10px 15px;
-
-        &::-webkit-search-cancel-button {
-            display: none;
-        }
-
-        &::placeholder {
-            @include info($size: 16px);
-        }
-
-        &:focus {
-            outline: none;
-            border-color: $main-color;
-          }
+    &::-webkit-search-cancel-button {
+      display: none;
     }
+
+    &::placeholder {
+      @include info($size: 16px);
+    }
+
+    &:focus {
+      outline: none;
+      border-color: $main-color;
+    }
+  }
 }
 
 .search-button {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    @include flex-center;
-    transform: translateY(-50%);
-    cursor: pointer;
-    flex-shrink: 0;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+
+  @include flex-center;
+
+  transform: translateY(-50%);
+  cursor: pointer;
+  flex-shrink: 0;
 }
 
 .search-icon {
-    width: 17px;
-    height: 17px;
+  width: 17px;
+  height: 17px;
 }
 
 .filters {
@@ -107,12 +114,13 @@
       gap: 25px;
       border-top: 2px solid $main-color;
       border-bottom: 2px solid $main-color;
-      padding: 20px 10px 35px 10px;
+      padding: 20px 10px 35px;
       margin-bottom: 60px;
 
       @include vieport-lg {
         grid-template-columns: repeat(2, 1fr);
       }
+
       @include vieport-md {
         grid-template-columns: 1fr;
       }
@@ -137,6 +145,7 @@
 
           .select-display {
             @include info($size: 16px);
+
             padding: 10px 15px;
             position: relative;
           }
@@ -169,7 +178,9 @@
 
             li {
               padding: 10px 15px;
+
               @include info($size: 16px);
+
               cursor: pointer;
 
               &:hover {
@@ -191,7 +202,7 @@
           background: black;
           appearance: none;
           cursor: pointer;
-          border: 5px solid #D9D9D9;
+          border: 5px solid #d9d9d9;
 
           &:checked {
             background-color: $main-color;
@@ -212,49 +223,45 @@
   @include button-padding(20px, 50px);
 }
   
-  .catalog-layout {
-    display: flex;
-    gap: 50px;
+.catalog-layout {
+  display: flex;
+  gap: 50px;
 
-    @include vieport-lg {
-      @include flex-col;
-    }
+  @include vieport-lg {
+    @include flex-col;
+  }
+}
+
+.products {
+  flex: 1;
+  margin-bottom: 120px;
+
+  @include vieport-lg {
+    width: 100%;
+  }
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 50px 11px;
+  align-items: stretch;
+  margin-bottom: 60px;
+
+  @include vieport-lg {
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  .products {
-    flex: 1;
-    margin-bottom: 120px;
-
-    @include vieport-lg {
-      width: 100%;
-    }
+  @include vieport-md {
+    grid-template-columns: 1fr;
   }
+}
 
-  .product-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 50px 11px;
-    align-items: stretch;
-    margin-bottom: 60px;
+.sidebar {
+  flex: 0 0 339px;
+  max-width: 339px;
+}
 
-    @include vieport-lg {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    @include vieport-md {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  .sidebar {
-    flex: 0 0 339px;
-    max-width: 339px;
-
-    // @include vieport-lg {
-    //   flex:1 1 auto;
-    //   max-width: 100%;
-    // } 
-  }
 .top-sets {
   @include vieport-lg {
     @include grid-cols(4, 30px);
@@ -263,6 +270,7 @@
 
 .top-set-title {
   @include mont-bold($size: 17px);
+
   margin-bottom: 23px;
 }
 
@@ -271,8 +279,8 @@
   gap: 20px;
   margin-bottom: 25px;
 
-   @include vieport-lg {
-   @include flex-col(10px);
+  @include vieport-lg {
+    @include flex-col(10px);
   }
 }
 
@@ -292,126 +300,131 @@
     object-fit: cover;
   }
 }
-  .top-set-info {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    justify-content: space-between;
-  }
 
-  .top-set-desc {
-    @include info(black, 15px)
-  }
-
-  .top-set-rating {
-    display:flex;
-    align-items: center;
-    gap: 6px;
-
-    .star-icon {
-      width: 12px;
-      height: 12px;
-    }
-  }
-
-
-  .top-set-price {
-    @include info(black, 15px)
-  }
-
-.pagination {
-    display: flex;
-    align-items: center;
-    position: relative; 
-    margin-top: 20px; 
-    
-
-    .btn-prev {
-        position: absolute;
-        left: 0; 
-    }
-
-    .btn-next {
-        position: absolute;
-        right: 0; 
-    }
-
-    .page-buttons {
-        display: flex;
-        gap: 5px;
-        justify-content: center; 
-        flex: 1; 
-    }
+.top-set-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: space-between;
 }
 
+.top-set-desc {
+  @include info(black, 15px)
+  }
+
+.top-set-rating {
+  display:flex;
+  align-items: center;
+  gap: 6px;
+
+  .star-icon {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+
+.top-set-price {
+  @include info($black, 15px)
+  }
+
 .page-button {
-    @include button-padding(10px, 17px);
-    cursor: pointer;
-    border-radius: 8px;
-    font-size: 15px;
-    background: $white-color;
+  @include button-padding(10px, 17px);
 
-    &.active {
-        background: $main-color;
-        color: $white-color;
-    }
+  cursor: pointer;
+  border-radius: 8px;
+  font-size: 15px;
+  background: $white-color;
 
-    &:hover {
-        background: lighten($main-color, 20%);
-        color: $white-color;
-    }
+  &.active {
+    background: $main-color;
+    color: $white-color;
+  }
+
+  &:hover {
+    background: lighten($main-color, 20%);
+    color: $white-color;
+  }
+}
+
+.btn-prev {
+  position: absolute;
+  left: 0;
+}
+
+.btn-next {
+  position: absolute;
+  right: 0;
 }
 
 .btn-prev,
 .btn-next {
-    @include button-padding(13px, 20px);
-    cursor: pointer;
-    border-radius: 8px;
-    border: 2px solid $main-color;
-    background: $white-color;
-    @include mont-bold($size: 11px);
+  @include button-padding(13px, 20px);
 
-    &:hover {
-        background: lighten($main-color, 20%);
-        color: $white-color;
-    }
+  cursor: pointer;
+  border-radius: 8px;
+  border: 2px solid $main-color;
+  background: $white-color;
+
+  @include mont-bold($size: 11px);
+
+  &:hover {
+    background: lighten($main-color, 20%);
+    color: $white-color;
+  }
 }
 
 .btn-next::after {
-    content: ">";
-    margin-left: 6px;
+  content: ">";
+  margin-left: 6px;
 }
 
 .btn-prev::before {
-    content: "<";
-    margin-right: 6px;
+  content: "<";
+  margin-right: 6px;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-top: 20px;
+
+
+  .page-buttons {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    flex: 1;
+  }
 }
 
 .notification-modal {
-    position: fixed;
-    top: 10px;
-    left: 50%; 
-    transform: translate(-50%, 0);
-    background-color: $main-color;
+  position: fixed;
+  top: 10px;
+  left: 50%; 
+  transform: translate(-50%, 0);
+  background-color: $main-color;
+  color: $white-color;
+  padding: 15px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgb(0 0 0 / 10%);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  .notification-message {
+    flex: 1;
+
+    @include mont-bold($white-color, 18px);
+  }
+
+  .notification-close {
+    background: none;
+    border: none;
     color: $white-color;
-    padding: 15px 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-
-    .notification-message {
-        flex: 1;
-        @include mont-bold($white-color, 18px);
-    }
-
-    .notification-close {
-        background: none;
-        border: none;
-        color: $white-color;
-        font-size: 18px;
-        cursor: pointer;
-    }
+    font-size: 18px;
+    cursor: pointer;
+  }
 }

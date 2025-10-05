@@ -1,11 +1,10 @@
 .main-button {
-    color: $white-color;
-    font-family: "Montserrat";
-    font-weight: 700;
-    background: $main-color;
-    cursor: pointer;
+  @include mont-bold($color: $white-color);
+  
+  background: $main-color;
+  cursor: pointer;
      
-    &:hover {
-        background: darken($main-color, 10%);
-       }
+  &:hover {
+    background: darken($main-color, 10%);
+  }
 }

@@ -5,11 +5,13 @@
     @content;
   }
 }
+
 @mixin vieport-lg {
   @media (max-width: $breakpoint-lg) {
     @content;
   }
 }
+
 @mixin vieport-xl {
   @media (min-width: $breakpoint-xl) {
     @content;
@@ -40,27 +42,27 @@
   gap: $gap;
 }
 
-@mixin title ($color: black, $size: 40px) {
-  font-family: 'Montserrat-ExtraBold';
+@mixin title ($color: $black, $size: 40px) {
+  font-family: Montserrat-ExtraBold, sans-serif;
   font-weight: 900;
   font-size: $size;
   color: $color;
 }
 
 @mixin info ($color: $grey-color, $size: 17px) {
-  font-family: "Montserrat-Regular";
-    font-weight: 400;
-    font-size: $size;
-    color: $color;
-    line-height: 1.5;
+  font-family: Montserrat-Regular, sans-serif;
+  font-weight: 400;
+  font-size: $size;
+  color: $color;
+  line-height: 1.5;
 }
 
-@mixin mont-bold ($color: black, $size: 18px) {
-  font-family: "Montserrat";
-    font-weight: 700;
-    font-size: $size;
-    color: $color;
-    line-height: 1.5;
+@mixin mont-bold ($color: $black, $size: 18px) {
+  font-family: Montserrat, sans-serif;
+  font-weight: 700;
+  font-size: $size;
+  color: $color;
+  line-height: 1.5;
 }
 
 @mixin button-padding($vertical: 20px, $horisontal: 20px) {

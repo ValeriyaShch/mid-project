@@ -1,24 +1,27 @@
 .hidden {
-    position: absolute;
-    z-index: -100;
-    opacity: 0;
-    width: 0;
-    height: 0;
+  position: absolute;
+  z-index: -100;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.container {
+  padding: 0 30px;
+  margin: 0 auto;
+
+  @include vieport-md {
+    padding: 0 15px;
+    max-width: 738px;
   }
 
-  .container {
-    padding: 0 30px;
-    margin: 0 auto;
-    @include vieport-md {
-      padding: 0 15px;
-      max-width: 738px;
-    }
-    @include vieport-lg {
-      max-width: 964px;
-    }
-    @include vieport-xl {
-      max-width: 1380px;
-    }
+  @include vieport-lg {
+    max-width: 964px;
   }
+
+  @include vieport-xl {
+    max-width: 1380px;
+  }
+}
 
   

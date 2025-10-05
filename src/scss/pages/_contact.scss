@@ -1,66 +1,73 @@
 .contact-header {
-    background: linear-gradient(rgba( 0, 0, 0, 0.4)), url(../assets/images/contact-banner.png);
-    padding: 85px 0;
-    background-size: cover;
-    margin-bottom: 130px;
-    height: 550px;
-    @include flex-center;
-    text-align: center;
+  background: linear-gradient(rgb( 0 0 0 / 40%)), url("../assets/images/contact-banner.png");
+  padding: 85px 0;
+  background-size: cover;
+  margin-bottom: 130px;
+  height: 550px;
+
+  @include flex-center;
+
+  text-align: center;
     
-    .contact-title {
-        @include mont-bold($white-color, 50px);
-        margin-bottom: 20px;
-    }
-    .contact-subtitle {
-        @include info($color: $white-color);
-    }
+  .contact-title {
+    @include mont-bold($white-color, 50px);
+
+    margin-bottom: 20px;
+  }
+
+  .contact-subtitle {
+    @include info($color: $white-color);
+  }
 }
 
 
 
 .contact-info {
   @include flex-between;
-    margin-bottom: 130px;
+
+  margin-bottom: 130px;
   
 
   .contact-info-card {
     @include flex-center;
+
     flex-direction: column;
     gap: 20px;
     text-align: center;
     
     .contact-info-bg {
-         width: 62px;
-         height: 62px;
-         background: $main-color;
+      width: 62px;
+      height: 62px;
+      background: $main-color;
          
-         @include flex-center;
+      @include flex-center;
 
-         .contact-info-icon {
-            fill: $white-color;
-         }
+      .contact-info-icon {
+        fill: $white-color;
+      }
     }
+
     .contact-info-title {
-        @include mont-bold($size: 20px);
+      @include mont-bold($size: 20px);
     }
+
     .contact-info-details {
-        @include info($color: black);
-   }
- }
+      @include info($color: black);
+    }
+  }
 }
 
 .contact-form {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 40px;
-  
   margin-bottom: 120px;
 
   .contact-form-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    box-shadow: 0px 20px 80px 0px rgba(193, 199, 212, 0.3);
+    box-shadow: 0 20px 80px 0 rgb(193 199 212 / 30%);
   }
 
   .contact-form-content {
@@ -70,11 +77,13 @@
 
     .contact-form-title {
       @include mont-bold($size: 25px);
+
       margin-bottom: 35px;
     }
 
     .contact-form-subtitle {
       @include info($color: black);
+
       margin-bottom: 70px;
     }
 
@@ -83,64 +92,66 @@
       flex-direction: column;
 
       .contact-form-field {
-          display: flex;
-          flex-direction: column;
-          gap: 8px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
 
-          .contact-form-label {
-              @include mont-bold;
+        .contact-form-label {
+          @include mont-bold;
 
-              .contact-form-required {
-                color: $main-color;
-              }
-          }
-
-          .contact-form-input {
-            height: 40px;
-            margin-bottom: 30px;
-          }
-
-          .contact-form-textarea {
-            height: 115px;
-            margin-bottom: 20px;
-          }
-
-          .contact-form-input, .contact-form-textarea {
-            padding: 0 15px;
-            width: 100%;
-            border: 2px solid rgba($main-color, 0.5);
-
-            &:focus {
-              border-color: $main-color;
-              outline: none;
-            }
+          .contact-form-required {
+            color: $main-color;
           }
         }
-        .contact-form-actions {
-          display: flex;
-          align-items: center;
-          gap: 20px;
 
-          .contact-form-submit {
-            @include button-padding(13px, 30px);
-            @include mont-bold($white-color, 12px);
-            align-self: flex-start;
+        .contact-form-input {
+          height: 40px;
+          margin-bottom: 30px;
+        }
 
-            &:hover {
-              background: darken($main-color, 10%);
-            }
+        .contact-form-textarea {
+          height: 115px;
+          margin-bottom: 20px;
+        }
+
+        .contact-form-input, .contact-form-textarea {
+          padding: 0 15px;
+          width: 100%;
+          border: 2px solid rgba($main-color, 0.5);
+
+          &:focus {
+            border-color: $main-color;
+            outline: none;
           }
+        }
+      }
 
-          .contact-us-message {
-            color: rgba($main-color, 0.9); // matches input border color
-            font-size: 16px;
-            margin-left: 10px;
-            transition: opacity 0.9s;
+      .contact-form-actions {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+
+        .contact-form-submit {
+          @include button-padding(13px, 30px);
+          @include mont-bold($white-color, 12px);
+
+          align-self: flex-start;
+
+          &:hover {
+            background: darken($main-color, 10%);
           }
+        }
+
+        .contact-us-message {
+          color: rgba($main-color, 0.9);
+          font-size: 16px;
+          margin-left: 10px;
+          transition: opacity 0.9s;
         }
       }
     }
   }
+}
   
 
 

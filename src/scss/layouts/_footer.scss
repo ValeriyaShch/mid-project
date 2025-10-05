@@ -1,151 +1,161 @@
 .benefits-section {
-    background-image: url(/dist/assets/images/footer-bg.png);
-    background-repeat: repeat-x;
-    padding: 40px 0 50px 0;
-    margin-bottom: 120px;
-    background-size: cover;
+  background-image: url("/dist/assets/images/footer-bg.png");
+  background-repeat: repeat-x;
+  padding: 40px 0 50px;
+  margin-bottom: 120px;
+  background-size: cover;
 
-    @include vieport-lg {
-        background-position: center;
-        margin-bottom: 60px;
-    }
+  @include vieport-lg {
+    background-position: center;
+    margin-bottom: 60px;
+  }
 
-    @include vieport-md {
-        background: $grey-color;
-    }
+  @include vieport-md {
+    background: $grey-color;
+  }
 }
 
 .benefits-title {
-    @include mont-bold($white-color, 23px);
-    margin-bottom: 32px;
+  @include mont-bold($white-color, 23px);
 
-    @include vieport-lg {
-        text-align: center;
-    }
+  margin-bottom: 32px;
+
+  @include vieport-lg {
+    text-align: center;
+  }
 }
 
 .benefits-list {
-    @include flex-between;
-    gap: 90px;
+  @include flex-between;
 
-    @include vieport-lg {
-        gap: 50px;
-    };
+  gap: 90px;
 
-    @include vieport-md {
-        flex-direction: column;
-        gap: 30px;
-    }
+  @include vieport-lg {
+    gap: 50px;
+  }
+
+  @include vieport-md {
+    flex-direction: column;
+    gap: 30px;
+  }
 }
 
 .benefits-item {
-    @include flex-center;
-    gap: 20px;
+  @include flex-center;
 
-    @include vieport-lg {
-        flex-direction: column;
-        text-align: center;
-    }
+  gap: 20px;
+
+  @include vieport-lg {
+    flex-direction: column;
+    text-align: center;
+  }
 }
 
 .benefits-desc {
-    @include info($white-color, 15px);
+  @include info($white-color, 15px);
 }
 
 .footer-container {
-    @include flex-between;
-    align-items: start;
-    gap: 20px;
+  @include flex-between;
 
-    @include vieport-lg {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
+  align-items: start;
+  gap: 20px;
+
+  @include vieport-lg {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
 }
 
 .footer-info {
-    max-width: 640px;
+  max-width: 640px;
 }
 
 .footer-links {
-    @include flex-between;
+  @include flex-between;
+
+  margin-bottom: 50px;
 }
+
 .footer-contacts {
-    max-width: 375px;
-    @include flex-between;
-    flex-direction: column;
+  max-width: 375px;
+
+  @include flex-between;
+
+  flex-direction: column;
 }
 
 .footer-title {
-    @include mont-bold($size: 13px);
-    margin-bottom: 25px;
+  @include mont-bold($size: 13px);
 
-    @include vieport-lg {
-        margin-bottom: 15px;
-    }
+  margin-bottom: 25px;
+
+  @include vieport-lg {
+    margin-bottom: 15px;
+  }
 }
 
 .footer-title a{
-    text-decoration: none;
-    color: $black;
-    cursor: pointer;
-}
-
-.footer-links {
-    margin-bottom: 50px;
+  text-decoration: none;
+  color: $black;
+  cursor: pointer;
 }
 
 .footer-link {
-    @include info($black, 13px);
-    margin-bottom: 12px;
+  @include info($black, 13px);
+
+  margin-bottom: 12px;
 }
 
 .footer-link a {
-    text-decoration: none;
-    color: $black;
+  text-decoration: none;
+  color: $black;
 }
 
 .footer-desc {
-    @include info($black, 13px);
-   margin-bottom: 100px;
-   line-height: 2.0;
+  @include info($black, 13px);
 
-   @include vieport-lg {
-       margin-bottom: 30px;
-   }
+  margin-bottom: 100px;
+  line-height: 2.0;
+
+  @include vieport-lg {
+    margin-bottom: 30px;
+  }
 }
 
 .footer-contacts-list {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
 
-    @include vieport-lg {
-        margin-bottom: 50px;
-    }
+  @include vieport-lg {
+    margin-bottom: 50px;
+  }
 }
 
 .footer-contacts-list li {
-    display: flex;
-    align-items: center;
-    @include info($black, 13px);
-    text-decoration: none;
+  display: flex;
+  align-items: center;
+
+  @include info($black, 13px);
+
+  text-decoration: none;
 }
 
 .footer-contacts-list li a {
-    text-decoration: none;
-    color: $black;
+  text-decoration: none;
+  color: $black;
 }
 
 .working-hours {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .contacts-icon {
-    fill: $main-color;
-    flex-shrink: 0;
-    margin-right: 8px; 
+  fill: $main-color;
+  flex-shrink: 0;
+  margin-right: 8px; 
 }

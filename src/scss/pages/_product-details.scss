@@ -1,407 +1,405 @@
 .product-details-card {
-    @include grid-cols(2, 40px);
-    margin-bottom: 80px;
+  @include grid-cols(2, 40px);
 
-    @include vieport-lg {
-        @include grid-cols(1, 40px);
-        margin-bottom: 50px;
-    }
+  margin-bottom: 80px;
 
-    .product-gallery {
-        @include flex-col(10px);
+  @include vieport-lg {
+    @include grid-cols(1, 40px);
+
+    margin-bottom: 50px;
+  }
+
+  .product-gallery {
+    @include flex-col(10px);
 
        
 
-        .product-details-image {
-            width: 100%;
-            object-fit: contain;
+    .product-details-image {
+      width: 100%;
+      object-fit: contain;
 
-            @include vieport-lg {
-                height: 500px;
-            }
-        }
-
-        .product-thumbnails {
-            @include flex-center;
-            gap: 15px;
-
-            .thumb {
-                 object-fit: cover;
-            }
-        } 
+      @include vieport-lg {
+        height: 500px;
+      }
     }
+
+    .product-thumbnails {
+      @include flex-center;
+
+      gap: 15px;
+
+      .thumb {
+        object-fit: cover;
+      }
+    } 
+  }
 }
 
 .product-details-info {
-    @include flex-col;
-    justify-content: space-between;
+  @include flex-col;
 
-    @include vieport-lg {
-        align-items: center;
-        text-align: center;
-    }
+  justify-content: space-between;
+
+  @include vieport-lg {
+    align-items: center;
+    text-align: center;
+  }
     
-    .product-details-title {
-        @include mont-bold($size: 30px);
-        margin-bottom: 16px;
-    }
+  .product-details-title {
+    @include mont-bold($size: 30px);
 
-    .card-details-rating {
-        margin-bottom: 15px;
-    }
+    margin-bottom: 16px;
+  }
 
-    .clients-review-counter {
-        @include info($size: 13px);
-    }
+  .card-details-rating {
+    margin-bottom: 15px;
+  }
 
-    .product-details-price {
-        @include mont-bold($size: 20px);
-        margin-bottom: 40px;
-    }
+  .clients-review-counter {
+    @include info($size: 13px);
+  }
 
-    .product-details-desc {
-        @include info;
-    }
+  .product-details-price {
+    @include mont-bold($size: 20px);
 
-    .product-details-desc + .product-details-desc {
-        margin-top: 40px;
-        margin-bottom: 70px;
-    }
+    margin-bottom: 40px;
+  }
 
-    .product-details-options {
+  .product-details-desc {
+    @include info;
+  }
+
+  .product-details-desc + .product-details-desc {
+    margin-top: 40px;
+    margin-bottom: 70px;
+  }
+
+  .product-details-options {
+    @include vieport-lg {
+      width: 100%;
+    }
+  }
+
+  .filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+    margin-bottom: 30px;
+          
+    label {
+      @include mont-bold($grey-color, 17px);
+    }
+          
+    select {
+      @include info($size: 16px);
+
+      border: 2px solid $light-grey;
+      padding: 10px 15px;
+
       @include vieport-lg {
         width: 100%;
       }
-    }
+          
+      &:focus {
+        outline: none;
+        border-color: $main-color;
+      }
+    } 
+  }
 
-    .filter-group {
-                  display: flex;
-                  flex-direction: column;
-                  gap: 13px;
-                  margin-bottom: 30px;
-          
-                  label {
-                    @include mont-bold($grey-color, 17px);
-                  }
-          
-                  select {
-                    @include info($size: 16px);
-                    border: 2px solid $light-grey;
-                    padding: 10px 15px;
-
-                    @include vieport-lg {
-                        width: 100%;
-                    }
-          
-                    &:focus {
-                      outline: none;
-                      border-color: $main-color;
-                    }
-                  } 
-                 }
-    .product-details-quantity {
-        display: flex;
-        gap: 13px;
-        margin-top: 50px;
-        margin-bottom: 60px;
+  .product-details-quantity {
+    display: flex;
+    gap: 13px;
+    margin-top: 50px;
+    margin-bottom: 60px;
     
 
-        .quantity-controls {
-            display: flex;
-            align-items: center;
-            border: 2px solid $main-color;
+    .quantity-controls {
+      display: flex;
+      align-items: center;
+      border: 2px solid $main-color;
             
-            .qty-btn {
-                @include mont-bold($grey-color, 25px);
-                border: none;
-                padding: 12px 20px;
-                cursor: pointer;
+      .qty-btn {
+        @include mont-bold($grey-color, 25px);
 
-                &:hover {
-                    background-color: darken($light-grey, 10%);
-                }
-            }
+        border: none;
+        padding: 12px 20px;
+        cursor: pointer;
 
-            input[type="number"] {
-                width: 50px;
-                text-align: center;
-                border: none;
-                @include mont-bold($grey-color, 25px);
+        &:hover {
+          background-color: darken($light-grey, 10%);
+        }
+      }
+
+      input[type="number"] {
+        width: 50px;
+        text-align: center;
+        border: none;
+
+        @include mont-bold($grey-color, 25px);
 
             
 
-               &::-webkit-outer-spin-button,
-               &::-webkit-inner-spin-button {
-               -webkit-appearance: none;
-                margin: 0;
-               }
-            }
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+          appearance: none;
+          margin: 0;
         }
-
-        .add-to-cart {
-            flex: 1; 
-        }
+      }
     }
-    .payment-options {
-        display: flex;
-        align-items: center;
-        gap: 20px;
 
-        .payment-info {
-            @include mont-bold($grey-color, 23px);
-            
-        }
+    .add-to-cart {
+      flex: 1; 
     }
+  }
+
+  .payment-options {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    .payment-info {
+      @include mont-bold($grey-color, 23px);
+            
+    }
+  }
 }
 
 .product-tabs {
-    margin-bottom: 100px;
+  margin-bottom: 100px;
 
-    @include vieport-lg {
-        margin-bottom: 60px;
-    }
+  @include vieport-lg {
+    margin-bottom: 60px;
+  }
     
-    .tab-list {
-        @include flex-center;
-        gap: 120px;
-        margin-bottom: 30px;
+  .tab-list {
+    @include flex-center;
 
-        .tab {
-            @include mont-bold($size: 17px);
-            cursor: pointer;
+    gap: 120px;
+    margin-bottom: 30px;
 
-            &.active {
-                border-bottom: 2px solid $main-color;
-            }
-        }
+    .tab {
+      @include mont-bold($size: 17px);
+
+      cursor: pointer;
+
+      &.active {
+        border-bottom: 2px solid $main-color;
+      }
     }
+  }
 
-    .tab-content {
-        .tab-panel {
-            display:none;
+  .tab-content {
+    .tab-panel {
+      display:none;
 
-            .tab-text {
-                @include info;
+      .tab-text {
+        @include info;
 
-                & + .tab-text {
-                    margin-top: 30px;
-                }
-            }
-
-            &.active {
-                display: block;
-            }
+        & + .tab-text {
+          margin-top: 30px;
         }
+      }
+
+      &.active {
+        display: block;
+      }
     }
+  }
 }
 
 .may-like-products {
-    margin-bottom: 100px;
-    text-align: center;
+  margin-bottom: 100px;
+  text-align: center;
 
-    @include vieport-lg {
-        margin-bottom: 60px;
-    }
-    .may-like-title {
-        @include mont-bold($size: 30px);
-        display: inline-block;
-        border-bottom: 2px solid $main-color;
-        margin-bottom: 60px;
-    }
-    .product-container {
-      @include grid-cols(4, 30px);
+  @include vieport-lg {
+    margin-bottom: 60px;
+  }
+
+  .may-like-title {
+    @include mont-bold($size: 30px);
+
+    display: inline-block;
+    border-bottom: 2px solid $main-color;
+    margin-bottom: 60px;
+  }
+
+  .product-container {
+    @include grid-cols(4, 30px);
         
-        @include vieport-lg {
-            @include grid-cols(2, 20px);
-        }
-
-        @include vieport-md {
-            grid-template-columns: 1fr;
-        }
+    @include vieport-lg {
+      @include grid-cols(2, 20px);
     }
+
+    @include vieport-md {
+      grid-template-columns: 1fr;
+    }
+  }
 }
 
 
 
   
-  .reviews-container {
-    @include grid-cols(2, 145px);
+.reviews-container {
+  @include grid-cols(2, 145px);
      
-    @include vieport-lg {
-        @include grid-cols(1, 60px);
-    }
+  @include vieport-lg {
+    @include grid-cols(1, 60px);
   }
+}
 
-  .review-product-info {
-    @include mont-bold($size: 18px);
-    margin-bottom: 90px;
-  }
+.review-product-info {
+  @include mont-bold($size: 18px);
+
+  margin-bottom: 90px;
+}
   
-  .review {
-    display: flex;
-    gap: 25px;
+.review {
+  display: flex;
+  gap: 25px;
     
   
-    .review-header {
-      @include flex-between;
+  .review-header {
+    @include flex-between;
       
-      margin-bottom: 29px;
+    margin-bottom: 29px;
 
-      .review-author-info {
-        @include flex-center;
-        gap: 18px;
+    .review-author-info {
+      @include flex-center;
 
-        .review-author {
-          @include mont-bold($grey-color, 17px);
-        }
-    
-        time {
-          @include info($size: 13px);
-        }
+      gap: 18px;
+
+      .review-author {
+        @include mont-bold($grey-color, 17px);
       }
-  
-      .review-stars {
-        display: flex;
-        gap: 4px;
-  
-        svg {
-          width: 16px;
-          height: 15px;
-        }
-      }
-    }
-  
-    .review-text {
-      @include info($color: black);
-    }
-  }
-  
-  .review-form {
-    display: flex;
-    flex-direction: column;
     
-    .form-title {
-      @include mont-bold($size: 18px);
-      margin-bottom: 20px;
-    }
-
-    .form-note {
-      @include info(black, 13px);
-      margin-bottom: 30px;
-
-      span {
-        color: $main-color;
-      }
-    }
-
-    .rating-group {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      margin-bottom: 30px;
-
-      .rate-product {
-        @include mont-bold($size: 13px);
-      } 
-    }
-    
-    .star-rating {
-      display: flex;
-        gap: 5px;
-  
-        svg {
-          width: 16px;
-          height: 15px;
-        }
-    }
-
-    .review-textarea, .review-name, .review-email {
-      width: 100%;
-      font-size: 16px;
-      resize: vertical;
-      border: 2px solid rgba($main-color, 0.5);
-
-       &::placeholder {
+      time {
         @include info($size: 13px);
-       }
-      &:focus {
-        outline: none;
-        border: 2px solid $main-color;
-      }
-    }
-
-    .review-textarea {
-      padding: 15px;
-      min-height: 170px;
-      margin-bottom: 25px;
-    }
-
-    .user-info {
-      @include flex-between;
-      gap: 20px;
-      margin-bottom: 35px;
-
-      .review-name, .review-email {
-        padding: 10px 15px;
       }
     }
   
-    .remember-me {
-      @include info($size: 13px);
+    .review-stars {
       display: flex;
-      align-items: center;
-      gap: 15px;
-      margin-bottom: 30px;
-    }
+      gap: 4px;
   
-    .btn-submit {
-      @include button-padding(12px, 22px);
-      @include mont-bold($white-color, 12px);
-      align-self: flex-start;
-      
-      &:hover {
-        background-color: darken($main-color, 10%);
-      }
-    }
-
-    .btn-submit,
-    .form-message {
-      display: inline-block;
-      vertical-align: middle;
-    }
-
-    .form-message {
-      margin-left: 16px;
-      font-size: 14px;
-      font-weight: bold;
-      color: green;
-      transition: opacity 0.3s;
-      opacity: 1;
-
-      &.hidden {
-        opacity: 0;
-        pointer-events: none;
-      }
-
-      &.error {
-        color: red;
-      }
-    }
-
-    .form-actions {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 0;
-    }
-  
-    .form-message {
-      font-size: 14px;
-      font-weight: bold;
-      color: green;
-  
-      &.error {
-        color: red;
+      svg {
+        width: 16px;
+        height: 15px;
       }
     }
   }
+  
+  .review-text {
+    @include info($color: black);
+  }
+}
+  
+.review-form {
+  display: flex;
+  flex-direction: column;
+    
+  .form-title {
+    @include mont-bold($size: 18px);
+
+    margin-bottom: 20px;
+  }
+
+  .form-note {
+    @include info(black, 13px);
+
+    margin-bottom: 30px;
+
+    span {
+      color: $main-color;
+    }
+  }
+
+  .rating-group {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+
+    .rate-product {
+      @include mont-bold($size: 13px);
+    } 
+  }
+    
+  .star-rating {
+    display: flex;
+    gap: 5px;
+  }
+
+  .review-textarea {
+    padding: 15px;
+    min-height: 170px;
+    margin-bottom: 25px;
+  }
+
+  .review-textarea, .review-name, .review-email {
+    width: 100%;
+    font-size: 16px;
+    resize: vertical;
+    border: 2px solid rgba($main-color, 0.5);
+
+    &::placeholder {
+      @include info($size: 13px);
+    }
+
+    &:focus {
+      outline: none;
+      border: 2px solid $main-color;
+    }
+  }
+
+
+  .user-info {
+    @include flex-between;
+
+    gap: 20px;
+    margin-bottom: 35px;
+
+    .review-name, .review-email {
+      padding: 10px 15px;
+    }
+  }
+  
+  .remember-me {
+    @include info($size: 13px);
+
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+  }
+  
+  .btn-submit {
+    @include button-padding(12px, 22px);
+    @include mont-bold($white-color, 12px);
+
+    align-self: flex-start;
+  }
+
+  .btn-submit,
+  .form-message {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .form-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 0;
+  }
+  
+  .form-message {
+    font-size: 14px;
+    font-weight: bold;
+    color: green;
+  
+    &.error {
+      color: red;
+    }
+  }
+}
