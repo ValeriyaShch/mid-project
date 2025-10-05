@@ -12,6 +12,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint .",
+  "lint:fix": "eslint . --fix",
     "compile": "sass src/scss:dist/css",
     "compile:watch": "sass --watch src/scss:dist/css",
     "build:html": "posthtml src/*.html -o dist/ && posthtml src/pages/*.html -o dist/pages/ && posthtml src/components/*.html -o dist/components/",
@@ -20,9 +22,14 @@
   },
   "devDependencies": {
     "cpy-cli": "^6.0.0",
+    "eslint": "^9.37.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.4",
+    "globals": "^16.4.0",
     "posthtml": "^0.16.6",
     "posthtml-cli": "^0.10.0",
     "posthtml-include": "^2.0.1",
+    "prettier": "^3.6.2",
     "sass": "^1.92.1"
   },
   "files.associations": {
