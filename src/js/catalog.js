@@ -1,5 +1,6 @@
 import { SetOfProducts } from './main.js';
 import { showNotification } from './utilities/notificationManager.js';
+import { renderProductCard } from './utilities/renderProductCard.js';
 
 document.querySelectorAll('.custom-select').forEach(wrapper => {
   const display = wrapper.querySelector('.select-display');
@@ -144,101 +145,52 @@ document.querySelector('.btn-hide').addEventListener('click', () => {
     });
 });
 
+function renderTopSetCard(product) {
+    const { imageUrl, name, price, rating } = product;
+    const card = document.createElement('div');
+    card.className = 'top-set-card';
+
+    card.innerHTML = `
+        <div class="top-set-image">
+            <img src="${imageUrl}" alt="${name}" class="top-set-photo" width="87" height="87">
+        </div>
+        <div class="top-set-info">
+            <div class="top-set-desc">${name}</div>
+            <div class="top-set-rating">
+                ${[...Array(Math.floor(rating || 0))]
+                    .map(() => `<svg class="star-icon" width="12" height="12"><use href="#star"></use></svg>`)
+                    .join('')}
+            </div>
+            <div class="top-set-price">$${price}</div>
+        </div>
+    `;
+    // Optional: click handler to go to product details
+    card.addEventListener('click', () => {
+        localStorage.setItem('selectedProduct', JSON.stringify(product));
+        window.location.href = '/dist/pages/product-details-template.html';
+    });
+    return card;
+}
+
 export function bestSets() {
-  fetch('/dist/assets/data.json')
-      .then(response => {
-          if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-          return response.json();
-      })
-      .then(products => {
-        
-          const luggageSets = products.data.filter(product => product.category === 'luggage sets');
+    fetch('/dist/assets/data.json')
+        .then(response => {
+            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+            return response.json();
+        })
+        .then(products => {
+            const luggageSets = products.data.filter(product => product.category === 'luggage sets');
+            const selectedSets = luggageSets.sort(() => 0.5 - Math.random()).slice(0, 5);
 
-          // Randomly pick up to 5 products
-          const selectedSets = luggageSets.sort(() => 0.5 - Math.random()).slice(0, 5);
-
-          // Generate and insert markup for each product
-          const topSetsSection = document.querySelector('.top-sets');
-          selectedSets.forEach(product => {
-              const productFragment = createProductFragment(product);
-              topSetsSection.appendChild(productFragment);
-          });
-      })
-      .catch(error => {
-          showNotification('Failed to load top sets. Please try again later.');
-          console.error('Top sets fetch error:', error);
-      });
-
-  // Inner function to create a product fragment
-  function createProductFragment(product) {
-      const fragment = document.createDocumentFragment();
-
-      // Create the top-set-card container
-      const card = document.createElement('article');
-      card.classList.add('top-set-card');
-
-      // Image block
-      const imageWrapper = document.createElement('div');
-      imageWrapper.classList.add('top-set-image');
-      const image = document.createElement('img');
-      image.src = `${product.imageUrl}`;
-      image.alt = product.name;
-      image.width = 87;
-      image.height = 87;
-      image.classList.add('top-set-photo');
-      imageWrapper.appendChild(image);
-
-      // Info block
-      const infoWrapper = document.createElement('div');
-      infoWrapper.classList.add('top-set-info');
-
-      // Product description
-      const description = document.createElement('p');
-      description.classList.add('top-set-desc');
-      description.textContent = product.name;
-      infoWrapper.appendChild(description);
-
-      // Rating block
-      const ratingWrapper = document.createElement('div');
-      ratingWrapper.classList.add('top-set-rating');
-      const rating = Math.floor(product.rating); // Use the integer part of the rating
-      for (let i = 0; i < rating; i++) {
-          const star = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-          star.classList.add('star-icon');
-          const use = document.createElementNS('http://www.w3.org/2000/svg', 'use');
-          use.setAttribute('href', '#star');
-          star.appendChild(use);
-          ratingWrapper.appendChild(star);
-      }
-      infoWrapper.appendChild(ratingWrapper);
-
-      // Product price
-      const price = document.createElement('p');
-      price.classList.add('top-set-price');
-      price.textContent = `$${product.price}`;
-      infoWrapper.appendChild(price);
-
-      // Append image and info blocks to the card
-      card.appendChild(imageWrapper);
-      card.appendChild(infoWrapper);
-
-      // Attach click event handler for redirect and localStorage (like product card)
-      card.addEventListener('click', () => {
-          const productData = {
-              id: product.id,
-              name: product.name,
-              price: product.price,
-              imageUrl: product.imageUrl,
-              salesStatus: product.salesStatus,
-              rating: product.rating
-          };
-          localStorage.setItem('selectedProduct', JSON.stringify(productData));
-          window.location.href = '/dist/pages/product-details-template.html';
-      });
-
-      // Append the card to the fragment
-      fragment.appendChild(card);
-
-      return fragment;
-  }
+            const topSetsSection = document.querySelector('.top-sets');
+            topSetsSection.innerHTML = '';
+            for (const product of selectedSets) {
+                const card = renderTopSetCard(product);
+                topSetsSection.appendChild(card);
+            }
+        })
+        .catch(error => {
+            showNotification('Failed to load top sets. Please try again later.');
+            console.error('Top sets fetch error:', error);
+        });
 }

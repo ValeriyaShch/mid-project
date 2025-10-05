@@ -1,5 +1,6 @@
 import { addToCart } from './cartManager.js';
 import { showNotification } from './utilities/notificationManager.js';
+import { renderProductCard } from './utilities/renderProductCard.js';
 
 // --- Pure helpers ---
 function filterBySize(products, size) {
@@ -156,25 +157,10 @@ export function SetOfProducts(config) {
 
         const template = await loadCardTemplate();
 
-        filteredProducts.forEach(({ id, imageUrl, name, price, salesStatus, rating }) => {
-            const templateClone = template.content.cloneNode(true);
-            const productCard = templateClone.querySelector('.product-card');
-            productCard.setAttribute('data-id', id);
-
-            templateClone.querySelector('.product-image').src = imageUrl;
-            if (salesStatus !== true) {
-                templateClone.querySelector('.badge').classList.add('hidden');
-            }
-            templateClone.querySelector('.product-name').textContent = name;
-            templateClone.querySelector('.product-price').textContent = `$${price}`;
-
-            // Use extracted handler
-            productCard.addEventListener('click', (event) =>
-                onProductCardClick(event, { id, name, price, imageUrl, salesStatus, rating })
-            );
-
-            fragment.appendChild(templateClone);
-        });
+        for (const product of filteredProducts) {
+            const cardFragment = await renderProductCard(product, template);
+            fragment.appendChild(cardFragment);
+        }
 
         return fragment;
     }
