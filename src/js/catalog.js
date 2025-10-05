@@ -21,7 +21,6 @@ document.querySelectorAll('.custom-select').forEach(wrapper => {
 const catalogProducts = SetOfProducts({
     productsContainer:  document.getElementById('catalog-products'),
     productBlock: "all",
-    addToCartBtn: document.querySelector('.js--form'),
     productCountHolder: document.getElementById('productCount'),
     paginationRequired : true
 });

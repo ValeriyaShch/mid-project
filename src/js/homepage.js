@@ -2,14 +2,12 @@ import { SetOfProducts } from './main.js';
 
 const selectedProducts = SetOfProducts({
     productsContainer:  document.getElementById('product-cards'),
-    productBlock: "Selected Products",
-    addToCartBtn: document.querySelector('.js--form')
+    productBlock: "Selected Products"
 });
 
 const newProductsArrival = SetOfProducts({
     productsContainer:  document.getElementById('new-product-cards'),
-    productBlock: "New Products Arrival",
-    addToCartBtn: document.querySelector('.js--form')
+    productBlock: "New Products Arrival"
 });
 
 document.addEventListener('DOMContentLoaded', () => {
