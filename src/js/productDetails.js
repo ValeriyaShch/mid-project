@@ -2,6 +2,23 @@ import { addToCart } from './cartManager.js';
 import { SetOfProducts } from './main.js';
 
 document.addEventListener('DOMContentLoaded', () => {
+  
+  const reviewForm = document.getElementById('reviewForm');
+  const formMessage = document.getElementById('formMessage');
+  if (reviewForm) {
+    reviewForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      formMessage.textContent = "Thank you for your review!";
+      formMessage.hidden = false;
+      formMessage.classList.remove('hidden');
+      reviewForm.reset();
+      setTimeout(() => {
+        formMessage.classList.add('hidden');         
+      }, 5000);
+    });
+  }
+ 
+
   const productData = JSON.parse(localStorage.getItem('selectedProduct'));
 
   if (!productData) {

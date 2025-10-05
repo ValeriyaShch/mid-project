@@ -363,6 +363,37 @@
         background-color: darken($main-color, 10%);
       }
     }
+
+    .btn-submit,
+    .form-message {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .form-message {
+      margin-left: 16px;
+      font-size: 14px;
+      font-weight: bold;
+      color: green;
+      transition: opacity 0.3s;
+      opacity: 1;
+
+      &.hidden {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &.error {
+        color: red;
+      }
+    }
+
+    .form-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 0;
+    }
   
     .form-message {
       font-size: 14px;
