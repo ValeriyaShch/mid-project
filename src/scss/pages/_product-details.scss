@@ -1,17 +1,24 @@
 .product-details-card {
-    display: flex;
-    gap: 40px;
+    @include grid-cols(2, 40px);
     margin-bottom: 80px;
 
+    @include vieport-lg {
+        @include grid-cols(1, 40px);
+        margin-bottom: 50px;
+    }
+
     .product-gallery {
-        flex: 1 1 45%;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
+        @include flex-col(10px);
+
+       
 
         .product-details-image {
             width: 100%;
             object-fit: contain;
+
+            @include vieport-lg {
+                height: 500px;
+            }
         }
 
         .product-thumbnails {
@@ -26,10 +33,13 @@
 }
 
 .product-details-info {
-    flex: 1 1 45%;
-    display: flex;
-    flex-direction: column;
+    @include flex-col;
     justify-content: space-between;
+
+    @include vieport-lg {
+        align-items: center;
+        text-align: center;
+    }
     
     .product-details-title {
         @include mont-bold($size: 30px);
@@ -58,6 +68,12 @@
         margin-bottom: 70px;
     }
 
+    .product-details-options {
+      @include vieport-lg {
+        width: 100%;
+      }
+    }
+
     .filter-group {
                   display: flex;
                   flex-direction: column;
@@ -72,6 +88,10 @@
                     @include info($size: 16px);
                     border: 2px solid $light-grey;
                     padding: 10px 15px;
+
+                    @include vieport-lg {
+                        width: 100%;
+                    }
           
                     &:focus {
                       outline: none;
@@ -136,6 +156,11 @@
 
 .product-tabs {
     margin-bottom: 100px;
+
+    @include vieport-lg {
+        margin-bottom: 60px;
+    }
+    
     .tab-list {
         @include flex-center;
         gap: 120px;
@@ -168,21 +193,15 @@
             }
         }
     }
-
-
-.may-like-products {
-    margin-bottom: 100px;
-    .may-like-title {
-        @include mont-bold($size: 30px);
-        border-bottom: 2px solid $main-color;
-        margin-bottom: 60px;
-    }
-}
 }
 
 .may-like-products {
     margin-bottom: 100px;
     text-align: center;
+
+    @include vieport-lg {
+        margin-bottom: 60px;
+    }
     .may-like-title {
         @include mont-bold($size: 30px);
         display: inline-block;
@@ -190,18 +209,27 @@
         margin-bottom: 60px;
     }
     .product-container {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 30px;
+      @include grid-cols(4, 30px);
+        
+        @include vieport-lg {
+            @include grid-cols(2, 20px);
+        }
+
+        @include vieport-md {
+            grid-template-columns: 1fr;
+        }
     }
 }
 
 
+
   
   .reviews-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 145px;
+    @include grid-cols(2, 145px);
+     
+    @include vieport-lg {
+        @include grid-cols(1, 60px);
+    }
   }
 
   .review-product-info {
