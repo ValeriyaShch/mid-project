@@ -1,4 +1,4 @@
-export async function renderProductCard(product, template = null) {
+export async function renderProductCard(product, template = null, onProductCardClick = null) {
     // If no template provided, fetch and cache it
     if (!template) {
         if (!renderProductCard._cardTemplate) {
@@ -23,11 +23,22 @@ export async function renderProductCard(product, template = null) {
     templateClone.querySelector('.product-name').textContent = name;
     templateClone.querySelector('.product-price').textContent = `$${price}`;
 
-    // Attach click handler for navigation
-    productCard.addEventListener('click', () => {
-        const productData = { id, name, price, imageUrl, salesStatus, rating };
-        localStorage.setItem('selectedProduct', JSON.stringify(productData));
-        window.location.href = '/dist/pages/product-details-template.html';
+    // Ensure the Add to Cart button has the correct class
+    const addToCartBtn = templateClone.querySelector('.product-button');
+    if (addToCartBtn) {
+        addToCartBtn.addEventListener('click', (event) => {
+            event.stopPropagation(); // Prevent bubbling to the card
+            if (onProductCardClick) {
+                onProductCardClick(event, product);
+            }
+        });
+    }
+
+    // Also attach the click handler to the card for navigation
+    productCard.addEventListener('click', (event) => {
+        if (onProductCardClick) {
+            onProductCardClick(event, product);
+        }
     });
 
     return templateClone;

@@ -158,7 +158,7 @@ export function SetOfProducts(config) {
         const template = await loadCardTemplate();
 
         for (const product of filteredProducts) {
-            const cardFragment = await renderProductCard(product, template);
+            const cardFragment = await renderProductCard(product, template, onProductCardClick);
             fragment.appendChild(cardFragment);
         }
 
