@@ -1,7 +1,7 @@
 export function addToCart(product) {
   const cart = JSON.parse(localStorage.getItem('cart')) || { cartItems: [] };
   const existingItem = cart.cartItems.find((item) => item.id === product.id);
-  const addQty = product.quantity ? parseInt(product.quantity, 10) : 1;
+  const addQty = product.quantity ? Number.parseInt(product.quantity, 10) : 1;
 
   if (existingItem) {
     existingItem.quantity += addQty;
@@ -29,14 +29,14 @@ export function clearCart() {
 export function updateHeaderCartCounter() {
   const cart = getCart();
   const count = cart.cartItems.reduce((sum, item) => sum + item.quantity, 0);
-  document.querySelectorAll('.header-cart-counter').forEach((el) => {
+  for (const el of document.querySelectorAll('.header-cart-counter')) {
     el.textContent = count;
     if (count > 0) {
       el.style.display = '';
     } else {
       el.style.display = 'none';
     }
-  });
+  }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
