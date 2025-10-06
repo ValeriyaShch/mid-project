@@ -1,20 +1,20 @@
 import { SetOfProducts } from './main.js';
 import { showNotification } from './utilities/notificationManager.js';
 
-document.querySelectorAll('.custom-select').forEach((wrapper) => {
+for (const wrapper of document.querySelectorAll('.custom-select')) {
   const display = wrapper.querySelector('.select-display');
   const options = wrapper.querySelectorAll('.select-options li');
   const hiddenSelect = wrapper.nextElementSibling;
 
-  options.forEach((opt) => {
+  for (const opt of options) {
     opt.addEventListener('click', () => {
       const value = opt.dataset.value;
       display.textContent = opt.textContent;
       hiddenSelect.value = value;
       hiddenSelect.dispatchEvent(new Event('change', { bubbles: true }));
     });
-  });
-});
+  }
+}
 
 const catalogProducts = SetOfProducts({
   productsContainer: document.getElementById('catalog-products'),
@@ -48,15 +48,15 @@ sales.addEventListener('change', (event) => {
 
 // Filter Buttons
 document.querySelector('.btn-clear').addEventListener('click', () => {
-  document.querySelectorAll('.select-display').forEach((display) => {
+  for (const display of document.querySelectorAll('.select-display')) {
     display.textContent = 'Choose option';
-  });
-  document.querySelectorAll('.filter-select').forEach((select) => {
+  }
+  for (const select of document.querySelectorAll('.filter-select')) {
     select.value = '';
-  });
-  document.querySelectorAll('input[type="checkbox"]').forEach((checkbox) => {
+  }
+  for (const checkbox of document.querySelectorAll('input[type="checkbox"]')) {
     checkbox.checked = false;
-  });
+  }
 
   catalogProducts.resetProducts();
   catalogProducts.createPageButtons();
@@ -78,7 +78,7 @@ document
       const foundProduct = await catalogProducts.findProductByName(searchTerm);
       if (foundProduct) {
         localStorage.setItem('selectedProduct', JSON.stringify(foundProduct));
-        window.location.href = '/dist/pages/product-details-template.html';
+        globalThis.location.href = '/dist/pages/product-details-template.html';
         return;
       } else {
         showNotification('No products found for the entered search term.');
@@ -89,12 +89,14 @@ document
 document.addEventListener('DOMContentLoaded', () => {
   const pageButtons = document.querySelectorAll('.page-button');
 
-  pageButtons.forEach((button, index) => {
+  let index = 0;
+  for (const button of pageButtons) {
     button.addEventListener('click', () => {
       catalogProducts.currentPage = index;
       catalogProducts.rerenderProducts({ currentPage: index });
     });
-  });
+    index++;
+  }
 
   bestSets();
 });
@@ -146,7 +148,7 @@ function renderTopSetCard(product) {
         <div class="top-set-info">
             <div class="top-set-desc">${name}</div>
             <div class="top-set-rating">
-                ${[...Array(Math.floor(rating || 0))]
+                ${[...new Array(Math.floor(rating || 0))]
                   .map(
                     () =>
                       `<svg class="star-icon" width="12" height="12"><use href="#star"></use></svg>`,
@@ -158,7 +160,7 @@ function renderTopSetCard(product) {
     `;
   card.addEventListener('click', () => {
     localStorage.setItem('selectedProduct', JSON.stringify(product));
-    window.location.href = '/dist/pages/product-details-template.html';
+    globalThis.location.href = '/dist/pages/product-details-template.html';
   });
   return card;
 }
