@@ -1,5 +1,6 @@
 import { SetOfProducts } from './main.js';
 import { showNotification } from './utilities/notificationManager.js';
+import { findProductByName } from './main.js';
 
 for (const wrapper of document.querySelectorAll('.custom-select')) {
   const display = wrapper.querySelector('.select-display');
@@ -75,7 +76,7 @@ document
     const searchTerm = searchInput.value.trim();
 
     if (searchTerm) {
-      const foundProduct = await catalogProducts.findProductByName(searchTerm);
+      const foundProduct = await findProductByName(searchTerm);
       if (foundProduct) {
         localStorage.setItem('selectedProduct', JSON.stringify(foundProduct));
         globalThis.location.href = '/dist/pages/product-details-template.html';
@@ -148,7 +149,7 @@ function renderTopSetCard(product) {
         <div class="top-set-info">
             <div class="top-set-desc">${name}</div>
             <div class="top-set-rating">
-                ${[...new Array(Math.floor(rating || 0))]
+                ${[new Array(Math.floor(rating || 0))]
                   .map(
                     () =>
                       `<svg class="star-icon" width="12" height="12"><use href="#star"></use></svg>`,

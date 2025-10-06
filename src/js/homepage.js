@@ -21,7 +21,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function updateCarousel() {
     const cardWidth =
-      cards[0].offsetWidth + parseInt(getComputedStyle(travelCards).gap) || 0;
+      cards[0].offsetWidth +
+        Number.parseInt(getComputedStyle(travelCards).gap) || 0;
     travelCards.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
 
     // Hide prev button if first card, next button if last card

@@ -51,6 +51,41 @@ function pickRandom(products, count) {
   return products;
 }
 
+function onProductCardClick(event, product) {
+  if (event.target.classList.contains('product-button')) {
+    addToCart({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      imageUrl: product.imageUrl,
+    });
+    return;
+  }
+  const productData = {
+    id: product.id,
+    name: product.name,
+    price: product.price,
+    imageUrl: product.imageUrl,
+    salesStatus: product.salesStatus,
+    rating: product.rating,
+  };
+  localStorage.setItem('selectedProduct', JSON.stringify(productData));
+  globalThis.location.href = '/dist/pages/product-details-template.html';
+}
+
+export async function findProductByName(name) {
+  const getProductsResponse = await fetch('/dist/assets/data.json');
+  if (!getProductsResponse.ok) return null;
+  const productsData = await getProductsResponse.json();
+  const products = productsData.data || productsData;
+  const trimmedName = name.trim().toLowerCase();
+  return (
+    products.find(
+      (p) => p.name && p.name.trim().toLowerCase() === trimmedName,
+    ) || null
+  );
+}
+
 export function SetOfProducts(config) {
   const state = {
     filterSize: '',
@@ -65,28 +100,6 @@ export function SetOfProducts(config) {
     _cardTemplate: null,
     ...config,
   };
-
-  function onProductCardClick(event, product) {
-    if (event.target.classList.contains('product-button')) {
-      addToCart({
-        id: product.id,
-        name: product.name,
-        price: product.price,
-        imageUrl: product.imageUrl,
-      });
-      return;
-    }
-    const productData = {
-      id: product.id,
-      name: product.name,
-      price: product.price,
-      imageUrl: product.imageUrl,
-      salesStatus: product.salesStatus,
-      rating: product.rating,
-    };
-    localStorage.setItem('selectedProduct', JSON.stringify(productData));
-    window.location.href = '/dist/pages/product-details-template.html';
-  }
 
   function onPageButtonClick(i) {
     state.currentPage = i;
@@ -213,10 +226,12 @@ export function SetOfProducts(config) {
     if (btnNext)
       btnNext.style.display =
         currentPage === state.pageCount - 1 ? 'none' : 'inline-block';
-    pageButtons.forEach((button, index) => {
-      if (index === currentPage) button.classList.add('active');
+    let idx = 0;
+    for (const button of pageButtons) {
+      if (idx === currentPage) button.classList.add('active');
       else button.classList.remove('active');
-    });
+      idx++;
+    }
   }
 
   function createPageButtons() {
@@ -231,19 +246,6 @@ export function SetOfProducts(config) {
       button.addEventListener('click', () => onPageButtonClick(i));
       paginationContainer.appendChild(button);
     }
-  }
-
-  async function findProductByName(name) {
-    const getProductsResponse = await fetch('/dist/assets/data.json');
-    if (!getProductsResponse.ok) return null;
-    const productsData = await getProductsResponse.json();
-    const products = productsData.data || productsData;
-    const trimmedName = name.trim().toLowerCase();
-    return (
-      products.find(
-        (p) => p.name && p.name.trim().toLowerCase() === trimmedName,
-      ) || null
-    );
   }
 
   return {
@@ -311,6 +313,10 @@ document.addEventListener('DOMContentLoaded', () => {
       const email = emailInput.value.trim();
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(email)) {
+        emailInput.classList.remove('input-error');
+        const error = loginForm.querySelector('.email-error');
+        if (error) error.remove();
+      } else {
         e.preventDefault();
         emailInput.classList.add('input-error');
         if (!loginForm.querySelector('.email-error')) {
@@ -321,10 +327,6 @@ document.addEventListener('DOMContentLoaded', () => {
           error.textContent = 'Please enter a valid email address.';
           emailInput.parentNode.appendChild(error);
         }
-      } else {
-        emailInput.classList.remove('input-error');
-        const error = loginForm.querySelector('.email-error');
-        if (error) error.remove();
       }
     });
 
