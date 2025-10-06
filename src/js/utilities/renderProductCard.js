@@ -16,7 +16,7 @@ export async function renderProductCard(
     template = renderProductCard._cardTemplate;
   }
 
-  const { id, imageUrl, name, price, salesStatus, rating } = product;
+  const { id, imageUrl, name, price, salesStatus } = product;
   const templateClone = template.content.cloneNode(true);
   const productCard = templateClone.querySelector('.product-card');
   productCard.dataset.id = id;

@@ -1,6 +1,5 @@
 import { SetOfProducts } from './main.js';
 import { showNotification } from './utilities/notificationManager.js';
-import { renderProductCard } from './utilities/renderProductCard.js';
 
 document.querySelectorAll('.custom-select').forEach((wrapper) => {
   const display = wrapper.querySelector('.select-display');

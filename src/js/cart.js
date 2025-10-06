@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
   cartItemsContainer.addEventListener('click', (event) => {
     const target = event.target;
     const deleteBtn = target.closest('.delete-btn');
-    const productId = (deleteBtn && deleteBtn.dataset.id) || target.dataset.id;
+    const productId = deleteBtn?.dataset.id || target.dataset.id;
 
     if (target.classList.contains('decrease')) {
       updateQuantity(productId, -1);
