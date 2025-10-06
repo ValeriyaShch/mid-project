@@ -91,7 +91,13 @@ Or use the [Live Server](https://marketplace.visualstudio.com/items?itemName=rit
 
 ## Opening in Browser
 
-After starting the static server, open [http://localhost:3000](http://localhost:3000) (or the port shown in your terminal) in your browser.
+- **If using a static server (like `serve`)**:  
+  After starting the server, open [http://localhost:3000](http://localhost:3000) (or the port shown in your terminal) in your browser.  
+  This will serve the `dist/index.html` file by default.
+
+- **If using Live Server in VS Code**:  
+  Right-click on `dist/index.html` in the Explorer and select **"Open with Live Server"**.  
+  This will open the correct URL in your browser and start the site from `dist/index.html`.
 
 ---
 
