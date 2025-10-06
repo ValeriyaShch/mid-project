@@ -77,27 +77,22 @@ npm run build
 
 ## Running the Project
 
-You can use any static server to preview the site.  
-For example, with [serve](https://www.npmjs.com/package/serve):
+You can run the site locally using one of the following methods:
 
-```sh
-npm install -g serve
-serve dist
-```
-
-Or use the [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) extension in VS Code.
-
----
-
-## Opening in Browser
-
-- **If using a static server (like `serve`)**:  
-  After starting the server, open [http://localhost:3000](http://localhost:3000) (or the port shown in your terminal) in your browser.  
-  This will serve the `dist/index.html` file by default.
-
-- **If using Live Server in VS Code**:  
+- **Recommended: Use the [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) extension in VS Code**  
   Right-click on `dist/index.html` in the Explorer and select **"Open with Live Server"**.  
   This will open the correct URL in your browser and start the site from `dist/index.html`.
+
+- **Alternatively: Use a static server like [`serve`](https://www.npmjs.com/package/serve)**  
+  Install and run the server:
+
+  ```sh
+  npm install -g serve
+  serve .
+  ```
+
+  After starting the server, open [http://localhost:3000](http://localhost:3000) (or the port shown in your terminal) in your browser.  
+  Navigate to `http://localhost:3000/dist/index.html`.
 
 ---
 
