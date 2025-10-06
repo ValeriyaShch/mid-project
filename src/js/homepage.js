@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   window.addEventListener('resize', updateCarousel);
 
-  // Auto-slide every 4 seconds
+  // Make the carousel Auto-slide every 4 seconds
   let autoSlide = setInterval(goNext, 4000);
 
   function resetAutoSlide() {

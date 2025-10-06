@@ -2,7 +2,6 @@ import { addToCart } from './cartManager.js';
 import { showNotification } from './utilities/notificationManager.js';
 import { renderProductCard } from './utilities/renderProductCard.js';
 
-// --- Pure helpers ---
 function filterBySize(products, size) {
   if (!size) return products;
   switch (size) {
@@ -52,9 +51,7 @@ function pickRandom(products, count) {
   return products;
 }
 
-// --- Factory function ---
 export function SetOfProducts(config) {
-  // State
   const state = {
     filterSize: '',
     filterColor: '',
@@ -69,9 +66,6 @@ export function SetOfProducts(config) {
     ...config,
   };
 
-  // --- Methods ---
-
-  // Extracted product card click handler
   function onProductCardClick(event, product) {
     if (event.target.classList.contains('product-button')) {
       addToCart({
@@ -94,7 +88,6 @@ export function SetOfProducts(config) {
     window.location.href = '/dist/pages/product-details-template.html';
   }
 
-  // Extracted page button click handler
   function onPageButtonClick(i) {
     state.currentPage = i;
     rerenderProducts({ currentPage: i });
@@ -119,7 +112,6 @@ export function SetOfProducts(config) {
   }
 
   async function loadProducts(params = {}) {
-    // Update state with provided params
     Object.assign(state, params);
 
     let filteredProducts = [];
@@ -134,7 +126,7 @@ export function SetOfProducts(config) {
     } catch (error) {
       showNotification('Failed to load products. Please try again later.');
       console.error('Product fetch error:', error);
-      return fragment; // Return empty fragment on error
+      return fragment;
     }
 
     filteredProducts =
@@ -236,7 +228,6 @@ export function SetOfProducts(config) {
       button.classList.add('page-button');
       if (i === state.currentPage) button.classList.add('active');
       button.textContent = i + 1;
-      // Use extracted handler
       button.addEventListener('click', () => onPageButtonClick(i));
       paginationContainer.appendChild(button);
     }
@@ -255,7 +246,6 @@ export function SetOfProducts(config) {
     );
   }
 
-  // --- API ---
   return {
     init,
     resetProducts,
@@ -292,7 +282,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.style.overflow = '';
   });
 
-  // --- Show popup login form ---
   const loginToggle = document.querySelector('.header-login-toggle');
   const popup = document.querySelector('.popup');
   if (loginToggle && popup) {
@@ -301,7 +290,6 @@ document.addEventListener('DOMContentLoaded', () => {
       popup.style.display = 'block';
       popup.classList.add('active');
 
-      // Add outside click handler
       setTimeout(() => {
         document.addEventListener('mousedown', handleOutsideClick);
       }, 0);
@@ -316,7 +304,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // --- Email validation for login form ---
   const loginForm = document.querySelector('.login-form');
   if (loginForm) {
     loginForm.addEventListener('submit', function (e) {
@@ -349,7 +336,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- Password show/hide toggle ---
   const passwordInput = document.getElementById('password');
   const toggleBtn = document.querySelector('.toggle-button');
   if (passwordInput && toggleBtn) {

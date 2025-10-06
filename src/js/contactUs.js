@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
 
-      // Use built-in validation
       if (form.checkValidity()) {
         thankYouMsg.style.display = 'inline';
         setTimeout(() => {
@@ -17,7 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 5000);
         form.reset();
       } else {
-        // Show validation errors
         form.reportValidity();
       }
     });

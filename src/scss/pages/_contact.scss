@@ -10,15 +10,15 @@
   text-align: center;
 
   @include vieport-lg {
-      height: 400px;
-      padding: 60px 20px;
-    }
+    height: 400px;
+    padding: 60px 20px;
+  }
   
-    @include vieport-md {
-      height: 300px;
-      padding: 40px 10px;
-      margin-bottom: 60px;
-    }
+  @include vieport-md {
+    height: 300px;
+    padding: 40px 10px;
+    margin-bottom: 60px;
+  }
     
   .contact-title {
     @include mont-bold($white-color, 50px);
@@ -41,19 +41,12 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-
   margin-bottom: 130px;
 
   @include vieport-lg {
     flex-wrap: wrap;
     gap: 30px;
   }
-
-  // @include vieport-md {
-  //     @include flex-col(50px);
-  //     align-items: center;
-  //   }
-  
 
   .contact-info-card {
     @include flex-center;
@@ -90,10 +83,12 @@
 
 .contact-form {
   @include grid-cols(2, 40px);
+
   margin-bottom: 120px;
 
   @include vieport-lg {
     @include grid-cols(1, 30px);
+
     margin-bottom: 60px;
   }
 
@@ -114,8 +109,8 @@
     justify-content: space-between;
 
     @include vieport-lg {
-        padding: 0 20px;
-      }
+      padding: 0 20px;
+    }
 
     .contact-form-title {
       @include mont-bold($size: 25px);

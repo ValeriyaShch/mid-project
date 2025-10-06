@@ -3,7 +3,6 @@ export async function renderProductCard(
   template = null,
   onProductCardClick = null,
 ) {
-  // If no template provided, fetch and cache it
   if (!template) {
     if (!renderProductCard._cardTemplate) {
       const templateResponse = await fetch(
@@ -29,18 +28,16 @@ export async function renderProductCard(
   templateClone.querySelector('.product-name').textContent = name;
   templateClone.querySelector('.product-price').textContent = `$${price}`;
 
-  // Ensure the Add to Cart button has the correct class
   const addToCartBtn = templateClone.querySelector('.product-button');
   if (addToCartBtn) {
     addToCartBtn.addEventListener('click', (event) => {
-      event.stopPropagation(); // Prevent bubbling to the card
+      event.stopPropagation();
       if (onProductCardClick) {
         onProductCardClick(event, product);
       }
     });
   }
 
-  // Also attach the click handler to the card for navigation
   productCard.addEventListener('click', (event) => {
     if (onProductCardClick) {
       onProductCardClick(event, product);

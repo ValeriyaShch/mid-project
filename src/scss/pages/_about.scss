@@ -39,15 +39,14 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-
   margin-bottom: 130px;
 
   @include vieport-md {
     @include flex-col(50px);
+    
     align-items: center;
   }
     
-  
   .about-info-card {
     @include flex-center;
 

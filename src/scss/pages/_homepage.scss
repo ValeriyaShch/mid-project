@@ -207,10 +207,10 @@
   background-repeat: no-repeat;
 
   &:hover {
-      transform: scale(1.06);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.30);
-      transition: all 0.3s ease-in-out;
-    }
+    transform: scale(1.06);
+    box-shadow: 0 8px 24px rgb(0 0 0 / 30%);
+    transition: all 0.3s ease-in-out;
+  }
 
   @include vieport-lg {
     flex: 0 0 48%;
@@ -266,16 +266,15 @@
   color: $white-color;
   margin: 12px;
 
+  .carousel-next {
+    margin-left: auto;
+  }
+  
   &:hover {
     background: darken($main-color, 10%);
     box-shadow: 0 0 12px rgba($main-color, 0.8);
   }
 }
-
-.carousel-next {
-  margin-left: auto;
-}
-
 
 .selected-products-title, .new-products-title, .customers-title {
   @include title;

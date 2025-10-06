@@ -19,6 +19,7 @@
     }
   }
 }
+
 .cart-content {
   @include flex-col;
   
@@ -39,7 +40,7 @@
         @include vieport-md {
           font-size: 14px;
         }
-    }
+      }
     
     }
 

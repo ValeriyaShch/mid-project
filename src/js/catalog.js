@@ -32,17 +32,14 @@ const category = document.getElementById('category');
 const sales = document.getElementById('sales');
 
 size.addEventListener('change', (event) => {
-  // console.log(event.target.value);
   catalogProducts.rerenderProducts({ filterSize: event.target.value });
 });
 
 color.addEventListener('change', (event) => {
-  // console.log(event.target.value);
   catalogProducts.rerenderProducts({ filterColor: event.target.value });
 });
 
 category.addEventListener('change', (event) => {
-  // console.log(event.target.value);
   catalogProducts.rerenderProducts({ filterCategory: event.target.value });
 });
 
@@ -55,19 +52,16 @@ document.querySelector('.btn-clear').addEventListener('click', () => {
   document.querySelectorAll('.select-display').forEach((display) => {
     display.textContent = 'Choose option';
   });
-  // Reset hidden select elements
   document.querySelectorAll('.filter-select').forEach((select) => {
     select.value = '';
   });
-  // Reset checkboxes
   document.querySelectorAll('input[type="checkbox"]').forEach((checkbox) => {
     checkbox.checked = false;
   });
 
-  // Reset products and update pagination
   catalogProducts.resetProducts();
-  catalogProducts.createPageButtons(); // Regenerate pagination buttons
-  catalogProducts.updatePaginationChange(catalogProducts.currentPage); // Update pagination state
+  catalogProducts.createPageButtons();
+  catalogProducts.updatePaginationChange(catalogProducts.currentPage);
 });
 
 document.getElementById('sort').addEventListener('change', (event) => {
@@ -82,7 +76,6 @@ document
     const searchTerm = searchInput.value.trim();
 
     if (searchTerm) {
-      // Use SetOfProducts to find product by name
       const foundProduct = await catalogProducts.findProductByName(searchTerm);
       if (foundProduct) {
         localStorage.setItem('selectedProduct', JSON.stringify(foundProduct));
@@ -99,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   pageButtons.forEach((button, index) => {
     button.addEventListener('click', () => {
-      catalogProducts.currentPage = index; // Set the current page
+      catalogProducts.currentPage = index;
       catalogProducts.rerenderProducts({ currentPage: index });
     });
   });
@@ -109,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 document.querySelector('.btn-prev').addEventListener('click', () => {
   if (catalogProducts.currentPage > 0) {
-    catalogProducts.currentPage -= 1; // Move to the previous page
+    catalogProducts.currentPage -= 1;
     catalogProducts.rerenderProducts({
       currentPage: catalogProducts.currentPage,
     });
@@ -118,7 +111,7 @@ document.querySelector('.btn-prev').addEventListener('click', () => {
 
 document.querySelector('.btn-next').addEventListener('click', () => {
   if (catalogProducts.currentPage < catalogProducts.pageCount - 1) {
-    catalogProducts.currentPage += 1; // Move to the next page
+    catalogProducts.currentPage += 1;
     catalogProducts.rerenderProducts({
       currentPage: catalogProducts.currentPage,
     });
@@ -129,20 +122,15 @@ document.querySelector('.btn-hide').addEventListener('click', () => {
   const filtersForm = document.querySelector('.filters');
   const showFiltersButton = document.createElement('button');
 
-  // Приховати форму фільтрації
   filtersForm.style.display = 'none';
 
-  // Створити кнопку "Show filters"
   showFiltersButton.textContent = 'Show filters';
   showFiltersButton.classList.add('main-button', 'btn-show');
   filtersForm.parentNode.insertBefore(showFiltersButton, filtersForm);
 
-  // Додати обробник для кнопки "Show filters"
   showFiltersButton.addEventListener('click', () => {
-    // Показати форму фільтрації
     filtersForm.style.display = 'block';
 
-    // Видалити кнопку "Show filters"
     showFiltersButton.remove();
   });
 });
@@ -169,7 +157,6 @@ function renderTopSetCard(product) {
             <div class="top-set-price">$${price}</div>
         </div>
     `;
-  // Optional: click handler to go to product details
   card.addEventListener('click', () => {
     localStorage.setItem('selectedProduct', JSON.stringify(product));
     window.location.href = '/dist/pages/product-details-template.html';

@@ -181,7 +181,7 @@ document.addEventListener('DOMContentLoaded', () => {
       document.body.removeChild(overlay);
     });
 
-    // Message
+    // Pop-up message definition
     const msg = document.createElement('div');
     msg.textContent = 'Thank you for your purchase.';
     msg.style.fontSize = '1.1rem';

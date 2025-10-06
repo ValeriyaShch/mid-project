@@ -24,7 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
     return;
   }
 
-  // Quantity controls logic
   const quantityInput = document.getElementById('quantity');
   const qtyBtns = document.querySelectorAll('.quantity-controls .qty-btn');
 
@@ -43,7 +42,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Add to cart with quantity
   document.querySelector('.add-to-cart').addEventListener('click', () => {
     const quantity = parseInt(quantityInput.value, 10) || 1;
     addToCart({ ...productData, quantity });
@@ -88,7 +86,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // --- Render 4 random products in .product-container ---
   const container = document.querySelector(
     '.may-like-products .product-container',
   );
