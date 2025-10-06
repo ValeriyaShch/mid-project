@@ -18,7 +18,7 @@
     "compile:watch": "sass --watch src/scss:dist/css",
     "build:html": "posthtml src/*.html -o dist/ && posthtml src/pages/*.html -o dist/pages/ && posthtml src/components/*.html -o dist/components/",
     "copy:assets": "npx cpy-cli \"src/**/*.{css,js,svg,png,jpg,jpeg,gif,webp,ico,json,woff,woff2,ttf,eot,mp4,webm}\" \"!src/**/*.html\" dist/ --parents",
-    "build": "npm run build:html && npm run copy:assets",
+    "build": "npm run build:html && npm run copy:assets && npm run compile",
     "lint:scss": "stylelint \"src/**/*.scss\"",
     "lint:scss:fix": "stylelint \"src/**/*.scss\" --fix"
   },
