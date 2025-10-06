@@ -4,17 +4,24 @@
   background-size: cover;
   margin-bottom: 70px;
 
+  @include vieport-md {
+    padding: 50px 0;
+    margin-bottom: 40px;
+  }
+
   .cart-title {
     @include mont-bold($white-color, 50px);
 
     text-align: center;
+
+    @include vieport-md {
+      font-size: 30px;
+    }
   }
 }
-
 .cart-content {
-  display: flex;
-  flex-direction: column;
-
+  @include flex-col;
+  
   .cart-table {
     flex: 1;
 
@@ -27,13 +34,21 @@
       padding: 20px 0;
 
       .cart-header-item {
-        @include mont-bold($color: $white-color)
+        @include mont-bold($color: $white-color);
+
+        @include vieport-md {
+          font-size: 14px;
+        }
     }
     
     }
 
     .cart-items {
       margin-bottom: 70px;
+
+      @include vieport-md {
+        margin-bottom: 40px;
+      }
 
       .cart-item {
         display: grid;
@@ -51,6 +66,11 @@
             height: 120px;
             overflow: hidden;
 
+            @include vieport-md {
+              width: 100px;
+              height: 100px;
+            }
+
             img {
               width: 100%;
               height: 100%;
@@ -60,26 +80,36 @@
 
           .product-name {
             @include mont-bold;
+
+            @include vieport-md {
+              font-size: 13px;
+            }
           }
         }
 
         .product-price, .product-total {
           @include mont-bold($size: 17px);
+
+          @include vieport-md {
+            font-size: 14px;
+          }
         }
 
         .quantity-controls {
           @include flex-center;
                     
-
           .qty-btn {
             border: none;
             padding: 5px 10px;
             cursor: pointer;
 
             @include mont-bold($size: 25px);
-                        
-                        
 
+            @include vieport-md {
+              font-size: 20px;
+              padding: 3px 8px;
+            }                 
+                    
             &:hover {
               background-color: darken($light-grey, 10%);
             }
@@ -99,6 +129,11 @@
               appearance: none;
               margin: 0;
             }  
+            
+            @include vieport-md {
+              font-size: 20px;
+              width: 25px;
+            }
           }
         }
 
@@ -121,10 +156,10 @@
         @include button-padding(20px, 25px);
 
         font-size: 15px;
-               
-
-        &:hover {
-          background-color: darken($main-color, 10%);
+        
+        @include vieport-md {
+          font-size: 13px;
+          padding: 15px 20px;
         }
       }
     }
@@ -146,6 +181,13 @@
     align-self: flex-end;
     margin-top: -50px;
     margin-bottom: 100px;
+
+    @include vieport-lg {
+      width: 100%;
+      margin-top: 30px;
+      padding: 20px;
+      margin-bottom: 50px;
+    }
 
     .cart-summary-row {
       @include flex-between;
@@ -180,8 +222,9 @@
       font-size: 18px;
       margin-top: 20px;
 
-      &:hover {
-        background-color: darken($main-color, 10%);
+      @include vieport-md {
+        font-size: 16px;
+        padding: 10px 40px;
       }
     }
   }

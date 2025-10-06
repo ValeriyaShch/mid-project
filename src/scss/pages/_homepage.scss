@@ -206,11 +206,16 @@
   flex: 0 0 23%;
   background-repeat: no-repeat;
 
+  &:hover {
+      transform: scale(1.06);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.30);
+      transition: all 0.3s ease-in-out;
+    }
+
   @include vieport-lg {
     flex: 0 0 48%;
     background-size: cover;
-    background-position: center;
-        
+    background-position: center;      
   }
 
   @include vieport-md {
@@ -250,10 +255,6 @@
   margin: 20px 0 0;
 }
 
-.carousel-next {
-  margin-left: auto;
-}
-
 .carousel-prev, .carousel-next {
   cursor: pointer;
   background: $main-color;
@@ -269,6 +270,10 @@
     background: darken($main-color, 10%);
     box-shadow: 0 0 12px rgba($main-color, 0.8);
   }
+}
+
+.carousel-next {
+  margin-left: auto;
 }
 
 

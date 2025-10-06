@@ -8,11 +8,26 @@
   @include flex-center;
 
   text-align: center;
+
+  @include vieport-lg {
+      height: 400px;
+      padding: 60px 20px;
+    }
+  
+    @include vieport-md {
+      height: 300px;
+      padding: 40px 10px;
+      margin-bottom: 60px;
+    }
     
   .contact-title {
     @include mont-bold($white-color, 50px);
 
     margin-bottom: 20px;
+
+    @include vieport-md {
+      font-size: 35px;
+    }
   }
 
   .contact-subtitle {
@@ -23,9 +38,21 @@
 
 
 .contact-info {
-  @include flex-between;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 
   margin-bottom: 130px;
+
+  @include vieport-lg {
+    flex-wrap: wrap;
+    gap: 30px;
+  }
+
+  // @include vieport-md {
+  //     @include flex-col(50px);
+  //     align-items: center;
+  //   }
   
 
   .contact-info-card {
@@ -34,6 +61,10 @@
     flex-direction: column;
     gap: 20px;
     text-align: center;
+
+    @include vieport-lg {
+      flex: 1 1 45%;
+    }
     
     .contact-info-bg {
       width: 62px;
@@ -58,22 +89,33 @@
 }
 
 .contact-form {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
+  @include grid-cols(2, 40px);
   margin-bottom: 120px;
+
+  @include vieport-lg {
+    @include grid-cols(1, 30px);
+    margin-bottom: 60px;
+  }
 
   .contact-form-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
     box-shadow: 0 20px 80px 0 rgb(193 199 212 / 30%);
+
+    @include vieport-lg {
+      display: none;
+    }
   }
 
   .contact-form-content {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    @include vieport-lg {
+        padding: 0 20px;
+      }
 
     .contact-form-title {
       @include mont-bold($size: 25px);
@@ -82,15 +124,18 @@
     }
 
     .contact-form-subtitle {
-      @include info($color: black);
+      @include info($color: $black);
 
       margin-bottom: 70px;
+
+      @include vieport-md {
+        margin-bottom: 40px;
+      }
     }
 
     .contact-form-form {
-      display: flex;
-      flex-direction: column;
-
+      @include flex-col;
+      
       .contact-form-field {
         display: flex;
         flex-direction: column;
@@ -136,10 +181,6 @@
           @include mont-bold($white-color, 12px);
 
           align-self: flex-start;
-
-          &:hover {
-            background: darken($main-color, 10%);
-          }
         }
 
         .contact-us-message {

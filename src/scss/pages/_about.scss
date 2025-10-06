@@ -8,11 +8,26 @@
   @include flex-center;
 
   text-align: center;
+
+  @include vieport-lg {
+    height: 400px;
+    padding: 60px 20px;
+  }
+
+  @include vieport-md {
+    height: 300px;
+    padding: 40px 10px;
+    margin-bottom: 60px;
+  }
     
   .about-title {
     @include mont-bold($white-color, 50px);
 
     margin-bottom: 20px;
+
+    @include vieport-md {
+      font-size: 35px;
+    }
   }
 
   .about-subtitle {
@@ -21,9 +36,16 @@
 }
 
 .about-info {
-  @include flex-between;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 
   margin-bottom: 130px;
+
+  @include vieport-md {
+    @include flex-col(50px);
+    align-items: center;
+  }
     
   
   .about-info-card {
@@ -58,10 +80,18 @@
 .about-new-arrivals {
   margin-bottom: 130px;
 
+  @include vieport-md {
+    margin-bottom: 60px;
+  }
+
   .about-new-arrivals-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 40px;
+
+    @include vieport-lg {
+      grid-template-columns: 1fr;
+    }
        
     .about-new-arrivals-text{
       display: flex;
@@ -73,10 +103,14 @@
         @include title;
 
         margin-bottom: 20px;
+
+        @include vieport-md {
+          font-size: 30px;
+        }
       }
 
       .about-new-arrivals-description {
-        @include info($color: black);
+        @include info($color: $black);
       }
 
       .about-new-arrivals-btn {
@@ -85,6 +119,12 @@
         width: fit-content;
         text-decoration: none;
         font-size: 18px;
+
+        @include vieport-md {
+          font-size: 16px;
+
+          @include button-padding(15px, 25px);
+        }
       }
     }
 
@@ -100,6 +140,10 @@
   text-align: center;
   margin-bottom: 170px;
 
+  @include vieport-lg {
+    margin-bottom: 80px;
+  }
+
   .about-team-title {
     @include title;
 
@@ -110,9 +154,11 @@
   }
 
   .about-team-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 35px;
+    @include grid-cols(3, 35px);
+    
+    @include vieport-md {
+      @include grid-cols(1, 30px);
+    }
 
     .about-team-card {
       display: flex;
