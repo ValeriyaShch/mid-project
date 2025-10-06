@@ -27,10 +27,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const quantityInput = document.getElementById('quantity');
   const qtyBtns = document.querySelectorAll('.quantity-controls .qty-btn');
 
-  qtyBtns.forEach((btn) => {
+  for (const btn of qtyBtns) {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
-      let current = parseInt(quantityInput.value, 10) || 1;
+      let current = Number.parseInt(quantityInput.value, 10) || 1;
       if (btn.textContent.trim() === '+') {
         quantityInput.value = current + 1;
       } else if (
@@ -40,10 +40,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (current > 1) quantityInput.value = current - 1;
       }
     });
-  });
+  }
 
   document.querySelector('.add-to-cart').addEventListener('click', () => {
-    const quantity = parseInt(quantityInput.value, 10) || 1;
+    const quantity = Number.parseInt(quantityInput.value, 10) || 1;
     addToCart({ ...productData, quantity });
   });
 
@@ -70,10 +70,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const tabs = document.querySelectorAll('.tab');
   const tabPanels = document.querySelectorAll('.tab-panel');
 
-  tabs.forEach((tab) => {
+  for (const tab of tabs) {
     tab.addEventListener('click', () => {
-      tabs.forEach((t) => t.classList.remove('active'));
-      tabPanels.forEach((panel) => panel.classList.remove('active'));
+      for (const t of tabs) t.classList.remove('active');
+      for (const panel of tabPanels) panel.classList.remove('active');
 
       tab.classList.add('active');
 
@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
         targetPanel.classList.add('active');
       }
     });
-  });
+  }
 
   const container = document.querySelector(
     '.may-like-products .product-container',

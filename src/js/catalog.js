@@ -1,6 +1,5 @@
-import { SetOfProducts } from './main.js';
+import { SetOfProducts, findProductByName } from './main.js';
 import { showNotification } from './utilities/notificationManager.js';
-import { findProductByName } from './main.js';
 
 for (const wrapper of document.querySelectorAll('.custom-select')) {
   const display = wrapper.querySelector('.select-display');

@@ -312,7 +312,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const emailInput = loginForm.querySelector('input[type="email"]');
       const email = emailInput.value.trim();
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(email)) {
+      if (emailRegex.test(email)) {
         emailInput.classList.remove('input-error');
         const error = loginForm.querySelector('.email-error');
         if (error) error.remove();
