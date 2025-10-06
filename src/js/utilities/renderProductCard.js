@@ -20,7 +20,7 @@ export async function renderProductCard(
   const { id, imageUrl, name, price, salesStatus, rating } = product;
   const templateClone = template.content.cloneNode(true);
   const productCard = templateClone.querySelector('.product-card');
-  productCard.setAttribute('data-id', id);
+  productCard.dataset.id = id;
 
   templateClone.querySelector('.product-image').src = imageUrl;
   if (salesStatus !== true) {
