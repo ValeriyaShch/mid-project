@@ -1,5 +1,10 @@
 import { updateHeaderCartCounter } from './cartManager.js';
 
+function getCartItem(productId) {
+  const cart = JSON.parse(localStorage.getItem('cart')) || { cartItems: [] };
+  return cart.cartItems.find((item) => item.id === productId);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   const cartItemsContainer = document.querySelector('.cart-items');
   const clearCartBtn = document.querySelector('.clear-shopping-btn');
@@ -9,33 +14,33 @@ document.addEventListener('DOMContentLoaded', () => {
     const cart = JSON.parse(localStorage.getItem('cart')) || { cartItems: [] };
     cartItemsContainer.innerHTML = '';
 
-    cart.cartItems.forEach((item) => {
+    for (const item of cart.cartItems) {
       const cartRow = document.createElement('div');
       cartRow.classList.add('cart-item', 'row');
 
       cartRow.innerHTML = `
-                <div class="cart-cell product-info">
-                    <img src="${item.imageUrl}" alt="${item.name}" class="product-image" width="120" height="120">
-                </div>
-                <div class="cart-cell product-name">${item.name}</div>
-                <div class="cart-cell product-price">$${item.price}</div>
-                <div class="cart-cell quantity-controls">
-                    <button class="qty-btn decrease" data-id="${item.id}">−</button>
-                    <input type="number" value="${item.quantity}" min="1" class="quantity-input" data-id="${item.id}">
-                    <button class="qty-btn increase" data-id="${item.id}">+</button>
-                </div>
-                <div class="cart-cell product-total">$${item.totalPrice}</div>
-                <div class="cart-cell">
-                    <button class="delete-btn" data-id="${item.id}" aria-label="Remove ${item.name}">
-                        <svg class="search-icon" width="18" height="20">
-                            <use href="#bin"></use>
-                        </svg>
-                    </button>
-                </div>
-            `;
+        <div class="cart-cell product-info">
+            <img src="${item.imageUrl}" alt="${item.name}" class="product-image" width="120" height="120">
+        </div>
+        <div class="cart-cell product-name">${item.name}</div>
+        <div class="cart-cell product-price">$${item.price}</div>
+        <div class="cart-cell quantity-controls">
+            <button class="qty-btn decrease" data-id="${item.id}">−</button>
+            <input type="number" value="${item.quantity}" min="1" class="quantity-input" data-id="${item.id}">
+            <button class="qty-btn increase" data-id="${item.id}">+</button>
+        </div>
+        <div class="cart-cell product-total">$${item.totalPrice}</div>
+        <div class="cart-cell">
+            <button class="delete-btn" data-id="${item.id}" aria-label="Remove ${item.name}">
+                <svg class="search-icon" width="18" height="20">
+                    <use href="#bin"></use>
+                </svg>
+            </button>
+        </div>
+      `;
 
       cartItemsContainer.appendChild(cartRow);
-    });
+    }
 
     // Show/hide empty cart message
     const emptyCartMsg = document.querySelector('.empty-cart-message');
@@ -94,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const target = event.target;
     if (target.classList.contains('quantity-input')) {
       const productId = target.dataset.id;
-      const newQuantity = parseInt(target.value, 10);
+      const newQuantity = Number.parseInt(target.value, 10);
       updateQuantity(productId, newQuantity - getCartItem(productId).quantity);
     }
   });
@@ -122,11 +127,6 @@ document.addEventListener('DOMContentLoaded', () => {
     localStorage.setItem('cart', JSON.stringify(cart));
     renderCart();
     updateHeaderCartCounter();
-  }
-
-  function getCartItem(productId) {
-    const cart = JSON.parse(localStorage.getItem('cart')) || { cartItems: [] };
-    return cart.cartItems.find((item) => item.id === productId);
   }
 
   clearCartBtn.addEventListener('click', () => {
@@ -178,7 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
     closeBtn.style.cursor = 'pointer';
 
     closeBtn.addEventListener('click', () => {
-      document.body.removeChild(overlay);
+      overlay.remove();
     });
 
     // Pop-up message definition
